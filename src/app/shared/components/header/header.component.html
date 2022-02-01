@@ -1,0 +1,62 @@
+<!--latest code -->
+<div id="kt_header" class="header header-fixed">
+  <div class="headerInner">
+    <div class="brand flex-column-auto">
+      <a class="brand-logo">
+        <img alt="Logo" src="assets/images/logo.png" class="nihon-suido-logo">
+      </a>
+      <div class="humburgerMenu" (click)="mobMenu()"><i class="fa fa-bars"></i></div>
+    </div>
+   
+    <div class="mainDiv">
+      <div class="topbar ml-auto">
+        <div class="topbar-item">
+          <button class="language" mat-button [matMenuTriggerFor]="menu10"><i
+              class="fa fa-globe"></i>{{currentLanguage}} </button>
+          <mat-menu #menu10="matMenu" class="locations">
+            <button mat-menu-item (click)="changeLanguage('en')">English</button>
+            <button mat-menu-item (click)="changeLanguage('jp')">日本語</button>
+          </mat-menu>
+          <button mat-button [matBadge]="alertsArray.length" matBadgeColor="warn" matBadgePosition="after"
+            [matMenuTriggerFor]="menu5"><i class="fa fa-bell" aria-hidden="true"></i></button>
+          <perfect-scrollbar>
+            <mat-menu #menu5="matMenu" class="shownotifications">
+              <h6>{{'Notifications'|translate}}
+                <p (click)="markAllRead()">{{'Mark all as read'|translate}}</p>
+              </h6>
+              <ul>
+                <li [class.noData]="alertsArray.length==0" *ngIf="alertsArray.length==0">
+                  <p>{{'Data is not available'|translate}}</p>
+                </li>
+                <div *ngIf="alertsArray.length>0">
+                  <li *ngFor="let data of alertsArray">
+                    <div class="media" (click)="markRead(data)">
+                      <div class="media-body">
+                        <h5 class="notification-user">{{data.dataNameToDisplay|translate}}</h5>
+                        <p class="notification-msg">{{data.status|translate}}</p>
+                      </div>
+                    </div>
+                    <div class="timelineBadge"></div>
+                  </li>
+                </div>
+
+              </ul>
+            </mat-menu>
+          </perfect-scrollbar>
+          <button mat-button [matMenuTriggerFor]="menu6"><mat-icon>settings</mat-icon></button>
+          <mat-menu #menu6="matMenu" class="dropMenuList">
+            <label mat-menu-item class="profile-item">
+              <div>
+                <i class="fa fa-user-circle-o adminIcon" aria-hidden="true"></i>
+                <div class="adminName">{{'admin'|translate}}</div>
+              </div>
+            </label>
+            <!-- <button mat-menu-item><i class="fa fa-user" aria-hidden="true"></i>{{'My profile'|translate}}</button> -->
+            <button mat-menu-item (click)="logOut()"><i class="fa fa-sign-out"
+                aria-hidden="true"></i>{{'Logout'|translate}}</button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

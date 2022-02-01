@@ -1,0 +1,38 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<div class="subheader subheader-solid" id="kt_subheader">
+  <div class="container-fluid">
+    <div class="top-bar">
+      <div class="dbWrapper">
+        <div class="dbMenuStrip">
+          <div class="dbLeftCol">
+            <div class="dropMenu" [class.active]="!(selectedArea || selectedPoint)">
+              <div class="dropMenu" [class.active]="!(selectedArea || selectedPoint)">
+                <mat-form-field appearance="fill">
+                  <mat-label>{{city|translate}}</mat-label>
+                  <mat-select>
+                    <mat-option *ngFor='let area of areas' (click)="handleSelection(area,'Area')" [value]="area.id">
+                      {{area.name|translate}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dropMenu" *ngIf="selectedPoint" [class.active]="selectedPoint">
+              <mat-form-field appearance="fill">
+                <mat-label>{{currentAreaName|translate}}</mat-label>
+                <mat-select>
+                  <mat-option *ngFor='let point of points'
+                              (click)="handleSelection(point,'Point');checkBoxvalue(point,'waterLevel')" [value]="point.id">
+                    {{point.name|translate}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

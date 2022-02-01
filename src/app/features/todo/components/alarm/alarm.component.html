@@ -1,0 +1,108 @@
+
+
+
+<div class="subheader subheader-solid" id="kt_subheader">
+  <div class="container-fluid">
+    <!--    <div class="loaderDiv" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>-->
+    <div class="top-bar">
+      <div class="dbWrapper">
+        <div class="dbMenuStrip">
+
+
+          <div class="dbLeftCol">
+            <div><app-area></app-area></div>
+           
+            <div [class.active]="!(selectedArea || selectedPoint)" class="dropMenu">
+              <mat-form-field appearance="fill">
+                <mat-label *ngIf="city!=''">{{city|translate}}</mat-label>
+                  <mat-label *ngIf="city==''">{{'Municipality '|translate}}</mat-label>
+                  <mat-select #cityArea="ngModel" name="cityArea" [(ngModel)]="pointDetail.cityArea">
+                  <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option>
+                  <mat-option (click)="handleSelection(area,'Area')" *ngFor='let area of areas' [value]="area.areaid">
+                    {{area.areaname|translate}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="selectedPoint" [class.active]="selectedPoint" class="dropMenu">
+              <mat-form-field appearance="fill">
+                <mat-label>{{'Point name'|translate}}</mat-label>
+                <mat-select #areaSensor="ngModel" name="areaSensor" [(ngModel)]="pointDetail.areaSensor">
+                  <mat-option *ngIf="points.length==0">{{'Data is not available'|translate}}</mat-option>
+                  <mat-option (click)="handleSelection(point,'Point');getAlertsHistoryBySensorId()"
+                    *ngFor='let point of points' [value]="point.mainSensorid">
+                    {{point.sensorname}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+            </div>
+          </div>
+          <div class="dbRightCol">
+            <div class="iconsList">
+              <button ng-class="{not-allowed: tableData.length==0}" [matTooltip]="'Export as CSV'|translate"
+                [disabled]="tableData.length==0" (click)="importAsXlsx()"><img src="assets/Icons/csv.svg" alt="image"
+                  on-mouseover='over()' />
+              </button>
+              <span>{{'CSV Output'| translate}}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="tableData.length>0" class="alarmSummary">
+  <form [formGroup]="dateFormGroup">
+    <mat-form-field>
+      <mat-label>{{'Filter By'| translate}} {{'DATE'|translate}}</mat-label>
+      <mat-select id="dateTimeSelected" name="dateTimeSelected" formControlName="dateTimeSelected"
+        [(ngModel)]="selectDateTime">
+        <option disabled>{{'Filter By'|translate}} {{'DATE'|translate}}</option>
+        <mat-option *ngFor="let item of dateTimeArr" [value]="item" (click)="dateTimeFilter(item)">
+          {{item | date: 'yyyy/MM/dd'}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-flat-button class="btn commonBtn" id="commonBtn" value="Reset" (click)="resetFilters()"
+      [disabled]="selectDateTime === ''">{{'Reset'|translate}}</button>
+  </form>
+</div>
+<ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div *ngIf="tableData.length==0" class="noData">
+  <span>{{'Data is not available'|translate}}</span>
+</div>
+<section class="headerClass" *ngIf="tableData.length>0" style="max-height: 600px;">
+  <div fxLayout fxLayoutAlign="center center">
+    <mat-card>{{'Alert Summary'|translate}}
+    </mat-card>
+    <div class="example-container mat-elevation-z8">
+      <table class="table" id="header-fixed">
+        <thead>
+          <tr>
+            <th scope="col" *ngFor="let tableColumn of tableColumns">{{tableColumn|translate}}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tableData; let i = index;">
+            <td>{{data.dated}}</td>
+            <td>{{currentPointName}}</td>
+            <td>{{data.dataNameToDisplay | translate}}</td>
+            <td>{{data.status | translate}}</td>
+          
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</section>
+<ng-snotify></ng-snotify>
+
+

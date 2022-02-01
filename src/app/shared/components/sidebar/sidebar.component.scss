@@ -1,0 +1,114 @@
+.aside {
+  background-color: #fff;
+  width: 120px;
+  position: fixed;
+  top:46px;
+  left: 0;
+  z-index: 99;
+  transition: 0.5s;
+  height: 100%;
+  border-right: 1px solid #EBEDF3;
+  @media (max-width:991px){
+    left: -120px;
+  }
+  .aside-menu-wrapper {
+      height: 100%;
+      overflow-y: auto;
+      .menuIcon {
+          padding: 10px 0;
+          text-align: center;
+          cursor: pointer;
+           i {
+              font-size: 20px;
+              width: 35px;
+              height: 35px;
+              background: #fff;
+              border-radius: 50%;
+              color: #000;
+              line-height: 35px;
+              border: 2px solid #000;
+          }
+      }
+      .br-sideleft {
+          margin:0;
+           .br-sideleft-menu {
+              padding: 0px;
+              list-style: none;
+              margin: 0px;
+               li {
+                display: flex;
+                list-style: outside none none;
+                margin: 0;
+                padding: 0;
+                position: relative;
+                height: 70px;
+                align-items: center;
+                justify-content: center;
+                  a {
+                      text-align: center;
+                      padding:10px 8px;
+                      display: block;
+                      color: #000;
+                      font-size: 12px;
+                      position: relative;
+                      transition: 0.5s;
+                      cursor: pointer;
+                      min-height: 44px;
+                      // border-bottom: 1px solid #eee;
+                      transition:0.5s;
+                      width: 100%;
+                      .icon {
+                          padding: 0 0 6px 0;
+                          text-align: center;
+                          min-width: 26px !important;
+                          display: block;
+                          svg{
+                              width: 21px;
+                              g{
+                                fill: #000;
+                              }
+                            path{
+                              fill: #000;
+                            }
+                          }
+                      }
+                  }
+                  &.active{
+                   background-color:#00aadd;
+                   a{
+                     color:#fff;
+                      .icon{
+                        svg{
+                          g{
+                              fill: #fff;
+                            }
+                          path{
+                            fill: #fff;
+                          }
+                        }
+                      }    
+                   }
+                  }
+                  &:hover{
+                      background-color:#f9f8f8;
+                      a{
+                        color:#000;
+                        text-decoration:none;
+                         .icon{
+                           svg{
+                             g{
+                                 fill: #000;
+                               }
+                             path{
+                               fill: #000;
+                             }
+                           }
+                         }    
+                      }
+                     }
+              }
+          }
+      }
+  }
+
+}

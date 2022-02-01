@@ -1,0 +1,103 @@
+<!--SAMPLE CODE STARTS-->
+<div class="subheader subheader-solid" id="kt_subheader">
+  <div class="container-fluid">
+    <div class="loaderDiv" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="top-bar">
+      <div class="dbWrapper">
+        <div class="dbMenuStrip">
+          <div class="dbLeftCol">
+            <div class="dropMenu" [class.active]="!(selectedArea || selectedPoint)">
+              <div><app-area></app-area></div>
+              <div class="dropMenu" [class.active]="!(selectedArea || selectedPoint)">
+                <mat-form-field appearance="fill">
+                  <mat-label *ngIf="city!=''">{{city|translate}}</mat-label>
+                  <mat-label *ngIf="city==''">{{'Municipality '|translate}}</mat-label>
+                  <mat-select #cityArea="ngModel" name="cityArea" [(ngModel)]="pointDetail.cityArea">
+                    <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option>
+                    <mat-option *ngFor='let area of areas' (click)="handleSelection(area,'Area')" [value]="area.areaid">
+                      {{area.areaname|translate}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="dropMenu" *ngIf="currentAreaName.length>0" [class.active]="selectedPoint">
+              <!--*ngIf="selectedPoint"-->
+              <mat-form-field appearance="fill">
+                <mat-label>{{'Point name'|translate}}</mat-label>
+                <mat-select #areaSensor="ngModel" name="areaSensor"[(ngModel)]="pointDetail.areaSensor">
+                  <mat-option *ngFor='let point of points'
+                              (click)="handleSelection(point,'Point');checkBoxvalue(point,'waterLevel')"
+                              [value]="point.mainSensorid">
+                    {{point.sensorname}}
+                  </mat-option>
+                </mat-select>
+
+
+              </mat-form-field>
+              <mat-form-field class="point-chip-list" class="mat-chip-form-field">
+                <mat-chip-list #chipList aria-label="Point selection">
+                  <mat-chip (removed)="remove(point)" *ngFor="let point of helperChipArray" [removable]="removable"
+                            [selectable]="selectable">
+                    {{point.sensorname}}
+                    <mat-icon *ngIf="removable" matChipRemove>cancel</mat-icon>
+                  </mat-chip>
+                </mat-chip-list>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!---->
+
+<div class="trendFlow">
+  <div class="rangeFilter">
+    <div class="filterDate">
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Choose a date'|translate}}</mat-label>
+        <input id="selectedDateInput" [disabled]="helperChipArray.length === 0"
+               [(ngModel)]="this.dateFilter.fromDateTime"
+               matInput
+               #selectedDateInput [matDatepicker]="myDatepicker"
+               (dateChange)="onChange(selectedDateInput.value)"><!--[disabled]="isSensor"-->
+        <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+        <mat-datepicker #myDatepicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>{{'Select property'|translate}}</mat-label>
+        <mat-select [disabled]="helperChipArray.length === 0" name="sensorProperty"
+                  [ngModel]="selectedValue">
+          <mat-option *ngFor='let property of sensorProperties'
+                      (click)="handlePropertySelectionCustom(property.key , property.name)"
+                      [value]="propertyNameData"> 
+           
+            {{property.name|translate}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="btn commonBtn"[disabled]="helperChipArray.length === 0" (click) = "pointGraphData()">{{'Submit' | translate}}</button>
+    </div>
+  </div>
+  <ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+  </ngx-spinner>
+  <div class="flowChart">
+    <div class="table-responsive">
+      <div>
+        <div *ngIf="chartData.length>0" class="chart" style="display: block">
+          <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [colors]="barChartColors"
+                  [legend]="barChartLegend" [options]="chartOptions" chartType='line'>
+          </canvas>
+        </div>
+        <div *ngIf="chartData.length==0" class="chart" style="display: block;text-align: center;">
+          <p>{{'Data is not available'|translate}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-snotify></ng-snotify>

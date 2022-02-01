@@ -1,0 +1,317 @@
+.table {
+  thead {
+    th {
+      border-bottom: 1px solid #dee2e6;
+      font-size: 14px;
+      color: #777;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        font-size: 13px;
+        color: #818181;
+      }
+    }
+  }
+}
+
+.edit-icon {
+  float: right;
+  cursor: pointer;
+}
+.point-chip-list {
+  width: 100%;
+}
+
+.btn{
+ 
+  background-color: #0075c1;
+  color: #fff;
+  padding: 2px 12px;
+  margin-left: 10px;
+  font-size: 15px;
+}
+
+.rangeFilter {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0 3px 0;
+  margin: 0 0 10px 0;
+  .filterDate {
+    display: flex;
+    align-items: center;
+    label {
+      margin: 0 5px 0 0;
+      font-weight: 500;
+    }
+    .datePicker {
+      position: relative;
+      margin: 0 5px 0 0;
+      .calendar {
+        position: absolute;
+        right: 6px;
+        top: 3px;
+      }
+    }
+  }
+}
+
+.progress-level-section {
+  /*  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;*/
+  width: 200px;
+  align-items: center;
+}
+.mat-chip-form-field {
+  width: 400px;
+  margin-left: 10px;
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0;
+    .mat-form-field-flex {
+      .mat-form-field-infix {
+        border-top: 0px;
+        padding: 0;
+        .mat-chip-list {
+          .mat-chip-list-wrapper {
+            .mat-chip {
+              margin: 0px;
+              font-size: 12px;
+              border-radius: 3px;
+              background-color: #00aadd;
+              color: #fff;
+              margin: 0 5px 0 0;
+              &:last-child {
+                margin: 0;
+              }
+              .mat-icon {
+                color: #fff;
+                width: 16px;
+                height: 16px;
+                position: relative;
+                top: -1px;
+                opacity: 1;
+              }
+            }
+          }
+        }
+      }
+    }
+    .mat-form-field-underline {
+      display: none;
+    }
+  }
+}
+
+.trendFlow {
+  margin: 0 0 20px 0;
+  ::ng-deep .mat-accordion {
+    .mat-expansion-panel {
+      box-shadow: none;
+      border: 1px solid #eee;
+      .mat-expansion-panel-header {
+        border-bottom: 1px solid #ddd;
+        border-radius: 0;
+        height: auto;
+        padding: 15px;
+        .mat-content {
+          .mat-expansion-panel-header-title {
+            font-size: 20px;
+          }
+        }
+      }
+      .mat-expansion-panel-content {
+        .mat-expansion-panel-body {
+          padding: 15px 7px;
+          .flowRate {
+            display: flex;
+            flex-wrap: wrap;
+            .waterLevel {
+              border: 1px solid rgba(0, 0, 0, 0.2);
+              flex: 1 0 0;
+              padding: 0;
+              border-radius: 5px;
+              background-color: #f9f9f9;
+              box-shadow: 0 1px 6px 0 rgb(0 0 0 / 16%);
+              margin: 5px;
+              min-height: 90px;
+              position: relative;
+              @media (max-width: 1199px) {
+                flex: 1 0 30%;
+              }
+              @media (max-width: 767px) {
+                flex: 1 0 50%;
+              }
+              .flowDesc {
+                display: block;
+                justify-content: space-between;
+                margin: 0 0 8px 0;
+                position: relative;
+                padding: 8px;
+                height: 100%;
+                .icon {
+                  width: 35px;
+                  height: 35px;
+                  border: 1px solid #ddd;
+                  border-radius: 50%;
+                  text-align: center;
+                  line-height: 30px;
+                  position: absolute;
+                  bottom: 18px;
+                  i {
+                    color: #000;
+                  }
+                }
+                .desc {
+                  text-align: right;
+                  max-width: 150px;
+                  margin-left: auto;
+                  .value {
+                    font-size: 20px;
+                    margin: 0 0 12px 0;
+                  }
+                }
+              }
+              .borderDivider {
+                position: absolute;
+                height: 3px;
+                width: 100%;
+                left: 0;
+                background: #000;
+                bottom: 0;
+              }
+              &.color-1 {
+                .flowDesc {
+                  .icon {
+                    i {
+                      color: #843cf6;
+                    }
+                  }
+                  .desc {
+                    .value {
+                      color: #843cf6;
+                    }
+                  }
+                }
+                .borderDivider {
+                  background: #843cf6;
+                }
+              }
+              &.color-2 {
+                .flowDesc {
+                  .icon {
+                    i {
+                      color: #fc5286;
+                    }
+                  }
+                  .desc {
+                    .value {
+                      color: #fc5286;
+                    }
+                  }
+                }
+                .borderDivider {
+                  background: #fc5286;
+                }
+              }
+              &.color-3 {
+                .flowDesc {
+                  .icon {
+                    i {
+                      color: #ff763b;
+                    }
+                  }
+                  .desc {
+                    .value {
+                      color: #ff763b;
+                    }
+                  }
+                }
+                .borderDivider {
+                  background: #ff763b;
+                }
+              }
+              &.color-4 {
+                .flowDesc {
+                  .icon {
+                    i {
+                      color: #01a9ac;
+                    }
+                  }
+                  .desc {
+                    .value {
+                      color: #01a9ac;
+                    }
+                  }
+                }
+                .borderDivider {
+                  background: #01a9ac;
+                }
+              }
+              &.color-5 {
+                .flowDesc {
+                  .icon {
+                    i {
+                      color: #759bff;
+                    }
+                  }
+                  .desc {
+                    .value {
+                      color: #759bff;
+                    }
+                  }
+                }
+                .borderDivider {
+                  background: #759bff;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  canvas.chartjs-render-monitor {
+    height: 500px !important;
+    width: 1265px !important;
+  }
+}
+
+.chart {
+  position: relative;
+  .barIcon {
+    position: absolute;
+    right: 8px;
+    top: 0;
+    cursor: pointer;
+    i {
+      font-size: 20px;
+    }
+    .dropDownbar {
+      border: 1px solid #ddd;
+      background: #fff;
+      position: absolute;
+      right: 0;
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0 0 2px rgb(0 0 0 / 20%);
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        li {
+          text-align: left;
+          padding: 6px 12px;
+          &.active {
+            background-color: #f9f9f9;
+          }
+          &:hover {
+            background-color: #f9f9f9;
+          }
+        }
+      }
+    }
+  }
+}

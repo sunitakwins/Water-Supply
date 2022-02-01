@@ -1,0 +1,402 @@
+<div class="subheader subheader-solid" id="kt_subheader">
+  <div class="container-fluid">
+    <div class="loaderDiv" *ngIf="loading">
+      <mat-spinner></mat-spinner>
+    </div>
+    <div class="top-bar">
+      <div class="dbWrapper">
+        <div class="dbMenuStrip">
+          <div class="dbLeftCol">
+            <div>
+              <app-area></app-area>
+            </div>
+            <div [class.active]="!(selectedArea || selectedPoint)" class="dropMenu">
+              <mat-form-field appearance="fill">
+                <mat-label *ngIf="city!=''">{{city|translate}}</mat-label>
+                    <mat-label *ngIf="city==''">{{'Municipality '|translate}}</mat-label>
+                  <mat-select #cityArea="ngModel" name="cityArea" [(ngModel)]="pointDetail.cityArea">
+                  <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option>
+                  <mat-option (click)="handleSelection(area,'Area')" *ngFor='let area of areas' [value]="area.areaid">
+                    {{area.areaname|translate}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div *ngIf="selectedPoint" [class.active]="selectedPoint" class="dropMenu">
+              <mat-form-field appearance="fill">
+                <mat-label>{{'Point name'|translate}}</mat-label>
+                <mat-select #areaSensor="ngModel" name="areaSensor" [(ngModel)]="pointDetail.areaSensor">
+                  <mat-option *ngIf="points.length==0">{{'Data is not available'|translate}}</mat-option>
+                  <mat-option (click)="handleSelection(point,'Point');filterBySensor(point.mainSensorid,this.viewType)"
+                    *ngFor='let point of points' [value]="point.mainSensorid">
+                    {{point.sensorname }} 
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+
+            <div *ngIf="currentView === 'graph' || currentView === 'list'">
+              <!-- class="rangeFilter" -->
+              <div class="filterDate">
+                <div class="datePicker">
+
+                  <div class="sensorData">
+                    <form [formGroup]="dataFormGroup" (ngSubmit)="dateFilter()" class="form-filter-date">
+                      <div class="dropdwnInput">
+                        <input #fromdatetime id="fromdatetime" name="fromdatetime" class="fromdatetime"
+                          formControlName="fromdatetime" [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+                          [(ngModel)]="fdtime" [disabled]="isSensor" placeholder="{{'From Date & Time' | translate}}"
+                          readonly>
+                        <owl-date-time [disabled]="isSensor" #fromDatTime></owl-date-time>
+                      </div>
+
+                      <div class="dropdwnInput">
+                        <input #todatetime id="todatetime" name="todatetime" class="todatetime"
+                          formControlName="todatetime" [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime"
+                          [(ngModel)]="tdtime" [disabled]="isSensor" max="{{ maxDate | date: 'yyyy-MM-dd' }}"
+                          placeholder="{{'To Date & Time'| translate}}" readonly>
+
+                        <owl-date-time [disabled]="isSensor" #toDateTime></owl-date-time>
+
+
+                      </div>
+
+
+
+                      <button class="btn commonBtn" type="submit" [disabled]="isSensor">{{'Submit' |
+                        translate}}</button>
+                    </form>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="ball-scale-multiple">
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
+<div class="widgets" [hidden]="currentView!=='graph'">
+  <div *ngFor="let widgets of widgetsData" class="card">
+    <div class="card-body">
+      <h3 class="card-title text-white">{{widgets.name | translate}}</h3>
+      <div class="d-inline-block">
+        <h2 class="text-white">{{widgets.value }} {{widgets.unit | translate}}</h2>
+      </div>
+      <span class="display-5 opacity-5"><i class="fa fa-bar-chart"></i></span>
+    </div>
+  </div>
+</div>
+<mat-tab-group (selectedTabChange)="tabChanged($event)" class="tab-group">
+
+  <mat-tab [label]="'Graphical View'|translate">
+    <mat-card>
+      <div class="table-responsive">
+        <div>
+          <div *ngIf="sensorsFilteredData.length!=0" style="display: block" class="wrapperCanvas">
+            <canvas [colors]="lineChartColors"
+              [datasets]="cookieService.get('language')=='en'?lineChartData:lineChartDataJP" [labels]="lineChartLabels"
+            [options]="lineChartOptions" [plugins]="lineChartPlugins" baseChart
+              chartType="line">
+              <!-- lineChartLabels -->
+            </canvas>
+          </div>
+
+          <div *ngIf="sensorsFilteredData.length==0" class="noData">
+            <span>{{'Data is not available'|translate}}</span>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </mat-tab>
+
+  <mat-tab [label]="'List View'|translate">
+    <div *ngIf="sensorsFilteredData.length==0" class="noData">
+      <span>{{'Data is not available'|translate}}</span>
+    </div>
+    <div *ngIf="sensorsFilteredData.length>0" class="tableData1">
+      <div class="example-container mat-elevation-z8">
+        <mat-table #table matSort matSortStart="desc" (scroll)="onTableScroll($event)" [dataSource]="dataSource"
+          *ngIf="isPointSelected === true">
+          <ng-container matColumnDef="Time Stamp">
+            <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sorting('Time Stamp')">{{'Time
+              Stamp'|translate}}</mat-header-cell>
+            <mat-cell data-label="Time Stamp" *matCellDef="let element"> {{element.dateTime}} </mat-cell>
+
+          </ng-container>
+          <ng-container matColumnDef="Battery Voltage">
+            <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sorting('Battery Voltage')"> {{'Battery
+              Voltage'|translate}}(V)
+            </mat-header-cell>
+            <mat-cell data-label="Battery Voltage" *matCellDef="let element"> {{element.batteryVoltage | number :
+              '1.3-3'}} V
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Freshwater Electrical Conductivity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Freshwater Electrical Conductivity'|translate}}
+              (μS/cm)
+            </mat-header-cell>
+            <mat-cell data-label="Freshwater Electrical Conductivity" *matCellDef="let element">
+              {{element.freshwaterConductivity}} μS/cm
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Water Quantity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Water Quantity'|translate}}(m3/sec)</mat-header-cell>
+            <mat-cell data-label="Water Quantity" *matCellDef="let element"> {{element.waterQuantity | number :
+              '1.3-3'}} m3/sec
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Water Level">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Water Level'|translate}}(m)</mat-header-cell>
+            <mat-cell data-label="Water Level" *matCellDef="let element"> {{element.waterLevel | number : '1.3-3'}}m
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Turbidity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Turbidity'|translate}}(度)</mat-header-cell>
+            <mat-cell data-label="Turbidity" *matCellDef="let element"> {{element.turbidity | number : '1.1-1'}}度
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Seawater Electrical Conductivity">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Seawater Electrical Conductivity'|translate}}(ms/cm)
+            </mat-header-cell>
+            <mat-cell data-label="Seawater Electrical Conductivity" *matCellDef="let element">
+              {{element.saltwaterConductivity}}ms/cm
+            </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="Water Temperature">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Water Temperature'|translate}}(°C)</mat-header-cell>
+            <mat-cell data-label="Water Temperature" *matCellDef="let element"> {{element.waterTemprature}}°C
+            </mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns sticky:true"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </mat-tab>
+
+
+  <mat-tab [label]="'Alarm Setting'|translate">
+    <div>
+      <div class="sensorSettings">
+        <div class="row">
+          <div class="col-sm-3 col-sm-3">
+            <h2>{{'Setting Of Rate'| translate}}</h2>
+          </div>
+          <div class="col-sm-9 col-sm-9" *ngIf="currentSensorId!==0">
+          </div>
+        </div>
+      </div>
+      <div class="loaderDiv" *ngIf="loadingSetting">
+        <mat-spinner></mat-spinner>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="settings">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Rate Of Change'|translate}} (%)</mat-label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="number" class="form-control data-property-header" id="rateofchange"
+                      (keypress)="onSettingRateChange($event,'rateOfChange')" value="{{thresholdRateOfChange}}"
+                      [disabled]="currentSensorId===0" #rateofchange>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Alarm Dead Zone'|translate}} (%)</mat-label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="number" class="form-control data-property-header" id="thresholddeadzone"
+                      (keypress)="onSettingRateChange($event,'alarmDeadZone')" value="{{thresholdDeadZone}}"
+                      [disabled]="currentSensorId===0">
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Upper And Lower Limit Correction
+                      Width'|translate}} (%)
+                    </mat-label>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="number" class="form-control data-property-header" id="upperlowercorrectionwidth"
+                      (keypress)="onSettingRateChange($event,'correctionWidth')" value="{{thresholdCorrectionWidth}}"
+                      [disabled]="currentSensorId===0">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="settings">
+                <h6>{{'Value Setting'| translate}}</h6>
+                <div class="row">
+                  <table class="table">
+                    <thead class="custom-thead">
+                      <tr>
+                        <th scope="col">{{'Sensor Name'|translate}}</th>
+                        <th scope="col">{{'Current Figure'|translate}}</th>
+                        <th scope="col">{{'Upper Upper Limit'|translate}}</th>
+                        <th scope="col">{{'Upper Limit'|translate}}</th>
+                        <th scope="col">{{'Lower Limit'|translate}}</th>
+                        <th scope="col">{{'Lower Lower Limit'|translate}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let prop of thresholdAPIResponse; let i = index">
+
+                         <td name="dataPointName">{{prop.dataPointNameToDisplay |translate}}</td>
+                        <td name="currentFigure"><input type="number" class="form-control currentFigure-{{i}}"
+                            id="currentFigure" name="currentFigure" value="{{prop.presentValue}}" data-toggle="tooltip"
+                            data-placement="top" title="{{prop.dataPointNameToDisplay|translate}}" readonly></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" name="upperUpperLimit"><input
+                            type="number" id="upperUpperLimit-{{i}}" name="upperUpperLimit"
+                            class="form-control upperUpperLimit-{{i}}" id="upperUpperLimit-{{i}}"
+                            value="{{prop.upperUpperLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" name="upperLimit"><input
+                            type="number" id="upperLimit-{{i}}" name="upperLimit" class="form-control upperLimit-{{i}}"
+                            value="{{prop.upperLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" id="lowerLimit" name="lowerLimit">
+                          <input type="number" class="form-control" id="lowerLimit-{{i}}"
+                            value="{{prop.lowerLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}">
+                        </td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" id="lowerLowerLimit"
+                          name="lowerLowerLimit"><input type="number" class="form-control" id="lowerLowerLimit-{{i}}"
+                            value="{{prop.lowerLowerLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" name="upperUpperLimit"><input
+                            type="number" id="upperUpperLimit-{{i}}" name="upperUpperLimit"
+                            class="form-control upperUpperLimit-{{i}}" id="upperUpperLimit-{{i}}"
+                            value="{{prop.upperUpperLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" name="upperLimit"><input
+                            type="number" id="upperLimit-{{i}}" name="upperLimit" class="form-control upperLimit-{{i}}"
+                            value="{{prop.upperLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" id="lowerLimit" name="lowerLimit">
+                          <input type="number" class="form-control" id="lowerLimit-{{i}}"
+                            value="{{prop.lowerLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}">
+                        </td>
+
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" id="lowerLowerLimit"
+                          name="lowerLowerLimit"><input type="number" class="form-control" id="lowerLowerLimit-{{i}}"
+                            value="{{prop.lowerLowerLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+
+                      </tr>
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 text-right">
+              <button class="btn commonBtn updateButton" type="text" (click)="onSubmit()"
+                [disabled]="currentSensorId===0">{{'Save'|translate}}</button>
+            </div>
+            <div class="col-sm-12 text-right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+
+  <!--SAMPLE CODE STARTS-->
+  <mat-tab [label]="'Maintenance Settings'|translate">
+    <div>
+      <div class="sensorSettings">
+        <div class="row">
+          <div class="col-sm-12 col-sm-12">
+            <h2>{{ currentPointName }}</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="settings">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{'Recording cycle(initial value) in min'|translate}}</label>
+                      <input [value]="recordingCycleInitial" class="form-control"
+                        placeholder="Recording cycle (initial value)" type="number" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{'Transmission cycle (initial value) in min'|translate}}</label>
+                      <input [value]="transmissionCycleInitial" class="form-control"
+                        placeholder="Transmission cycle (initial value)" type="number" readonly>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{'Recording cycle in min'|translate}}</label>
+                      <input [value]="recordingCycle" class="form-control" placeholder="Recording cycle" type="number"
+                        min="1" max="1440" #recording_cycle>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{'Transmission cycle in min'|translate}}</label>
+                      <input [value]="transmissionCycle" class="form-control" placeholder="Transmission cycle"
+                        type="number" min="1" max="1440" #transmission_cycle>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>{{'Alert level'|translate}}</label>
+                      <input [value]="alertLevel" class="form-control" placeholder="Alert Level" type="number" min="1"
+                        max="10" #alert_level>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 text-right">
+
+              <button (click)="returnInitial(recording_cycle.value,transmission_cycle.value,alert_level.value)"
+                [disabled]="pointName == ''" class="btn commonBtn mr-2" type="text">{{'Return to previous
+                value'|translate}}
+              </button>
+
+              <button class="btn commonBtn" type="text" [disabled]="pointName == ''"
+                (click)="updateMaintenance(recording_cycle.value,transmission_cycle.value,alert_level.value)">{{'Save'|translate}}
+              </button>
+            </div>
+            <div class="col-sm-12 text-right">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-tab>
+</mat-tab-group>
+<ng-snotify></ng-snotify>

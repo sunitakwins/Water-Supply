@@ -1,0 +1,11 @@
+<mat-form-field appearance="fill">
+    <mat-label>{{ 'District' | translate}}</mat-label>
+    <mat-select [value]="todoService.showLogin$ | async">
+      <mat-option *ngFor='let city of cityArray' (click)="handleCitySelection(city)" [value]="city.id">
+        {{city.cityname|translate}} 
+
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+
