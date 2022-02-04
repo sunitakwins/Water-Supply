@@ -24,6 +24,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {MessageService} from './EventBroadcast';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
+import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -32,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/json/', '.json');
 }
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent, EditDataPointComponent],
+  declarations: [HeaderComponent, FooterComponent, SidebarComponent, EditDataPointComponent, MainDropdownComponent],
   imports: [
     /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -63,7 +64,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     NgMultiSelectDropDownModule.forRoot(),
     MatTableExporterModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
   ],
   exports: [
     /*BrowserAnimationsModule,*/
@@ -86,7 +87,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule,
     NgMultiSelectDropDownModule,
     MatTableExporterModule,
-    PerfectScrollbarModule
+    PerfectScrollbarModule,
+
+    MainDropdownComponent
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },

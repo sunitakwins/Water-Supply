@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { TodoState } from './state/todo-state';
 import { TodoModule } from './features/todo/todo.module';
@@ -18,16 +18,17 @@ import { ChartsModule } from 'ng2-charts';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MatSortModule} from '@angular/material/sort';
+import { CoreModule } from './core/core.module';
 
-// export function createTranslateLoader(http: HttpClient) {
-//   return new TranslateHttpLoader(http, './assets/json/', '.json');
-// }
+export function createTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/json/', '.json');
+}
+
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
-   
-
+    
   ],
   imports: [
 
@@ -45,7 +46,9 @@ import {MatSortModule} from '@angular/material/sort';
     TodoModule,
     BrowserAnimationsModule,
     DashboardModule,
-    MatSortModule
+    MatSortModule,
+
+    CoreModule
   ],
   bootstrap: [AppComponent]
 })

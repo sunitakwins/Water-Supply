@@ -5,10 +5,7 @@ import { AuthGuard } from './core/helpers/auth.guard';
 import { LayoutComponent } from './features/layout/layout.component';
 
 const routes: Routes = [
-  // {
-  // path: '',
-  // component: LoginComponent,
-  // children: [
+
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
@@ -17,6 +14,14 @@ const routes: Routes = [
         (m) => m.AuthModule
       ),
       // canActivate: [AuthGuard]
+  },
+  {
+    path: 'alarm-summary',
+    loadChildren: () =>
+      import('./features/alarm-summary/alarm-summary.module').then(
+        (m) => m.AlarmSummaryModule
+      ),
+      canActivate: [AuthGuard]
   },
   {
     path: 'dashboard',
