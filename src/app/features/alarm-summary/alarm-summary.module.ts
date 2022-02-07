@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AlarmSummaryRoutingModule } from './alarm-summary-routing.module';
 import { AlarmSummaryComponent } from './components/alarm-summary/alarm-summary.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MainDropdownComponent } from 'src/app/shared/components/main-dropdown/main-dropdown.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 @NgModule({
@@ -15,6 +15,7 @@ import { MainDropdownComponent } from 'src/app/shared/components/main-dropdown/m
     CommonModule,
     SharedModule,
     AlarmSummaryRoutingModule,
+    NgxSpinnerModule
   ]
 })
 export class AlarmSummaryModule { }

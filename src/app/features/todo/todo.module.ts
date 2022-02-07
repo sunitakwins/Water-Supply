@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TodoRoutingModule } from './todo-routing.module';
-import { ListingComponent } from './components/listing/listing.component';
-import { AddComponent } from './components/add/add.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { GraphComponent } from './components/graph/graph.component';
 import { SharedModule } from 'src/app/shared/shared.module';
@@ -17,7 +15,7 @@ import {NgxSpinnerModule} from 'ngx-spinner';
 import { AreaComponent } from './components/area/area.component';
 
 @NgModule({
-  declarations: [ListingComponent, AddComponent, GraphComponent, TrendComponent, AlarmComponent, SensorReportsComponent, AreaComponent],
+  declarations: [ GraphComponent, TrendComponent, AlarmComponent, SensorReportsComponent, AreaComponent],
   imports: [
     NgxPaginationModule,
     CommonModule,
@@ -27,7 +25,7 @@ import { AreaComponent } from './components/area/area.component';
     ChartsModule,
     NgxSpinnerModule
   ],
-  exports: [ListingComponent, AddComponent, AlarmComponent, GraphComponent, TrendComponent, SensorReportsComponent],
+  exports: [ AlarmComponent, GraphComponent, TrendComponent, SensorReportsComponent],
   providers: [DatePipe]
 })
 export class TodoModule { }

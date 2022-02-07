@@ -1,7 +1,7 @@
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, Subject} from 'rxjs';
-import {Todo} from '../model/todo.model';
+
 
 @Injectable({
   providedIn: 'root'
@@ -165,24 +165,24 @@ export class TodoService {
   /* calls to be deleted */
 
   // tslint:disable-next-line:typedef
-  fetchTodos() {
-    return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
-  }
+  // fetchTodos() {
+  //   return this.http.get<Todo[]>('https://jsonplaceholder.typicode.com/todos');
+  // }
 
-  // tslint:disable-next-line:typedef
-  deleteTodo(id: number) {
-    return this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
-  }
+  // // tslint:disable-next-line:typedef
+  // deleteTodo(id: number) {
+  //   return this.http.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  // }
 
-  // tslint:disable-next-line:typedef
-  addTodo(payload: Todo) {
-    return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', payload);
-  }
+  // // tslint:disable-next-line:typedef
+  // addTodo(payload: Todo) {
+  //   return this.http.post<Todo>('https://jsonplaceholder.typicode.com/todos', payload);
+  // }
 
-  // tslint:disable-next-line:typedef
-  updateTodo(payload: Todo, id: number) {
-    return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, payload);
-  }
+  // // tslint:disable-next-line:typedef
+  // updateTodo(payload: Todo, id: number) {
+  //   return this.http.put<Todo>(`https://jsonplaceholder.typicode.com/todos/${id}`, payload);
+  // }
 
   // tslint:disable-next-line:typedef
   updateThresholdValues(id: any, body: any) {

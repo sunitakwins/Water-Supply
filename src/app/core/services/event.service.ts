@@ -8,6 +8,8 @@ export class EventService {
 
 constructor() { }
 
- sensorIdValue = new Subject<any>();
+ sensorIdDetails = new Subject<any>();
+
+ alertSummaryData = new Subject<any>();
 
 }

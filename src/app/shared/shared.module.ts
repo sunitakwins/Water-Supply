@@ -6,7 +6,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { EditDataPointComponent } from './modals/edit-data-point/edit-data-point.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -25,6 +24,8 @@ import {MessageService} from './EventBroadcast';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
+import { UiModule } from './components/ui/ui.module';
+
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
@@ -33,7 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/json/', '.json');
 }
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent, EditDataPointComponent, MainDropdownComponent],
+  declarations: [HeaderComponent, FooterComponent, SidebarComponent, MainDropdownComponent],
   imports: [
     /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -53,7 +54,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
     }),
-    NgxSpinnerModule,
+    // NgxSpinnerModule,
     RouterModule,
     TranslateModule.forRoot({
       loader: {
@@ -65,6 +66,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     NgMultiSelectDropDownModule.forRoot(),
     MatTableExporterModule,
     PerfectScrollbarModule,
+    FormsModule,
+    
+    UiModule
   ],
   exports: [
     /*BrowserAnimationsModule,*/
@@ -82,14 +86,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     SidebarComponent,
     RouterModule,
-    NgxSpinnerModule,
+    // NgxSpinnerModule,
     AngularDropdownModule,
     TranslateModule,
     NgMultiSelectDropDownModule,
     MatTableExporterModule,
     PerfectScrollbarModule,
 
-    MainDropdownComponent
+    MainDropdownComponent,
+    UiModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },

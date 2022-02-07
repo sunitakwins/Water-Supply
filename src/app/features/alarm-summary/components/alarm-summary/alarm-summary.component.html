@@ -1,50 +1,25 @@
 <section>
-  <div class="subheader subheader-solid" id="kt_subheader">
-    <div class="container-fluid">
-      <div class="top-bar">
-        <div class="dbWrapper">
-          <div class="dbMenuStrip">
-            <div class="dbLeftCol">
-              <app-main-dropdown></app-main-dropdown>
-            </div>
-            <div class="dbRightCol">
-              <div class="iconsList">
-                <button class="btn" [matTooltip]="'Export as CSV'|translate" (click)="importAsXlsx()"
-                  [disabled]="alertDataList.length==0" ng-class="{not-allowed: tableData.length==0}">
-                  <img src="assets/Icons/csv.svg" alt="image">
-                </button>
-                <span>{{'CSV Output'| translate}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+  <app-main-dropdown></app-main-dropdown>
 
   <!-- filter alertData by date -->
-  <!-- <div>
-    <div class="datePicker">
-      <div class="sensorData">
-        <form [formGroup]="dataFormGroup" (ngSubmit)="dateFilter()" class="form-filter-date">
-          <div class="dropdwnInput">
-            <input #fromdatetime id="fromdatetime" name="fromdatetime" class="fromdatetime"
-              formControlName="fromdatetime" [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
-              [(ngModel)]="fdtime" placeholder="{{'Filter By'| translate}} {{'DATE'|translate}}" readonly>
-            <owl-date-time #fromDatTime></owl-date-time>
-          </div>
 
-          <button class="btn commonBtn" type="submit" [disabled]="isSensor">{{'Submit' | translate}} </button>
-          <button class="btn commonBtn" id="commonBtn" value="Reset" (click)="resetFilters()"
-            [disabled]="selectDateTime === ''">{{'Reset'|translate}}
-          </button>
-        </form>  
-      </div>
-    </div> 
-  </div>-->
 
   <!-- Alert Data by main sensor id -->
   <div class="headerClass" *ngIf="alertDataList.length > 0" style="max-height: 600px;">
+
+    <div class="sensorData ">
+      <form class="form-filter-date alarmSummary_Form">
+        <div class="dropdwnInput d-flex">
+          <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate"
+            [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+            placeholder="{{'From Date & Time' | translate}}" readonly>
+          <owl-date-time #fromDatTime></owl-date-time>
+          <button class="btn commonBtn ml-1" id="commonBtn" value="reset" (click)="resetFilters()">{{'Reset'|translate}}</button>
+              <!--  [disabled]="selectDateTime === ''" -->
+        </div>
+      </form>
+    </div>
+
     <div fxLayout fxLayoutAlign="center center">
       <mat-card>{{'Alert Summary'| translate}}
       </mat-card>

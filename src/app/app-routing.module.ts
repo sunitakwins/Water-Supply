@@ -15,6 +15,24 @@ const routes: Routes = [
       ),
       // canActivate: [AuthGuard]
   },
+
+  // ========= new added route ======================================
+  // {
+  //   path: 'point-selection',
+  //   loadChildren: () =>
+  //     import('./features/alarm-summary/alarm-summary.module').then(
+  //       (m) => m.AlarmSummaryModule
+  //     ),
+  //     canActivate: [AuthGuard]
+  // },
+  // {
+  //   path: 'trend',
+  //   loadChildren: () =>
+  //     import('./features/alarm-summary/alarm-summary.module').then(
+  //       (m) => m.AlarmSummaryModule
+  //     ),
+  //     canActivate: [AuthGuard]
+  // },
   {
     path: 'alarm-summary',
     loadChildren: () =>
@@ -23,6 +41,16 @@ const routes: Routes = [
       ),
       canActivate: [AuthGuard]
   },
+  {
+    path: 'reports',
+    loadChildren: () =>
+      import('./features/reports/reports.module').then(
+        (m) => m.ReportsModule
+      ),
+      canActivate: [AuthGuard]
+  },
+
+   // ===============================================
   {
     path: 'dashboard',
     loadChildren: () =>

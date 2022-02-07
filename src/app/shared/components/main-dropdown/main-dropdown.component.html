@@ -1,36 +1,60 @@
- <div class ="d-flex">
-    <mat-form-field appearance="fill">
-        <mat-label>{{ 'District' | translate}}</mat-label>
-        <mat-select>
-            <!-- [value]=" .showLogin$ | async" -->
-          <mat-option *ngFor='let city of userCities'  (click)="onSelection(city, 'city')" [value]="city.id">
-            {{city.cityname|translate}} 
-            <!--    -->
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill" class ="d-flex">
-        <!-- <mat-label *ngIf="city!=''">{{city|translate}}</mat-label> -->
-        <mat-label>{{'Municipality '| translate}}</mat-label>
-        <mat-select name="cityArea" >
-            <!-- [(ngModel)]="pointDetail.cityArea"  #cityArea="ngModel" [disable] ="cityAreas.length == 0" -->
-            <!-- <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option> -->
-            <mat-option *ngFor='let area of cityAreas' [value]="area.areaid" (click)="onSelection(area, 'area')" >
-                {{area.areaname|translate}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-
-    <mat-form-field appearance="fill">
-        <mat-label>{{'Point name'|translate}}</mat-label>
-        <mat-select name="areaSensor" >
-            <!-- #areaSensor="ngModel"  [(ngModel)]="pointDetail.areaSensor" -->
-            <!-- <mat-option *ngIf="points.length==0">{{'Data is not available'|translate}}</mat-option> -->
-            <mat-option  *ngFor='let point of sensorListData' [value]="point.mainSensorid" (click)="onSelection(point,'Point')">
-                <!-- (click)="handleSelection(point,'Point');getAlertsHistoryBySensorId()" -->
-                {{point.sensorname}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
+<div class="subheader subheader-solid" id="kt_subheader">
+    <div class="container-fluid">
+      <div class="top-bar">
+        <div class="dbWrapper">
+          <div class="dbMenuStrip">
+            <div class="dbLeftCol">
+              <div class ="d-flex">
+                <mat-form-field appearance="fill">
+                    <mat-label>{{ 'District' | translate}}</mat-label>
+                    <mat-select>
+                        <!-- [value]=" .showLogin$ | async" -->
+                      <mat-option *ngFor='let city of userCities'  (click)="onSelection(city, 'city')" [value]="city.id">
+                        {{city.cityname|translate}} 
+                        <!--    -->
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+            
+                  <mat-form-field appearance="fill" class ="d-flex">
+                    <!-- <mat-label *ngIf="city!=''">{{city|translate}}</mat-label> -->
+                    <mat-label>{{'Municipality '| translate}}</mat-label>
+                    <mat-select name="cityArea" >
+                        <!-- [(ngModel)]="pointDetail.cityArea"  #cityArea="ngModel" [disable] ="cityAreas.length == 0" -->
+                        <!-- <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option> -->
+                        <mat-option *ngFor='let area of cityAreas' [value]="area.areaid" (click)="onSelection(area, 'area')" >
+                            {{area.areaname|translate}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            
+                <mat-form-field appearance="fill">
+                    <mat-label>{{'Point name'|translate}}</mat-label>
+                    <mat-select name="areaSensor" >
+                        <!-- #areaSensor="ngModel"  [(ngModel)]="pointDetail.areaSensor" -->
+                        <!-- <mat-option *ngIf="points.length==0">{{'Data is not available'|translate}}</mat-option> -->
+                        <mat-option  *ngFor='let point of sensorListData' [value]="point.mainSensorid" (click)="onSelection(point,'Point')">
+                            <!-- (click)="handleSelection(point,'Point');getAlertsHistoryBySensorId()" -->
+                            {{point.sensorname}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            </div>
+            <div class="dbRightCol">
+              <div class="iconsList">
+                <button class="btn" [matTooltip]="'Export as CSV'|translate" (click)="importAsXlsx()"
+                  [disabled]="alertDataList.length==0" ng-class="{not-allowed: tableData.length==0}">
+                  <img src="assets/Icons/csv.svg" alt="image">
+                </button> 
+                <span>{{'CSV Output'| translate}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
+ 
+ 
+

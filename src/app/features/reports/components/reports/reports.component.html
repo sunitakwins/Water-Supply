@@ -1,0 +1,116 @@
+<section>
+<app-main-dropdown></app-main-dropdown>
+
+<div class="row">
+    <div class="col-sm-12">
+      <div class="sensorData">
+        <form>
+          <div class="form-group dropdwnInput">
+            <input #fromdatetime id="fromdatetime" name="fromdatetime" 
+              [(ngModel)]="selectedFromDate" [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+              placeholder="{{'From Date & Time' | translate}}"
+              readonly>
+            <owl-date-time #fromDatTime></owl-date-time>
+          </div>
+          <div class="form-group dropdwnInput">
+            <input #todatetime id="todatetime" name="todatetime" [(ngModel)]="selectedToDate"
+              [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime" placeholder="{{'To Date & Time'| translate}}"
+             readonly>
+            <owl-date-time #toDateTime></owl-date-time>
+          </div>
+          <div class="form-group dropdwnFld">
+            <mat-form-field appearance="fill">
+                <!-- <mat-label>Value</mat-label> -->
+                <mat-select [(ngModel)]="selectedValue" name="food" required>
+                  <mat-option *ngFor="let value of FormValueArray" [value]="value">
+                    {{value | translate }}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <button class="btn commonBtn" type="submit" (click)="onSubmit()">{{'Submit' | translate}}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- <div class="row mb-2" *ngIf="sensorRows.length>0" [hidden]="sensornames.length === 0">
+    <div class="col-sm-12">
+      <mat-form-field>
+        <mat-label>Selected Points</mat-label>
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let sensorname of sensornames; let i = index" [selectable]="selectable"
+            [removable]="removable" (removed)="remove(sensorname)">
+            {{sensornames[i].data.sensorname}}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </mat-form-field>
+    </div>
+  </div> -->
+
+  <!-- <div #table class="example-container mat-elevation-z8" style="box-shadow:none;"
+    *ngIf="isPointSelected === true && sensornames.length>0">
+    <div [class]="sensornames.length===1 ? 'blockcontainer':'flexcontainer'">
+      <div style="display: inline;" *ngFor="let sensor of sensornames; let i = index">
+        <table class="table" *ngIf="currentSelectedCity === todoService.getCurrentCity()">
+          <thead  >
+            <tr class="dataFormName">
+              <th [colSpan]="currentDataForm ==='Converted'?11:4">
+                {{sensor.data.sensorname}}
+              </th>
+            </tr>
+            <tr *ngFor="let tableHeader of tableHeaders">
+              <th>{{tableHeader.ts | translate}}</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.bv | translate}}(V)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.fwe | translate}}(μS/cm)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.wq | translate}}(m3/sec)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.wl | translate}}(m)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.tdy | translate}}(℃)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.swc | translate}}(ms/cm)</th>
+              <th *ngIf="currentDataForm ==='Converted'">{{tableHeader.wt | translate}}(°C)</th>
+       
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.bv | translate}}(V)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.fwe | translate}}(μS/cm)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.wq | translate}}(m3/sec)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.wl | translate}}(m)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.tdy | translate}}(℃)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.swc | translate}}(ms/cm)</th>
+              <th *ngIf="currentDataForm ==='Raw'">{{tableHeader.wt | translate}}(°C)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dataProperty of dataPropertiesArray; let i = index;">
+              <td>{{dataProperty.dateTime}}</td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.batteryVoltage == null ? '0' : dataProperty.batteryVoltage}} </td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.freshwaterConductivity == null ? '0' : dataProperty.freshwaterConductivity}} </td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.waterQuantity == null ? '0' : dataProperty.waterQuantity }} </td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.waterLevel == null ? '0' : dataProperty.waterLevel}} </td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.turbidity == null ? '0' : dataProperty.turbidity}}</td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.saltwaterConductivity == null ? '0' : dataProperty.saltwaterConductivity}} </td>
+              <td *ngIf="currentDataForm ==='Converted'">{{dataProperty.waterTemprature == null ? '0' : dataProperty.waterTemprature}} </td>
+  
+  
+  
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawBatteryVoltage == null ? '0' : dataProperty.rawBatteryVoltage}} </td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawFreshwaterConductivity == null ? '0' : dataProperty.rawFreshwaterConductivity}} </td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawWaterQuantity == null ? '0' : dataProperty.rawWaterQuantity}} </td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawWaterLevel == null ? '0' : dataProperty.rawWaterLevel}} </td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawTurbidity == null ? '0' : dataProperty.rawTurbidity}}</td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawSaltwaterConductivity == null ? '0' : dataProperty.rawSaltwaterConductivity}}</td>
+              <td *ngIf="currentDataForm ==='Raw'">{{dataProperty.rawWaterTemprature == null ? '0' : dataProperty.rawWaterTemprature}} </td>
+  
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <ng-snotify></ng-snotify>
+    </div>
+  </div> -->
+
+  <!-- <div *ngIf="sensornames.length==0" class="noData">
+    <span>{{'Data is not available'|translate}}</span>
+  </div> -->
+  <ng-snotify></ng-snotify>
+</section>

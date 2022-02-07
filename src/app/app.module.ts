@@ -8,14 +8,13 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { TodoState } from './state/todo-state';
 import { TodoModule } from './features/todo/todo.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { LayoutComponent } from './features/layout/layout.component';
 import { ChartsModule } from 'ng2-charts';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+// import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {MatSortModule} from '@angular/material/sort';
 import { CoreModule } from './core/core.module';
@@ -37,17 +36,14 @@ export function createTranslateLoader(http: HttpClient) {
     HttpClientModule,
     AppRoutingModule,
     SharedModule,
-    NgxsModule.forRoot([TodoState], {
-      developmentMode: !environment.production
-    }),
     SocketIoModule,
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
     TodoModule,
     BrowserAnimationsModule,
     DashboardModule,
     MatSortModule,
 
+    // newly added
     CoreModule
   ],
   bootstrap: [AppComponent]

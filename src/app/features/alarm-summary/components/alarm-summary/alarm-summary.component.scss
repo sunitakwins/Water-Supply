@@ -100,38 +100,26 @@ th.mat-header-cell {
       }
     }
   }
-  .iconsList {
+ 
+  .sensorData {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    button {
-      width: 30px;
-      border: 1px solid #00aadd;
-      /* padding: 5px; */
-      border-radius: 50%;
-      height: 30px;
-      text-align: center;
-      line-height: 27px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      margin: 5px 0 5px 0;
-      cursor: pointer;
-      background-color: transparent;
-      &:last-child {
-        margin: 0;
-      }
-      img {
-        width: 15px;
-        margin: 0 auto;
+    margin: 0 0 14px 0;
+    border: 1px solid #eee;
+    padding: 15px 12px;
+    border-radius: 4px;
+    box-shadow: 0 0px 2px rgb(0 0 0 / 10%);
+    position: relative;
+    .icon {
+      position: absolute;
+      right: 0;
+      // top: 50%;
+      // transform: translateY(-50%);
+      span {
+        color: #777;
       }
     }
-    span {
-      color: #999;
-      font-size: 12px;
-    }
-  }
-  
+
+    
   .alarmSummary {
     margin: 0 0 14px 0;
     ::ng-deep .mat-form-field {
@@ -150,4 +138,4 @@ th.mat-header-cell {
     color: #fff;
     padding: 0px 25px;
   }
-  
+}  
