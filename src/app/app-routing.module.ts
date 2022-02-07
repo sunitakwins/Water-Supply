@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './core/auth/components/login/login.component';
 import { AuthGuard } from './core/helpers/auth.guard';
-import { LayoutComponent } from './features/layout/layout.component';
+
 
 const routes: Routes = [
 
@@ -17,6 +16,13 @@ const routes: Routes = [
   },
 
   // ========= new added route ======================================
+  // {
+  //   path: 'auth',
+  //   loadChildren: () =>
+  //     import('./features/authentication/authentication.module').then(
+  //       (m) => m.AuthenticationModule
+  //     ),
+  // },
   // {
   //   path: 'point-selection',
   //   loadChildren: () =>

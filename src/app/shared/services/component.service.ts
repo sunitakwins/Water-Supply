@@ -14,7 +14,7 @@ export class ComponentService {
   public readonly sensorApiEndPoints = ApiEndpoints.AreaSensor;
 
 
-constructor(private httpService: HttpService, private http : HttpClient) { }
+constructor(private httpService: HttpService) { }
 
 getCitiesByUserId(id : number): Observable<any>{
   const params = new HttpParams()

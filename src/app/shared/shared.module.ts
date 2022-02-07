@@ -4,13 +4,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
 import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-import { FooterComponent } from './components/footer/footer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastrModule } from 'ngx-toastr';
-import { NgxSpinnerModule } from 'ngx-spinner';
 import { AngularDropdownModule } from 'angular-dropdown';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FormsModule } from '@angular/forms';
@@ -23,18 +21,18 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import {MessageService} from './EventBroadcast';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
-import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
+
 import { UiModule } from './components/ui/ui.module';
+import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, 'assets/json/', '.json');
-}
+
+
 @NgModule({
-  declarations: [HeaderComponent, FooterComponent, SidebarComponent, MainDropdownComponent],
+  declarations: [HeaderComponent, SidebarComponent, MainDropdownComponent],
   imports: [
     /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -83,7 +81,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     OwlNativeDateTimeModule,
     MaterialModule,
     HeaderComponent,
-    FooterComponent,
     SidebarComponent,
     RouterModule,
     // NgxSpinnerModule,
@@ -93,8 +90,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatTableExporterModule,
     PerfectScrollbarModule,
 
-    MainDropdownComponent,
-    UiModule
+    UiModule,
+    MainDropdownComponent
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
@@ -107,5 +104,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   ]
 })
 export class SharedModule {
+}
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, 'assets/json/', '.json');
 }
 
