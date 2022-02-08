@@ -1,6 +1,27 @@
 {
-  "Upper value  exceeded" : "Upper value exceeded",
-" Nihon Suido Consultants":"Nihon Suido Consultants",
+  "common": {
+    "district"  : "District",
+    "municipality ": "Municipality",
+    "pointName": "Point name",
+    "CSVOutput": "CSV Output",
+
+    "dataNotAvailable": "Data is not available",
+    "fromDateTime": "From Date & Time",
+    "toDateTime": "To Date & Time",
+    "submit" : "Submit"
+  },
+  "alarmSummary": {
+    
+    "reset": "Reset",
+    "alertSummary": "Alert Summary"
+  },
+  "reports": {
+    
+  },
+
+
+"Upper value  exceeded" : "Upper value exceeded",
+"Nihon Suido Consultants":"Nihon Suido Consultants",
 "Urayasu" : "Urayasu",
 "Koto Ward" : "Koto Ward",
 "Shibuya Ward" : "Shibuya Ward",
@@ -12,7 +33,7 @@
 "1-chome" :"1-chome",
 "2-chome" :"2-chome",
 "3-chome" :"3-chome",
-  "Alert Summary": "Alert Summary",
+ 
   "Mark all as read": "Mark all as read",
   "Messages": "Messages",
   "Point Compare": "Point Compare",

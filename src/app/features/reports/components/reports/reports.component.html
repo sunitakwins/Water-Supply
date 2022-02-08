@@ -8,13 +8,13 @@
           <div class="form-group dropdwnInput">
             <input #fromdatetime id="fromdatetime" name="fromdatetime" 
               [(ngModel)]="selectedFromDate" [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
-              placeholder="{{'From Date & Time' | translate}}"
+              placeholder="{{'common.fromDateTime' | translate}}"
               readonly>
             <owl-date-time #fromDatTime></owl-date-time>
           </div>
           <div class="form-group dropdwnInput">
             <input #todatetime id="todatetime" name="todatetime" [(ngModel)]="selectedToDate"
-              [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime" placeholder="{{'To Date & Time'| translate}}"
+              [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime" placeholder="{{'common.toDateTime'| translate}}"
              readonly>
             <owl-date-time #toDateTime></owl-date-time>
           </div>
@@ -28,7 +28,7 @@
                 </mat-select>
             </mat-form-field>
           </div>
-          <button class="btn commonBtn" type="submit" (click)="onSubmit()">{{'Submit' | translate}}</button>
+          <button class="btn commonBtn" type="submit" (click)="onSubmit()">{{'common.submit' | translate}}</button>
         </form>
       </div>
     </div>
@@ -112,5 +112,5 @@
   <!-- <div *ngIf="sensornames.length==0" class="noData">
     <span>{{'Data is not available'|translate}}</span>
   </div> -->
-  <ng-snotify></ng-snotify>
+  <!-- <ng-snotify></ng-snotify> -->
 </section>

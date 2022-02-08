@@ -18,8 +18,11 @@ export const ApiEndpoints = {
     AreaSensor : {
          AreaSensorsList : 'AreaSensor/getAreaSensorsByAreaId',
     },
-    Alert : {
+    Alerts : {
         alertListByMainSensorId : 'Alerts/getAlertsByMainSensorId',
+    },
+    Reports : {
+        waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates'
     }
 
 

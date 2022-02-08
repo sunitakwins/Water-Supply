@@ -60,7 +60,7 @@ export class SensorReportsComponent implements OnInit {
           }
         }
       });
-   }
+  }
 
   get city() {
     return this.todoService.getSelectedCity();
@@ -200,93 +200,93 @@ export class SensorReportsComponent implements OnInit {
       return;
     }
 
-    this.dropdownList = [
-      {
-        id: 1,
-        value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant('Battery Voltage'),
-        key: 'batteryVoltage'
-      },
-      {
-        id: 2,
-        value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant('Freshwater Electrical Conductivity'),
-        key: 'freshwaterConductivity'
-      },
-      {
-        id: 3,
-        value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant('Water Quantity'),
-        key: 'waterQuantity'
-      },
-      {
-        id: 4,
-        value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant('Water Level'),
-        key: 'waterLevel'
-      },
-      {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant('Turbidity'), key: 'turbidity'},
-      {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant('Date Time'), key: 'dateTime'},
-      {
-        id: 6,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant('Raw Water Level'),
-        key: 'rawwaterlevel'
-      }, /*testing code*/
-      {
-        id: 7,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant('Raw Water Quantity'),
-        key: 'rawwaterquantity'
-      }, /*testing code*/
-      {
-        id: 8,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant('Raw Turbidity'),
-        key: 'rawturbidity'
-      } /*testing code*/
-    ];
-    this.selectedItems = [
-      {
-        id: 1,
-        value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant('Battery Voltage'),
-        key: 'batteryVoltage'
-      },
-      {
-        id: 2,
-        value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant('Freshwater Electrical Conductivity'),
-        key: 'freshwaterConductivity'
-      },
-      {
-        id: 3,
-        value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant('Water Quantity'),
-        key: 'waterQuantity'
-      },
-      {
-        id: 4,
-        value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant('Water Level'),
-        key: 'waterLevel'
-      },
-      {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant('Turbidity'), key: 'turbidity'},
-      {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant('Date Time'), key: 'dateTime'},
-      {
-        id: 6,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant('Raw Water Level'),
-        key: 'rawwaterlevel'
-      },
-      {
-        id: 7,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant('Raw Water Quantity'),
-        key: 'rawwaterquantity'
-      },
-      {
-        id: 8,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant('Raw Turbidity'),
-        key: 'rawturbidity'
-      }
-    ];
+    // this.dropdownList = [
+    //   {
+    //     id: 1,
+    //     value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant('Battery Voltage'),
+    //     key: 'batteryVoltage'
+    //   },
+    //   {
+    //     id: 2,
+    //     value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant('Freshwater Electrical Conductivity'),
+    //     key: 'freshwaterConductivity'
+    //   },
+    //   {
+    //     id: 3,
+    //     value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant('Water Quantity'),
+    //     key: 'waterQuantity'
+    //   },
+    //   {
+    //     id: 4,
+    //     value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant('Water Level'),
+    //     key: 'waterLevel'
+    //   },
+    //   {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant('Turbidity'), key: 'turbidity'},
+    //   {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant('Date Time'), key: 'dateTime'},
+    //   {
+    //     id: 6,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant('Raw Water Level'),
+    //     key: 'rawwaterlevel'
+    //   }, /*testing code*/
+    //   {
+    //     id: 7,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant('Raw Water Quantity'),
+    //     key: 'rawwaterquantity'
+    //   }, /*testing code*/
+    //   {
+    //     id: 8,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant('Raw Turbidity'),
+    //     key: 'rawturbidity'
+    //   } /*testing code*/
+    // ];
+    // this.selectedItems = [
+    //   {
+    //     id: 1,
+    //     value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant('Battery Voltage'),
+    //     key: 'batteryVoltage'
+    //   },
+    //   {
+    //     id: 2,
+    //     value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant('Freshwater Electrical Conductivity'),
+    //     key: 'freshwaterConductivity'
+    //   },
+    //   {
+    //     id: 3,
+    //     value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant('Water Quantity'),
+    //     key: 'waterQuantity'
+    //   },
+    //   {
+    //     id: 4,
+    //     value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant('Water Level'),
+    //     key: 'waterLevel'
+    //   },
+    //   {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant('Turbidity'), key: 'turbidity'},
+    //   {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant('Date Time'), key: 'dateTime'},
+    //   {
+    //     id: 6,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant('Raw Water Level'),
+    //     key: 'rawwaterlevel'
+    //   },
+    //   {
+    //     id: 7,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant('Raw Water Quantity'),
+    //     key: 'rawwaterquantity'
+    //   },
+    //   {
+    //     id: 8,
+    //     value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant('Raw Turbidity'),
+    //     key: 'rawturbidity'
+    //   }
+    // ];
 
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'value',
-      /*allowSearchFilter: true,*/
-      allowSearchFilter: false,
-      enableCheckAll: false
-    };
+    // this.dropdownSettings = {
+    //   singleSelection: false,
+    //   idField: 'id',
+    //   textField: 'value',
+    //   /*allowSearchFilter: true,*/
+    //   allowSearchFilter: false,
+    //   enableCheckAll: false
+    // };
 
   }
 
@@ -421,178 +421,178 @@ export class SensorReportsComponent implements OnInit {
   }
 
   /*new code ends*/
-  plotSensorData(sensorId: any): void {
-    let currentDate: any = [];
-    const index = this.mainArray.findIndex((x: { id: any; }) => x.id === sensorId);
-    const response = this.mainArray[index].data.waterFlowResponse;
-    this.tableArray = response;
-    if (response != null) {
-      if (this.reportData.length === 0) {
-        response.map((element: any, id: any) => {
-          const index = this.reportData.findIndex((x: any) => x === element.dateTime);
-          if (index === -1) {
-            this.dateArray.push({
-              key: `dateTime`,
-              value: `Date Time`,
-              id: 0,
-              sensorId: this.currentSensorId,
-              keyName: 'Date Time',
-              dateTime: element.dateTime
-            });
+  // plotSensorData(sensorId: any): void {
+  //   let currentDate: any = [];
+  //   const index = this.mainArray.findIndex((x: { id: any; }) => x.id === sensorId);
+  //   const response = this.mainArray[index].data.waterFlowResponse;
+  //   this.tableArray = response;
+  //   if (response != null) {
+  //     if (this.reportData.length === 0) {
+  //       response.map((element: any, id: any) => {
+  //         const index = this.reportData.findIndex((x: any) => x === element.dateTime);
+  //         if (index === -1) {
+  //           this.dateArray.push({
+  //             key: `dateTime`,
+  //             value: `Date Time`,
+  //             id: 0,
+  //             sensorId: this.currentSensorId,
+  //             keyName: 'Date Time',
+  //             dateTime: element.dateTime
+  //           });
 
-            currentDate = element.dateTime;
-          }
-          this.reportData.push({
-            [`dateTime` + '_' + this.currentPointName]: currentDate,
-            [`batteryVoltage` + '_' + this.currentPointName]: element.batteryVoltage,
-            [`freshwaterConductivity` + '_' + this.currentPointName]: element.freshwaterConductivity,
-            // tslint:disable-next-line:max-line-length
-            [`waterQuantity` + '_' + this.currentPointName]: element.waterQuantity,
-            [`waterLevel` + '_' + this.currentPointName]: element.waterLevel,
-            [`turbidity` + '_' + this.currentPointName]: element.turbidity,
-            sensorId: this.currentSensorId
-          });
-        });
-      } else if (this.reportData.length > 0) {
-        if (response.length <= this.reportData.length) {
-          // tslint:disable-next-line:no-shadowed-variable
-          response.map((element: any, id: any) => {
-            // tslint:disable-next-line:no-shadowed-variable
-            const index = this.reportData.findIndex((x: any) => x == element.dateTime);
-            if (index === -1) {
-              this.dateArray.push({dateTime: element.dateTime});
-              currentDate = element.dateTime;
-            }
-            this.reportData[id][`dateTime` + '_' + this.currentPointName] = currentDate;
-            this.reportData[id][`batteryVoltage` + '_' + this.currentPointName] = element.batteryVoltage;
-            this.reportData[id][`freshwaterConductivity` + '_' + this.currentPointName] = element.freshwaterConductivity;
-            this.reportData[id][`waterQuantity` + '_' + this.currentPointName] = element.waterQuantity;
-            this.reportData[id][`waterLevel` + '_' + this.currentPointName] = element.waterLevel;
-            this.reportData[id][`turbidity` + '_' + this.currentPointName] = element.turbidity;
-            this.reportData[id][`sensorId`] = this.currentSensorId;
-          });
-        } else {
-          response.map((element: any, id: any) => {
-            const index = this.reportData.findIndex((x: any) => x == element.dateTime);
-            if (index === -1) {
-              this.dateArray.push({dateTime: element.dateTime});
-              currentDate = element.dateTime;
-            }
-            if (id < this.reportData.length) {
-              this.reportData[id][`dateTime` + '_' + this.currentPointName] = currentDate;
-              this.reportData[id][`batteryVoltage` + '_' + this.currentPointName] = element.batteryVoltage;
-              this.reportData[id][`freshwaterConductivity` + '_' + this.currentPointName] = element.freshwaterConductivity;
-              this.reportData[id][`waterQuantity` + '_' + this.currentPointName] = element.waterQuantity;
-              this.reportData[id][`waterLevel` + '_' + this.currentPointName] = element.waterLevel;
-              this.reportData[id][`turbidity` + '_' + this.currentPointName] = element.turbidity;
-              this.reportData[id][`sensorId`] = this.currentSensorId;
-            } else {
-              this.reportData.push({
-                [`dateTime` + '_' + this.currentPointName]: currentDate,
-                [`batteryVoltage` + '_' + this.currentPointName]: element.batteryVoltage,
-                [`freshwaterConductivity` + '_' + this.currentPointName]: element.freshwaterConductivity,
-                [`waterQuantity` + '_' + this.currentPointName]: element.waterQuantity,
-                [`waterLevel` + '_' + this.currentPointName]: element.waterLevel,
-                [`turbidity` + '_' + this.currentPointName]: element.turbidity,
-                sensorId: this.currentSensorId
-              });
-            }
+  //           currentDate = element.dateTime;
+  //         }
+  //         this.reportData.push({
+  //           [`dateTime` + '_' + this.currentPointName]: currentDate,
+  //           [`batteryVoltage` + '_' + this.currentPointName]: element.batteryVoltage,
+  //           [`freshwaterConductivity` + '_' + this.currentPointName]: element.freshwaterConductivity,
+  //           // tslint:disable-next-line:max-line-length
+  //           [`waterQuantity` + '_' + this.currentPointName]: element.waterQuantity,
+  //           [`waterLevel` + '_' + this.currentPointName]: element.waterLevel,
+  //           [`turbidity` + '_' + this.currentPointName]: element.turbidity,
+  //           sensorId: this.currentSensorId
+  //         });
+  //       });
+  //     } else if (this.reportData.length > 0) {
+  //       if (response.length <= this.reportData.length) {
+  //         // tslint:disable-next-line:no-shadowed-variable
+  //         response.map((element: any, id: any) => {
+  //           // tslint:disable-next-line:no-shadowed-variable
+  //           const index = this.reportData.findIndex((x: any) => x == element.dateTime);
+  //           if (index === -1) {
+  //             this.dateArray.push({dateTime: element.dateTime});
+  //             currentDate = element.dateTime;
+  //           }
+  //           this.reportData[id][`dateTime` + '_' + this.currentPointName] = currentDate;
+  //           this.reportData[id][`batteryVoltage` + '_' + this.currentPointName] = element.batteryVoltage;
+  //           this.reportData[id][`freshwaterConductivity` + '_' + this.currentPointName] = element.freshwaterConductivity;
+  //           this.reportData[id][`waterQuantity` + '_' + this.currentPointName] = element.waterQuantity;
+  //           this.reportData[id][`waterLevel` + '_' + this.currentPointName] = element.waterLevel;
+  //           this.reportData[id][`turbidity` + '_' + this.currentPointName] = element.turbidity;
+  //           this.reportData[id][`sensorId`] = this.currentSensorId;
+  //         });
+  //       } else {
+  //         response.map((element: any, id: any) => {
+  //           const index = this.reportData.findIndex((x: any) => x == element.dateTime);
+  //           if (index === -1) {
+  //             this.dateArray.push({dateTime: element.dateTime});
+  //             currentDate = element.dateTime;
+  //           }
+  //           if (id < this.reportData.length) {
+  //             this.reportData[id][`dateTime` + '_' + this.currentPointName] = currentDate;
+  //             this.reportData[id][`batteryVoltage` + '_' + this.currentPointName] = element.batteryVoltage;
+  //             this.reportData[id][`freshwaterConductivity` + '_' + this.currentPointName] = element.freshwaterConductivity;
+  //             this.reportData[id][`waterQuantity` + '_' + this.currentPointName] = element.waterQuantity;
+  //             this.reportData[id][`waterLevel` + '_' + this.currentPointName] = element.waterLevel;
+  //             this.reportData[id][`turbidity` + '_' + this.currentPointName] = element.turbidity;
+  //             this.reportData[id][`sensorId`] = this.currentSensorId;
+  //           } else {
+  //             this.reportData.push({
+  //               [`dateTime` + '_' + this.currentPointName]: currentDate,
+  //               [`batteryVoltage` + '_' + this.currentPointName]: element.batteryVoltage,
+  //               [`freshwaterConductivity` + '_' + this.currentPointName]: element.freshwaterConductivity,
+  //               [`waterQuantity` + '_' + this.currentPointName]: element.waterQuantity,
+  //               [`waterLevel` + '_' + this.currentPointName]: element.waterLevel,
+  //               [`turbidity` + '_' + this.currentPointName]: element.turbidity,
+  //               sensorId: this.currentSensorId
+  //             });
+  //           }
 
-          });
-        }
+  //         });
+  //       }
 
-      } else {
+  //     } else {
 
-      }
-    }
-    if (this.sort && this.sort.sortChange) {
-      this.reportData.sort = this.sort;
-    }
-    this.prepareDataDisplay();
-  }
+  //     }
+  //   }
+  //   if (this.sort && this.sort.sortChange) {
+  //     this.reportData.sort = this.sort;
+  //   }
+  //   this.prepareDataDisplay();
+  // }
 
-  prepareDataDisplay(): void {
-      this.dataColumns = [];
-    this.displayedColumns.push(
-      {
-        key: `dateTime` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant(`Date Time`), // this.
-        id: 0,
-        sensorId: this.currentSensorId,
-        keyName: 'Date Time',
-              hide: true
-      },
+  // prepareDataDisplay(): void {
+  //     this.dataColumns = [];
+  //   this.displayedColumns.push(
+  //     {
+  //       key: `dateTime` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant(`Date Time`), // this.
+  //       id: 0,
+  //       sensorId: this.currentSensorId,
+  //       keyName: 'Date Time',
+  //             hide: true
+  //     },
 
-      {
-        key: `batteryVoltage` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant(`Battery Voltage`) + '_' + this.currentPointName, // this.translate.instant(`Battery Voltage`) + '_' + this.currentPointName
-        id: 1,
-        keyName: 'Battery Voltage',
-        sensorId: this.currentSensorId,
-        hide: true
+  //     {
+  //       key: `batteryVoltage` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant(`Battery Voltage`) + '_' + this.currentPointName, // this.translate.instant(`Battery Voltage`) + '_' + this.currentPointName
+  //       id: 1,
+  //       keyName: 'Battery Voltage',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
       
-      },
-      {
-        key: `freshwaterConductivity` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Freshwater Conductivity' : this.translate.instant(`Freshwater Conductivity`) + '_' + this.currentPointName, // this.translate.instant(`Freshwater Conductivity`) + '_' + this.currentPointName
-        id: 2,
-        keyName: 'Freshwater Electrical Conductivity',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `waterQuantity` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant(`Water Quantity`) + '_' + this.currentPointName,
-        id: 3,
-        keyName: 'Water Quantity',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `waterLevel` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant(`Water Level`) + '_' + this.currentPointName,
-        id: 4,
-        keyName: 'Water Level',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `turbidity` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant(`Turbidity`) + '_' + this.currentPointName,
-        id: 5,
-        keyName: 'Turbidity',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `rawwaterlevel` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant(`Raw Water Level`) + '_' + this.currentPointName,
-        id: 6,
-        keyName: 'Raw Water Level',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `rawwaterquantity` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant(`Raw Water Quantity`) + '_' + this.currentPointName,
-        id: 7,
-        keyName: 'Raw Water Quantity',
-        sensorId: this.currentSensorId,
-        hide: true
-      },
-      {
-        key: `rawturbidity` + '_' + this.currentPointName,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant(`Raw Turbidity`) + '_' + this.currentPointName,
-        id: 8,
-        keyName: 'Raw Turbidity',
-        sensorId: this.currentSensorId,
-        hide: true
-      }
-    );
-    this.displayedColumns.map((x: any) => {
-      this.dataColumns.push(x.key);
-    });
-  }
+  //     },
+  //     {
+  //       key: `freshwaterConductivity` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Freshwater Conductivity' : this.translate.instant(`Freshwater Conductivity`) + '_' + this.currentPointName, // this.translate.instant(`Freshwater Conductivity`) + '_' + this.currentPointName
+  //       id: 2,
+  //       keyName: 'Freshwater Electrical Conductivity',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `waterQuantity` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant(`Water Quantity`) + '_' + this.currentPointName,
+  //       id: 3,
+  //       keyName: 'Water Quantity',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `waterLevel` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant(`Water Level`) + '_' + this.currentPointName,
+  //       id: 4,
+  //       keyName: 'Water Level',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `turbidity` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant(`Turbidity`) + '_' + this.currentPointName,
+  //       id: 5,
+  //       keyName: 'Turbidity',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `rawwaterlevel` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant(`Raw Water Level`) + '_' + this.currentPointName,
+  //       id: 6,
+  //       keyName: 'Raw Water Level',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `rawwaterquantity` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant(`Raw Water Quantity`) + '_' + this.currentPointName,
+  //       id: 7,
+  //       keyName: 'Raw Water Quantity',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     },
+  //     {
+  //       key: `rawturbidity` + '_' + this.currentPointName,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant(`Raw Turbidity`) + '_' + this.currentPointName,
+  //       id: 8,
+  //       keyName: 'Raw Turbidity',
+  //       sensorId: this.currentSensorId,
+  //       hide: true
+  //     }
+  //   );
+  //   this.displayedColumns.map((x: any) => {
+  //     this.dataColumns.push(x.key);
+  //   });
+  // }
 
   
   handleSelection(data: any, type: string): void {
@@ -641,82 +641,82 @@ export class SensorReportsComponent implements OnInit {
     }
   }
 
-  checkBoxvalue(checkBoxName: any, propertyName: string): void {
-    this.dropdownList = [
-      {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant(`Date Time`), key: 'dateTime'},
-      {
-        id: 1,
-        value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant(`Battery Voltage`),
-        key: 'batteryVoltage'
-      },
-      {
-        id: 2,
-        value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant(`Freshwater Electrical Conductivity`),
-        key: 'freshwaterConductivity'
-      },
-      {
-        id: 3,
-        value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant(`Water Quantity`),
-        key: 'waterQuantity'
-      },
-      {
-        id: 4,
-        value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant(`Water Level`),
-        key: 'waterLevel'
-      },
-      {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant(`Turbidity`), key: 'turbidity'},
-      {
-        id: 6,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant(`Raw Water Level`),
-        key: 'rawwaterlevel'
-      },
-      {
-        id: 7,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant(`Raw Water Quantity`),
-        key: 'rawwaterquantity'
-      },
-      {
-        id: 8,
-        value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant(`Raw Turbidity`),
-        key: 'rawturbidity'
-      }
-    ];
+  // checkBoxvalue(checkBoxName: any, propertyName: string): void {
+  //   this.dropdownList = [
+  //     {id: 0, value: this.cookieService.get('language') === 'en' ? 'Date Time' : this.translate.instant(`Date Time`), key: 'dateTime'},
+  //     {
+  //       id: 1,
+  //       value: this.cookieService.get('language') === 'en' ? 'Battery Voltage' : this.translate.instant(`Battery Voltage`),
+  //       key: 'batteryVoltage'
+  //     },
+  //     {
+  //       id: 2,
+  //       value: this.cookieService.get('language') === 'en' ? 'Freshwater Electrical Conductivity' : this.translate.instant(`Freshwater Electrical Conductivity`),
+  //       key: 'freshwaterConductivity'
+  //     },
+  //     {
+  //       id: 3,
+  //       value: this.cookieService.get('language') === 'en' ? 'Water Quantity' : this.translate.instant(`Water Quantity`),
+  //       key: 'waterQuantity'
+  //     },
+  //     {
+  //       id: 4,
+  //       value: this.cookieService.get('language') === 'en' ? 'Water Level' : this.translate.instant(`Water Level`),
+  //       key: 'waterLevel'
+  //     },
+  //     {id: 5, value: this.cookieService.get('language') === 'en' ? 'Turbidity' : this.translate.instant(`Turbidity`), key: 'turbidity'},
+  //     {
+  //       id: 6,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Water Level' : this.translate.instant(`Raw Water Level`),
+  //       key: 'rawwaterlevel'
+  //     },
+  //     {
+  //       id: 7,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Water Quantity' : this.translate.instant(`Raw Water Quantity`),
+  //       key: 'rawwaterquantity'
+  //     },
+  //     {
+  //       id: 8,
+  //       value: this.cookieService.get('language') === 'en' ? 'Raw Turbidity' : this.translate.instant(`Raw Turbidity`),
+  //       key: 'rawturbidity'
+  //     }
+  //   ];
 
-    this.selectedItems = [
-      {id: 0, value: this.translate.instant('Date Time'), key: 'dateTime'},
-      {id: 1, value: this.translate.instant('Battery Voltage'), key: 'batteryVoltage'},
-      {id: 2, value: this.translate.instant('Freshwater Electrical Conductivity'), key: 'freshwaterConductivity'},
-      {id: 3, value: this.translate.instant('Water Quantity'), key: 'waterQuantity'},
-      {id: 4, value: this.translate.instant('Water Level'), key: 'waterLevel'},
-      {id: 5, value: this.translate.instant('Turbidity'), key: 'turbidity'},
-      {id: 6, value: this.translate.instant('Raw Water Level'), key: 'rawwaterlevel'}, /*testing code*/
-      {id: 7, value: this.translate.instant('Raw Water Quantity'), key: 'rawwaterquantity'}, /*testing code*/
-      {id: 8, value: this.translate.instant('Raw Turbidity'), key: 'rawturbidity'} /*testing code*/
-    ];
-    this.dropdownSettings = {
-      singleSelection: false,
-      idField: 'id',
-      textField: 'value',
-      allowSearchFilter: false,
-      enableCheckAll: false
-    };
-    const pointIndex = this.points.findIndex((x: { mainSensorid: any; }) => x.mainSensorid == checkBoxName.mainSensorid);
-    if (pointIndex != -1) {
-      this.pointName = checkBoxName.sensorname;
-      this.selectedSensorData.push({name: checkBoxName.sensorname, id: checkBoxName.mainSensorid});
-      this.sensorRows.push({
-        sensorName: checkBoxName.sensorname,
-        id: checkBoxName.mainSensorid,
-        propertyArray: this.selectedItems,
-        dropDown: this.dropdownList
-      });
-      this.points.splice(pointIndex, 1);
-      this.plotSensorData(this.currentSensorId);
-    } else {
-      this.selectedSensorData.pop(checkBoxName.sensorname);
-      this.selectedSensorData.push({name: checkBoxName.sensorname, id: checkBoxName.mainSensorid});
-    }
-  }
+  //   this.selectedItems = [
+  //     {id: 0, value: this.translate.instant('Date Time'), key: 'dateTime'},
+  //     {id: 1, value: this.translate.instant('Battery Voltage'), key: 'batteryVoltage'},
+  //     {id: 2, value: this.translate.instant('Freshwater Electrical Conductivity'), key: 'freshwaterConductivity'},
+  //     {id: 3, value: this.translate.instant('Water Quantity'), key: 'waterQuantity'},
+  //     {id: 4, value: this.translate.instant('Water Level'), key: 'waterLevel'},
+  //     {id: 5, value: this.translate.instant('Turbidity'), key: 'turbidity'},
+  //     {id: 6, value: this.translate.instant('Raw Water Level'), key: 'rawwaterlevel'}, /*testing code*/
+  //     {id: 7, value: this.translate.instant('Raw Water Quantity'), key: 'rawwaterquantity'}, /*testing code*/
+  //     {id: 8, value: this.translate.instant('Raw Turbidity'), key: 'rawturbidity'} /*testing code*/
+  //   ];
+  //   this.dropdownSettings = {
+  //     singleSelection: false,
+  //     idField: 'id',
+  //     textField: 'value',
+  //     allowSearchFilter: false,
+  //     enableCheckAll: false
+  //   };
+  //   const pointIndex = this.points.findIndex((x: { mainSensorid: any; }) => x.mainSensorid == checkBoxName.mainSensorid);
+  //   if (pointIndex != -1) {
+  //     this.pointName = checkBoxName.sensorname;
+  //     this.selectedSensorData.push({name: checkBoxName.sensorname, id: checkBoxName.mainSensorid});
+  //     this.sensorRows.push({
+  //       sensorName: checkBoxName.sensorname,
+  //       id: checkBoxName.mainSensorid,
+  //       propertyArray: this.selectedItems,
+  //       dropDown: this.dropdownList
+  //     });
+  //     this.points.splice(pointIndex, 1);
+  //     // this.plotSensorData(this.currentSensorId);
+  //   } else {
+  //     this.selectedSensorData.pop(checkBoxName.sensorname);
+  //     this.selectedSensorData.push({name: checkBoxName.sensorname, id: checkBoxName.mainSensorid});
+  //   }
+  // }
 
   getSensorsByArea(areaId: any): void {
         this.todoService.getSensorsByAreaId(areaId).subscribe((response: any) => {
@@ -739,7 +739,6 @@ export class SensorReportsComponent implements OnInit {
     this.mainArray = [];
     let arr: any = [];
     let itemsProcessed = 0;
-    // tslint:disable-next-line:no-shadowed-variable
     sensorsArr.map(async (element: any) => {
       this.dateFilter.fromDateTime = this.dateFilter.fromDateTime;
       arr = await this.todoService.getAllBySensorId(element.mainSensorid, this.dateFilter.fromDateTime).toPromise();
@@ -757,42 +756,42 @@ export class SensorReportsComponent implements OnInit {
 
   }
 
-  prepareTableData(): void {
-    if (this.displayedColumns.length > 0) {
-      this.reportData = [];
-      this.sensorRows.map((array: any, index: any) => {
-        const dataIndex = this.mainArray.findIndex((x: { id: any; }) => x.id == array.id);
-        const response = this.mainArray[dataIndex].data.waterFlowResponse;
-        if (response != null) {
-          let currentDate: any;
-          response.map((element: any, id: any) => {
-            const index = this.reportData.findIndex((x: any) => x == element.dateTime);
-            if (index == -1) {
-              this.dateArray.push({dateTime: element.dateTime});
-              currentDate = element.dateTime;
-            }
-            this.reportData.push({
-              [`dateTime` + '_' + array.sensorName]: currentDate,
-              [`batteryVoltage` + '_' + array.sensorName]: element.batteryVoltage,
-              [`freshwaterConductivity` + '_' + array.sensorName]: element.freshwaterConductivity,
-              [`waterQuantity` + '_' + array.sensorName]: element.waterQuantity,
-              [`waterLevel` + '_' + array.sensorName]: element.waterLevel,
-              [`turbidity` + '_' + array.sensorName]: element.turbidity,
-              [`rawwaterlevel` + '_' + array.sensorName]: element.adc0, /*testing sample code*/
-              [`rawwaterquantity` + '_' + array.sensorName]: element.waterQuantity, /*testing sample code*/
-              [`rawturbidity` + '_' + array.sensorName]: element.adc1, /*testing sample code*/
-              sensorId: array.id
-              // sensorName: this.currentPointName,
-            });
-          });
-        }
-      });
-    } else {
-      this.reportData = [];
-      return;
-    }
+  // prepareTableData(): void {
+  //   if (this.displayedColumns.length > 0) {
+  //     this.reportData = [];
+  //     this.sensorRows.map((array: any, index: any) => {
+  //       const dataIndex = this.mainArray.findIndex((x: { id: any; }) => x.id == array.id);
+  //       const response = this.mainArray[dataIndex].data.waterFlowResponse;
+  //       if (response != null) {
+  //         let currentDate: any;
+  //         response.map((element: any, id: any) => {
+  //           const index = this.reportData.findIndex((x: any) => x == element.dateTime);
+  //           if (index == -1) {
+  //             this.dateArray.push({dateTime: element.dateTime});
+  //             currentDate = element.dateTime;
+  //           }
+  //           this.reportData.push({
+  //             [`dateTime` + '_' + array.sensorName]: currentDate,
+  //             [`batteryVoltage` + '_' + array.sensorName]: element.batteryVoltage,
+  //             [`freshwaterConductivity` + '_' + array.sensorName]: element.freshwaterConductivity,
+  //             [`waterQuantity` + '_' + array.sensorName]: element.waterQuantity,
+  //             [`waterLevel` + '_' + array.sensorName]: element.waterLevel,
+  //             [`turbidity` + '_' + array.sensorName]: element.turbidity,
+  //             [`rawwaterlevel` + '_' + array.sensorName]: element.adc0, /*testing sample code*/
+  //             [`rawwaterquantity` + '_' + array.sensorName]: element.waterQuantity, /*testing sample code*/
+  //             [`rawturbidity` + '_' + array.sensorName]: element.adc1, /*testing sample code*/
+  //             sensorId: array.id
+  //             // sensorName: this.currentPointName,
+  //           });
+  //         });
+  //       }
+  //     });
+  //   } else {
+  //     this.reportData = [];
+  //     return;
+  //   }
 
-  }
+  // }
 
   resetData(): any {
     this.points = [];

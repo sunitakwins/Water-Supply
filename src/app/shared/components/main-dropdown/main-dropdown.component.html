@@ -6,19 +6,18 @@
             <div class="dbLeftCol">
               <div class ="d-flex">
                 <mat-form-field appearance="fill">
-                    <mat-label>{{ 'District' | translate}}</mat-label>
+                    <mat-label>{{'common.district'| translate}}</mat-label>
                     <mat-select>
                         <!-- [value]=" .showLogin$ | async" -->
                       <mat-option *ngFor='let city of userCities'  (click)="onSelection(city, 'city')" [value]="city.id">
                         {{city.cityname|translate}} 
-                        <!--    -->
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
             
                   <mat-form-field appearance="fill" class ="d-flex">
                     <!-- <mat-label *ngIf="city!=''">{{city|translate}}</mat-label> -->
-                    <mat-label>{{'Municipality '| translate}}</mat-label>
+                    <mat-label>{{'common.municipality '| translate}}</mat-label>
                     <mat-select name="cityArea" >
                         <!-- [(ngModel)]="pointDetail.cityArea"  #cityArea="ngModel" [disable] ="cityAreas.length == 0" -->
                         <!-- <mat-option *ngIf="areas.length==0">{{'Data is not available'|translate}}</mat-option> -->
@@ -29,7 +28,7 @@
                 </mat-form-field>
             
                 <mat-form-field appearance="fill">
-                    <mat-label>{{'Point name'|translate}}</mat-label>
+                    <mat-label>{{'common.pointName'|translate}}</mat-label>
                     <mat-select name="areaSensor" >
                         <!-- #areaSensor="ngModel"  [(ngModel)]="pointDetail.areaSensor" -->
                         <!-- <mat-option *ngIf="points.length==0">{{'Data is not available'|translate}}</mat-option> -->
@@ -47,7 +46,7 @@
                   [disabled]="alertDataList.length==0" ng-class="{not-allowed: tableData.length==0}">
                   <img src="assets/Icons/csv.svg" alt="image">
                 </button> 
-                <span>{{'CSV Output'| translate}}</span>
+                <span>{{'common.CSVOutput'| translate}}</span>
               </div>
             </div>
           </div>

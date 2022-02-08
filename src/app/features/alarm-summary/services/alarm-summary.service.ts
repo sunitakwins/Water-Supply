@@ -9,7 +9,7 @@ import { HttpService } from 'src/app/core/services';
 })
 export class AlarmSummaryService {
 
-  public readonly alertApiEndPoints = ApiEndpoints.Alert; 
+  public readonly alertApiEndPoints = ApiEndpoints.Alerts; 
   
   constructor( private httpService : HttpService ) { }
  

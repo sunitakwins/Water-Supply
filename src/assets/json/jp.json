@@ -1,5 +1,25 @@
+
 {
-  "Urayasu" : "浦安",
+  "common": {
+    "district"  : "都市",
+    "municipality ": "自治体 ",
+    "pointName": "地点",
+    "CSVOutput": "CSV出力 ",
+    "dataNotAvailable":  "データーはありません",
+    "fromDateTime": "日付と時刻から",
+    "toDateTime": "日付と時刻",
+    "submit" :"絞り込み"
+  },
+  "alarmSummary": {
+    "fromDateTime": "日付と時刻から",
+    "reset": "リセット",
+    "alertSummary": "アラームサマリー"
+  },
+  "reports": {
+  },
+
+
+"Urayasu" : "浦安",
 "Koto Ward" : "江東区",
 "Shibuya Ward" : "渋谷区",
 "Shinjuku ward" : "新宿区",

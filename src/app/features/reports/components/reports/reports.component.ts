@@ -3,6 +3,8 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { SnotifyService } from 'ng-snotify';
+import { DataTypeValue } from 'src/app/core/enums';
+import { WaterFlowRequestModel } from 'src/app/core/models/reports/reports.model';
 import { EventService } from 'src/app/core/services';
 import { ReportsService } from '../../services/reports.service';
 
@@ -12,66 +14,48 @@ import { ReportsService } from '../../services/reports.service';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+
+
   selectedFromDate: Date = new Date('');
   selectedToDate: Date = new Date('');
   selectedValue: string = '';
   sensorName: string = '';
+  sensorId: string = '';
   FormValueArray: string[] = [];
-  sensorIdArray : string[] = [];
+  sensorIdArray: string[] = [];
+
+  dataPropertiesArray : any = [];
 
   constructor(private reportService: ReportsService, private snotifyService: SnotifyService, private translate: TranslateService, private eventService: EventService) { }
 
   ngOnInit() {
     this.FormValueArray = this.reportService.formValueArray;
-    debugger
     this.eventService.sensorIdDetails.subscribe(res => {
-      this.sensorName = res.sensorname;
-      this.sensorIdArray.push(res.mainSensorid);
-      console.log('aa', this.sensorIdArray);
+      this.sensorName = res.sensorname; this.sensorId = res.mainSensorid;
+      // this.sensorIdArray.push(res.mainSensorid);
+      // console.log('aa', this.sensorIdArray);
     })
   }
 
   onSubmit() {
+   
+    if (!(this.selectedFromDate && this.selectedToDate)) return;
 
-    // if(!this.selectedFromDate){ 
-    //   this.snotifyService.error(this.translate.instant('Enter From Date & Time'), '');
-    //   return;
-    // }
-    // if(!this.selectedToDate){
-    //   this.snotifyService.error(this.translate.instant('Enter To Date & Time'), '');
-    //   return;
-    // }
-    // if(this.selectedFromDate > this.selectedToDate){
-    //   this.snotifyService.error(this.translate.instant('To Date should be greater than or equal to From Date'), '');
-    //   return;
-    // }
+    if (this.selectedValue = DataTypeValue.ConvertedValue) {
 
-    // for (let y = 0; y < this.sensorIdArray.length; y++) {
-    //   const dateTimeData = {
-    //     mainSensorID: this.sensorIdArray[y].data.mainSensorid,
-    //     fromDate: moment(this.selectedFromDate).format('YYYY/MM/DD hh:MM A'),
-    //     toDate: moment(this.selectedToDate).format('YYYY/MM/DD hh:MM A')
-    //   };
-      // if ((fromDateTime && toDateTime) || !(fromDateTime && toDateTime)) {
-      //   if (this.selectedValue === 'Converted' && ((fromDateTime && toDateTime))) {
-      //     // this.todoService.getAllByMainSensorIdAndMultipleDates(dateTimeData).subscribe((response: any) => {
+    }
 
-      //     //   for (let i = 0; i < response.waterFlowResponse.length; i++) {
-      //     //     this.dataPropertiesArray.push(response.waterFlowResponse[i]);
-      //     //   }
-      //     //   // this.spinner.hide();
-      //     // });
-      //   }
-      //   if (this.selectedValue === 'Raw' && ((fromDateTime && toDateTime))) {
-      //     // this.todoService.getAllByMainSensorIdAndMultipleDates(dateTimeData).subscribe((response: any) => {
-      //     //            for (let i = 0; i < response.waterFlowResponse.length; i++) {
-      //     //     this.dataPropertiesArray.push(response.waterFlowResponse[i]);
-      //     //   }
-      //     //     // this.spinner.hide();
-      //     // });
-      //   }
-      // }
-    // }
+    const dateTimeData : WaterFlowRequestModel = {
+      mainSensorId: this.sensorId,
+      fromDate:this.selectedFromDate,
+      toDate: this.selectedToDate
+    };
+
+    this.reportService.waterFlowDataBySensorIdDates(dateTimeData).subscribe(res => {
+      for (let i = 0; i < res.waterFlowResponse.length; i++) {
+        this.dataPropertiesArray.push(res.waterFlowResponse[i]);
+      }
+    });
   }
 
 }

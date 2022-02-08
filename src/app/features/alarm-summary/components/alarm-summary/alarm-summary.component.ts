@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ExportToCsv } from 'export-to-csv-file';
 import { SnotifyService } from 'ng-snotify';
@@ -13,6 +13,9 @@ import { AlarmSummaryService } from '../../services/alarm-summary.service';
   styleUrls: ['./alarm-summary.component.scss']
 })
 export class AlarmSummaryComponent implements OnInit {
+
+  // @ViewChild('selectedDate', {static: false}) filterDate: ElementRef;
+
   selectedDate : Date = new Date('');
   sensorName: string = '';
   alertDataList: any = [];
@@ -20,7 +23,10 @@ export class AlarmSummaryComponent implements OnInit {
   displayedColumns: string[] = ['Date And Time', 'Point Name', 'Data Name', 'Status'];
 
   constructor(
-    private eventService: EventService, private alarmSummary: AlarmSummaryService) { }
+    private tranlateService: TranslateService,
+    private eventService: EventService, 
+    private alarmSummary: AlarmSummaryService
+  ) { }
 
   ngOnInit() {
     this.eventService.sensorIdDetails.subscribe(res => {
@@ -41,4 +47,7 @@ export class AlarmSummaryComponent implements OnInit {
   }
   // TO DO in this component
      // ****filter array data by date
+  filterDataByDate(){
+    debugger
+  }  
 }
