@@ -1,5 +1,9 @@
 export interface WaterFlowRequestModel{
     mainSensorId : string;
-    fromDate : Date;
-    toDate : Date;
+    fromDate : string;
+    toDate : string;
+}
+
+export interface WaterFlowResponseModel{
+    
 }

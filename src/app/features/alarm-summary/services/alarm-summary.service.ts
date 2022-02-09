@@ -2,6 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiEndpoints } from 'src/app/core/config';
+import { AlarmSummaryResponseModel } from 'src/app/core/models';
 import { HttpService } from 'src/app/core/services';
 
 @Injectable({
@@ -16,7 +17,7 @@ export class AlarmSummaryService {
   getAlertByMainSensorId(id : string): Observable<any>{
     const params = new HttpParams()
     .set('mainSensorId',`${id}`)
-      return this.httpService.get(this.alertApiEndPoints.alertListByMainSensorId, {params});
+      return this.httpService.get<AlarmSummaryResponseModel>(this.alertApiEndPoints.alertListByMainSensorId, {params});
   }
   
 }

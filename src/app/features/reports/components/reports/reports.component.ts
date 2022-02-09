@@ -7,6 +7,7 @@ import { DataTypeValue } from 'src/app/core/enums';
 import { WaterFlowRequestModel } from 'src/app/core/models/reports/reports.model';
 import { EventService } from 'src/app/core/services';
 import { ReportsService } from '../../services/reports.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-reports',
@@ -14,7 +15,6 @@ import { ReportsService } from '../../services/reports.service';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
-
 
   selectedFromDate: Date = new Date('');
   selectedToDate: Date = new Date('');
@@ -24,9 +24,10 @@ export class ReportsComponent implements OnInit {
   FormValueArray: string[] = [];
   sensorIdArray: string[] = [];
 
-  dataPropertiesArray : any = [];
 
-  constructor(private reportService: ReportsService, private snotifyService: SnotifyService, private translate: TranslateService, private eventService: EventService) { }
+  constructor( 
+    private reportService: ReportsService, private eventService: EventService, 
+    private datePipe : DatePipe) { }
 
   ngOnInit() {
     this.FormValueArray = this.reportService.formValueArray;
@@ -38,24 +39,28 @@ export class ReportsComponent implements OnInit {
   }
 
   onSubmit() {
-   
+
     if (!(this.selectedFromDate && this.selectedToDate)) return;
 
-    if (this.selectedValue = DataTypeValue.ConvertedValue) {
-
-    }
-
-    const dateTimeData : WaterFlowRequestModel = {
+    const dateTimeData: WaterFlowRequestModel = {
       mainSensorId: this.sensorId,
-      fromDate:this.selectedFromDate,
-      toDate: this.selectedToDate
+      fromDate : this.datePipe.transform(this.selectedFromDate,'yyyy-MM-dd h:mm:ss a') || '',
+      toDate : this.datePipe.transform(this.selectedToDate,'yyyy-MM-dd h:mm:ss a') || '',
     };
-
+  
     this.reportService.waterFlowDataBySensorIdDates(dateTimeData).subscribe(res => {
-      for (let i = 0; i < res.waterFlowResponse.length; i++) {
-        this.dataPropertiesArray.push(res.waterFlowResponse[i]);
+      let data = res.waterFlowResponse;
+      this.eventService.alertSummaryData.next(data);
+      // To DO ========
+      if (this.selectedValue = DataTypeValue.ConvertedValue) {
+        // 
       }
     });
+
+  }
+
+  sendFilterData(data : any[]){
+    this.eventService.alertSummaryData.next(data);
   }
 
 }

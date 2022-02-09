@@ -1,0 +1,47 @@
+<section>
+
+    <app-main-dropdown [alertSummary] ="false"></app-main-dropdown>
+
+      <div class="trendFlow">
+        <!-- <div class="rangeFilter">
+          <div class="filterDate">
+            <mat-form-field appearance="fill">
+              <mat-label>{{'Choose a date'|translate}}</mat-label>
+              <input id="selectedDateInput" [disabled]="helperChipArray.length === 0"
+                [(ngModel)]="this.dateFilter.fromDateTime" matInput #selectedDateInput [matDatepicker]="myDatepicker"
+                (dateChange)="onChange(selectedDateInput.value)">
+              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+              <mat-datepicker #myDatepicker></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+              <mat-label>{{'Select property'|translate}}</mat-label>
+              <mat-select [disabled]="helperChipArray.length === 0" name="sensorProperty" [ngModel]="selectedValue">
+                <mat-option *ngFor='let property of sensorProperties'
+                  (click)="handlePropertySelectionCustom(property.key , property.name)" [value]="propertyNameData">
+      
+                  {{property.name|translate}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            <button class="btn commonBtn" [disabled]="helperChipArray.length === 0" (click)="pointGraphData()">{{'Submit' |
+              translate}}</button>
+          </div>
+        </div> -->
+      
+      
+        <!-- <div class="flowChart">
+          <div class="table-responsive">
+            <div>
+              <div *ngIf="chartData.length>0" class="chart" style="display: block">
+                <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [colors]="barChartColors"
+                  [legend]="barChartLegend" [options]="chartOptions" chartType='line'>
+                </canvas>
+              </div>
+              <div *ngIf="chartData.length==0" class="chart" style="display: block;text-align: center;">
+                <p>{{'Data is not available'|translate}}</p>
+              </div>
+            </div>
+          </div>
+        </div> -->
+    </div>
+</section>

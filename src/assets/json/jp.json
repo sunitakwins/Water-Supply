@@ -1,14 +1,24 @@
-
 {
   "common": {
-    "district"  : "都市",
+    "district": "都市",
     "municipality ": "自治体 ",
     "pointName": "地点",
     "CSVOutput": "CSV出力 ",
-    "dataNotAvailable":  "データーはありません",
+    "dataNotAvailable": "データーはありません",
     "fromDateTime": "日付と時刻から",
     "toDateTime": "日付と時刻",
-    "submit" :"絞り込み"
+    "submit": "絞り込み",
+    "Urayasu": "浦安",
+    "Koto Ward": "江東区",
+    "Shibuya Ward": "渋谷区",
+    "Shinjuku ward": "新宿区",
+    "Shinjuku": "新宿",
+    "Nishi-Shinjuku": "西新宿",
+    "Western": "西部",
+    "Eastern": "東部",
+    "1-chome": "1丁目",
+    "2-chome": "二丁目",
+    "3-chome": "3丁目"
   },
   "alarmSummary": {
     "fromDateTime": "日付と時刻から",
@@ -16,26 +26,29 @@
     "alertSummary": "アラームサマリー"
   },
   "reports": {
+
+  },
+  "point-compare" : {
+
+    
   },
 
 
-"Urayasu" : "浦安",
-"Koto Ward" : "江東区",
-"Shibuya Ward" : "渋谷区",
-"Shinjuku ward" : "新宿区",
-
-"Shinjuku" :"新宿",
-"Nishi-Shinjuku": "西新宿",
-
-"Western" : "西部",
-
-"Eastern" : "東部",
-"1-chome" :"1丁目",
-"2-chome" :"二丁目",
-"3-chome" :"3丁目",
 
 
 
+
+  "Urayasu": "浦安",
+  "Koto Ward": "江東区",
+  "Shibuya Ward": "渋谷区",
+  "Shinjuku ward": "新宿区",
+  "Shinjuku": "新宿",
+  "Nishi-Shinjuku": "西新宿",
+  "Western": "西部",
+  "Eastern": "東部",
+  "1-chome": "1丁目",
+  "2-chome": "二丁目",
+  "3-chome": "3丁目",
   "Alert Summary": "アラームサマリー",
   "Mark all as read": "すべて既読にする",
   "Messages": "メッセージ",
@@ -179,7 +192,6 @@
   "Sensor2": "センサー2",
   "Sensor3": "センサー3",
   "Time Stamp": "日時 ",
-
   "Battery Voltage_Sensor1": "バッテリー電圧_センサー1",
   "Battery Voltage_Sensor2": "バッテリー電圧_センサー2",
   "Battery Voltage_Sensor3": "バッテリー電圧_センサー3",
@@ -197,7 +209,7 @@
   "Turbidity_Sensor3": "濁度_センサー3",
   "Reset": "リセット",
   "Municipality ": "自治体 ",
-  "District" : "都市",
+  "District": "都市",
   "Point name": "地点",
   "Please fill all the fields": "すべてのフィールドに入力してください",
   "Converted data exported successfully": "変換されたデータは正常にエクスポートされました",
@@ -211,13 +223,12 @@
   "Date Time": "日付時刻",
   "Raw Water Quantity": "原水の量",
   "Raw Turbidity": "生の濁度",
- 
   "From Date & Time": "日付と時刻から",
   "To Date & Time": "日付と時刻",
   "Converted Value": "測定値（A/D変換値）",
   "Raw Value": "測定値（物理値）",
   "Submit": "絞り込み",
-  "Narrow down" : "絞り込み",
+  "Narrow down": "絞り込み",
   "Data Form": "データフォーム",
   "Report_": "レポート",
   "min": "分",
@@ -229,7 +240,7 @@
   "Select DATETIME": "DATETIMEを選択します",
   "Filter By": "フィルター",
   "DATE": "日付",
-  "Username & Password cannot be empty":"ユーザーネームおよびパスワードを入力してください",
+  "Username & Password cannot be empty": "ユーザーネームおよびパスワードを入力してください",
   "Please enter both dates": "両方の日付を入力してください",
   "To Date should be greater than From Date": "終了日は開始日よりも大きくする必要があります",
   "Update": "アップデート",
@@ -259,10 +270,10 @@
   "Return to previous value": "基準値に戻す",
   "Block": "ブロック",
   "Only 1 Decimal is allowed": "小数点以下1桁のみが許可されます",
-  "Nihon Suido" : "日水コン ",
-  " Nihon Suido Consultants":"日水コン",
-  "gpm" : "ｍ3/秒",
-  "Enter From Date & Time" : " 開始日時を入力",
-  "Enter To Date & Time" : " 日付と時刻を入力してください",
-  "Upper value  exceeded":"設定値を超過しています"
+  "Nihon Suido": "日水コン ",
+  " Nihon Suido Consultants": "日水コン",
+  "gpm": "ｍ3/秒",
+  "Enter From Date & Time": " 開始日時を入力",
+  "Enter To Date & Time": " 日付と時刻を入力してください",
+  "Upper value  exceeded": "設定値を超過しています"
 }

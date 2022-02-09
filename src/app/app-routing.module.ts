@@ -6,15 +6,7 @@ import { AuthGuard } from './core/helpers/auth.guard';
 const routes: Routes = [
 
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
-  {
-    path: 'auth',
-    loadChildren: () =>
-      import('./core/auth/auth.module').then(
-        (m) => m.AuthModule
-      ),
-      // canActivate: [AuthGuard]
-  },
-
+ 
   // ========= new added route ======================================
   // {
   //   path: 'auth',
@@ -31,14 +23,15 @@ const routes: Routes = [
   //     ),
   //     canActivate: [AuthGuard]
   // },
-  // {
-  //   path: 'trend',
-  //   loadChildren: () =>
-  //     import('./features/alarm-summary/alarm-summary.module').then(
-  //       (m) => m.AlarmSummaryModule
-  //     ),
-  //     canActivate: [AuthGuard]
-  // },
+
+  {
+    path: 'point-compare',
+    loadChildren: () =>
+      import('./features/point-compare/point-compare.module').then(
+        (m) => m.PointCompareModule
+      ),
+      canActivate: [AuthGuard]
+  },
   {
     path: 'alarm-summary',
     loadChildren: () =>
@@ -48,7 +41,7 @@ const routes: Routes = [
       canActivate: [AuthGuard]
   },
   {
-    path: 'reports',
+    path: 'sensor-reports',
     loadChildren: () =>
       import('./features/reports/reports.module').then(
         (m) => m.ReportsModule
@@ -57,6 +50,14 @@ const routes: Routes = [
   },
 
    // ===============================================
+   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./core/auth/auth.module').then(
+        (m) => m.AuthModule
+      ),
+      // canActivate: [AuthGuard]
+  },
   {
     path: 'dashboard',
     loadChildren: () =>

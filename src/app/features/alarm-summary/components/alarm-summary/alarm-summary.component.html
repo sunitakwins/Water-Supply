@@ -1,21 +1,23 @@
 <section>
-  <app-main-dropdown></app-main-dropdown>
+  <app-main-dropdown [alertSummary] = "true"></app-main-dropdown>
   <!-- Alert Data by main sensor id -->
+
+  <div class="sensorData " *ngIf="sensorId">
+    <form class="form-filter-date alarmSummary_Form">
+      <div class="dropdwnInput d-flex">
+        <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate"
+          [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+          (ngModelChange)="filterDataByDate(selectedDate)" placeholder="{{'common.fromDateTime' | translate}}" readonly>
+        <owl-date-time #fromDatTime></owl-date-time>
+        <button class="btn commonBtn ml-1" id="commonBtn" value="reset" [disabled]="selectDateTime === ''"
+          (click)="resetFilters()">
+          {{'alarmSummary.reset'|translate}}
+        </button>
+      </div>
+    </form>
+  </div>
+
   <div class="headerClass" *ngIf="alertDataList.length > 0" style="max-height: 600px;">
-
-    <div class="sensorData ">
-      <form class="form-filter-date alarmSummary_Form">
-        <div class="dropdwnInput d-flex">
-          <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate"
-            [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
-            placeholder="{{'common.fromDateTime' | translate}}" readonly>
-          <owl-date-time #fromDatTime></owl-date-time>
-          <button class="btn commonBtn ml-1" id="commonBtn" value="reset" (click)="resetFilters()">{{'alarmSummary.reset'|translate}}</button>
-              <!--  [disabled]="selectDateTime === ''" -->
-        </div>
-      </form>
-    </div>
-
     <div fxLayout fxLayoutAlign="center center">
       <mat-card>{{'alarmSummary.alertSummary'| translate}}
       </mat-card>
@@ -23,7 +25,7 @@
         <table class="table" id="header-fixed">
           <thead>
             <tr>
-              <th scope="col" *ngFor="let tableColumn of displayedColumns">{{ tableColumn| translate}}</th>
+              <th scope="col" *ngFor="let tableColumn of displayedColumns">{{ tableColumn | translate}}</th>
             </tr>
           </thead>
           <tbody>

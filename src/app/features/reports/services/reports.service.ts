@@ -2,7 +2,7 @@ import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ApiEndpoints } from 'src/app/core/config';
-import { WaterFlowRequestModel } from 'src/app/core/models/reports/reports.model';
+import { WaterFlowRequestModel, WaterFlowResponseModel } from 'src/app/core/models/reports/reports.model';
 import { HttpService } from 'src/app/core/services';
 
 @Injectable({
@@ -21,7 +21,7 @@ export class ReportsService {
     .set('mainSensorId',`${data.mainSensorId}`)
     .set('fromDate', `${data.fromDate}`)
     .set('toDate',`${data.toDate}`)
-    return this.httpService.get(this.reportsApiEndPoints.waterFlowListByDatesSensorId, {params});
+    return this.httpService.get<WaterFlowResponseModel>(this.reportsApiEndPoints.waterFlowListByDatesSensorId, {params});
   }
 
 }
