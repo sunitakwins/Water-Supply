@@ -20,6 +20,9 @@
     "2-chome": "二丁目",
     "3-chome": "3丁目"
   },
+  "authentication": {
+    "Welcome": "ようこそ"
+  },
   "alarmSummary": {
     "fromDateTime": "日付と時刻から",
     "reset": "リセット",

@@ -262,6 +262,8 @@ export class GraphComponent implements OnInit {
   widgetsDataArray: any;
   dateFormat = 'y/M/d';
   date: any;
+
+
   constructor(public todoService: TodoService,
     private spinner: NgxSpinnerService, public http: HttpClient,
     private router: Router, private toastr: ToastrService,
@@ -325,6 +327,9 @@ export class GraphComponent implements OnInit {
        }
      });
   }
+
+
+  
   ngOnInit(): void {
     this.pointDetail.cityArea = [];
 

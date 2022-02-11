@@ -20,19 +20,21 @@
     "2-chome": "2-chome",
     "3-chome": "3-chome"
   },
+  "authentication": {
+     "Welcome": "Welcome"
+  },
   "alarmSummary": {
     "reset": "Reset",
     "alertSummary": "Alert Summary"
   },
   "reports": {
 
-
   },
   "pointCompare" : {
     "chooseADate": "Choose a date",
     "selectProperty": "Select property"
   },
-
+  
   
   "Upper value  exceeded": "Upper value exceeded",
   "Nihon Suido Consultants": "Nihon Suido Consultants",

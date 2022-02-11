@@ -19,13 +19,13 @@ export class ForwardGuard implements CanActivate {
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    // const authenticated = this.authService.isAuthenticated();
-    // if (authenticated && this.authService.checkCurrentRoleExistInUserRoles()) {
+    const authenticated = this.authService.isAuthenticated();
+    if (authenticated) {
 
-    //   const route = this.authService.getLandingPageRoute();
-    //   this.router.navigate([route]);
-    //   return false;
-    // }
+      const route = this.authService.getLandingPageRoute();
+      this.router.navigate([route]);
+      return false;
+    }
 
     // this.authService.clearStorage();
     return true;

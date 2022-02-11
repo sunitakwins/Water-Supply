@@ -4,18 +4,26 @@ import { AuthenticationLayoutComponent } from 'src/app/layout/layouts';
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  // {
-  //   path: '',
-  //   component: AuthenticationLayoutComponent,
-  //   children: [{
-  //     path: 'login',
-  //     component: LoginComponent
-  //   }]
-  // }  
+
+  {
+    path: '',
+    component: AuthenticationLayoutComponent,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+      }
+    ]
+  }
 ];
 
 @NgModule({
-      imports: [RouterModule.forChild(routes)],
-      exports: [RouterModule]
-    })
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
 export class AuthenticationRoutingModule { }

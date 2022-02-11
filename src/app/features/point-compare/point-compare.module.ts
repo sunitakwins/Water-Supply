@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PointCompareRoutingModule } from './point-compare-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { PointCompareComponent } from './components/point-compare/point-compare.component';
+import { LayoutModule } from 'src/app/layout/layout.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { PointCompareComponent } from './components/point-compare/point-compare.
     CommonModule,
     PointCompareRoutingModule,
     SharedModule,
+    LayoutModule
   ]
 })
 export class PointCompareModule { }

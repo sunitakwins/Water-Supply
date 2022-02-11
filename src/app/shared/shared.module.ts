@@ -11,10 +11,9 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ToastrModule } from 'ngx-toastr';
 import { AngularDropdownModule } from 'angular-dropdown';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
-import { MatTableExporterModule } from 'mat-table-exporter';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PERFECT_SCROLLBAR_CONFIG } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
@@ -41,7 +40,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     OwlNativeDateTimeModule,
     NgxMaterialTimepickerModule,
     SnotifyModule,
-    FormsModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     CommonModule,
@@ -62,11 +60,12 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       }
     }),
     NgMultiSelectDropDownModule.forRoot(),
-    MatTableExporterModule,
     PerfectScrollbarModule,
-    FormsModule,
+
     
-    UiModule
+    UiModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     /*BrowserAnimationsModule,*/
@@ -87,7 +86,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AngularDropdownModule,
     TranslateModule,
     NgMultiSelectDropDownModule,
-    MatTableExporterModule,
     PerfectScrollbarModule,
 
     UiModule,

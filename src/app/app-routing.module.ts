@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ForwardGuard } from './core/guards';
 import { AuthGuard } from './core/helpers/auth.guard';
 
 
 const routes: Routes = [
 
-  // need to remove below line
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
- 
   // ========= new added route ======================================
-  // {
-  //   path: 'auth',
-  //   loadChildren: () =>
-  //     import('./features/authentication/authentication.module').then(
-  //       (m) => m.AuthenticationModule
-  //     ),
-  // },
-  // {
-  //   path: 'point-selection',
-  //   loadChildren: () =>
-  //     import('./features/alarm-summary/alarm-summary.module').then(
-  //       (m) => m.AlarmSummaryModule
-  //     ),
-  //     canActivate: [AuthGuard]
-  // },
+
+   {
+    path: '',
+    loadChildren: () =>
+    import('./features/authentication/authentication.module').then(
+      (m) => m.AuthenticationModule,  
+    ),
+      canActivate: [ForwardGuard]
+   },
+
+
+  {
+    path: 'point-selection',
+    loadChildren: () =>
+      import('./features/alarm-summary/alarm-summary.module').then(
+        (m) => m.AlarmSummaryModule
+      ),
+      canActivate: [AuthGuard]
+  },
 
   {
     path: 'point-compare',
@@ -49,25 +51,25 @@ const routes: Routes = [
       ),
       canActivate: [AuthGuard]
   },
-//   { 
-//     path: 'other', 
-//     loadChildren: () => import(`./features/miscellaneous/miscellaneous.module`).then(m => m.MiscellaneousModule),
-//     canActivate: [AuthGuard]
-// },
-// {
-//     path: '**',  
-//     redirectTo: 'other/404'
-// },
+  { 
+    path: 'other', 
+    loadChildren: () => import(`./features/miscellaneous/miscellaneous.module`).then(m => m.MiscellaneousModule),
+    canActivate: [AuthGuard]
+},
+{
+    path: '**',  
+    redirectTo: 'other/404'
+},
 
    // ===============================================
-   {
-    path: 'auth',
-    loadChildren: () =>
-      import('./core/auth/auth.module').then(
-        (m) => m.AuthModule
-      ),
-      // canActivate: [AuthGuard]
-  },
+  //  {
+  //   path: 'auth',
+  //   loadChildren: () =>
+  //     import('./core/auth/auth.module').then(
+  //       (m) => m.AuthModule
+  //     ),
+  //     // canActivate: [AuthGuard]
+  // },
   // {
   //   path: 'dashboard',
   //   loadChildren: () =>

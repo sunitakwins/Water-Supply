@@ -1,0 +1,147 @@
+<div class="aside d-flex flex-column" id="asideSidebar">
+    <div class="aside-menu-wrapper">
+      <div class="menuIcon" (click)="toggleMenu()">
+        <i class="fa fa-bars"></i>
+      </div>
+      <div class="br-sideleft">
+        <ul class="br-sideleft-menu">
+          <li class="menu-link" routerLinkActive="active" [matTooltip]="'Point Detail'|translate"
+            matTooltipPosition="right" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/db/point-selection']">
+            <a>
+              <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                  <g id="graphical-data-flow_1_" transform="translate(-2.251 -2.25)">
+                    <path id="Path_364_1_" d="M23.9,25.3h-4.8c-0.9,0-1.6-0.7-1.6-1.6v-4.8c0-0.9,0.7-1.6,1.6-1.6h4.8
+                   c0.9,0,1.6,0.7,1.6,1.6v4.8C25.5,24.5,24.8,25.2,23.9,25.3z M19.1,18.8L19.1,18.8v4.8h4.8v-4.8H19.1z" />
+                    <path id="Path_365_1_"
+                      d="M15.9,22H11c-1.3,0-2.4-1.1-2.4-2.4v-3.2h1.6v3.2c0,0.4,0.4,0.8,0.8,0.8h4.8L15.9,22z" />
+                    <path id="Path_366_1_"
+                      d="M22.3,15.9h-1.6v-2.4c0-0.4-0.4-0.8-0.8-0.8h-4v-1.6h4c1.3,0,2.4,1.1,2.4,2.4V15.9z" />
+                    <path id="Path_367_2_" d="M13.4,16.1c-0.1,0-0.3,0-0.4-0.1L9.4,14L5.8,16c-0.4,0.2-0.9,0.1-1.1-0.3
+                   c-0.1-0.2-0.1-0.4-0.1-0.6l0.9-3.7L3.2,9c-0.3-0.3-0.3-0.8,0-1.1c0.1-0.1,0.3-0.2,0.4-0.2L7,7.1l1.7-3.4c0.2-0.4,0.7-0.6,1.1-0.4
+                   c0.2,0.1,0.3,0.2,0.4,0.4l1.8,3.4l3.3,0.6c0.4,0.1,0.7,0.5,0.7,0.9c0,0.2-0.1,0.3-0.2,0.4l-2.3,2.4l0.9,3.7c0.1,0.4-0.2,0.9-0.6,1
+                   C13.6,16.1,13.5,16.1,13.4,16.1L13.4,16.1z M9.4,12.1c0,0,0.3,0.1,0.4,0.2l2.4,1.4L11.6,11l1.8-2l-2.6-0.4L9.4,5.9L8.1,8.6L5.4,9
+                   l1.8,2l-0.6,2.7L9,12.3C9.1,12.3,9.4,12.1,9.4,12.1z" />
+                  </g>
+                </svg>
+              </span>
+              <span class="menuItem"><strong>{{'Point Detail'|translate}}</strong></span>
+            </a>
+          </li>
+          <li class="menu-link" [matTooltip]="'Point Compare'|translate" matTooltipPosition="right"
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/db/trend']">
+            <a>
+              <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                  <path id="Path_363_1_" d="M2.4,16.5L1,15.1l6.9-6.9l6.2,6.2l4.1-4.1l-1.7-1.7L23,6.8l-1.7,6.5l-1.7-1.7l-5.5,5.5L7.9,11
+                 L2.4,16.5z" />
+                </svg>
+              </span>
+              <span class="menuItem"><strong>{{'Point Compare'|translate}}</strong></span>
+            </a>
+          </li>
+          <!-- <li class="menu-link">
+            <a>
+              <span class="icon">
+                <svg viewBox="0 -53 384 384" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                  <path
+                    d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                  <path
+                    d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                </svg>
+              </span>
+              <span class="menuItem">{{'Menu'|translate}}</span>
+            </a>
+          </li>
+          <li class="menu-link">
+            <a>
+              <span class="icon">
+                <svg id="Layer_1" enable-background="new 0 0 512 512" viewBox="0 0 512 512"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <path
+                      d="m407.579 87.677c-31.073-53.624-86.265-86.385-147.64-87.637-2.62-.054-5.257-.054-7.878 0-61.374 1.252-116.566 34.013-147.64 87.637-31.762 54.812-32.631 120.652-2.325 176.123l126.963 232.387c.057.103.114.206.173.308 5.586 9.709 15.593 15.505 26.77 15.505 11.176 0 21.183-5.797 26.768-15.505.059-.102.116-.205.173-.308l126.963-232.387c30.304-55.471 29.435-121.311-2.327-176.123zm-151.579 144.323c-39.701 0-72-32.299-72-72s32.299-72 72-72 72 32.299 72 72-32.298 72-72 72z" />
+                  </g>
+                </svg>
+              </span>
+              <span class="menuItem">{{'Locations'|translate}}</span>
+            </a>
+          </li> -->
+          <li class="menu-link" [matTooltip]="'Alert Summary'|translate" matTooltipPosition="right" routerLinkActive="active"
+            [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/db/alarm-summary']">
+            <a>
+              <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" xml:space="preserve">
+                  <g>
+                    <path id="Icon_ionic-md-alarm_1_" d="M23,5.5l-5-4.3l-1.5,1.7l5,4.3L23,5.5z M7.5,2.7L6.1,0.9L1,5.1l1.4,1.7L7.5,2.7z
+                M12.5,7.8l-1.6,0l-0.1,6.6l5.2,3.2l0.8-1.4l-4.4-2.6L12.5,7.8L12.5,7.8z M12,3.4c-5.4-0.1-9.9,4.3-9.9,9.7
+               c-0.1,5.4,4.3,9.9,9.7,9.9c5.4,0.1,9.8-4.3,9.9-9.7C21.8,7.9,17.5,3.5,12,3.4C12,3.4,12,3.4,12,3.4z M11.7,20.9
+               c-4.2-0.1-7.6-3.6-7.5-7.8s3.6-7.6,7.8-7.5c4.2,0.1,7.5,3.6,7.5,7.8C19.5,17.6,16,20.9,11.7,20.9z" />
+                  </g>
+                </svg>
+              </span>
+              <span class="menuItem"><strong>{{'Alert Summary'|translate}}</strong></span>
+            </a>
+          </li>
+          <!-- <li class="menu-link"  matTooltip="Messages" matTooltipPosition="right">
+            <a>
+              <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+                  style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                  <path id="Icon_feather-message-square_1_" d="M22,15.3c0,1.2-1,2.2-2.2,2.2H6.4L2,22V4.2C2,3,3,2,4.2,2h15.5
+                    C21,2,22,3,22,4.2L22,15.3z" />
+                </svg>
+              </span>
+              <span class="menuItem">{{'Messages'|translate}}</span>
+            </a>
+          </li>  -->
+  
+          <!-- SAMPLE CODE STARTS -->
+          <!-- <li class="menu-link" [matTooltip]="'Maintenance Settings'|translate" matTooltipPosition="right"
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/dashboard/settings']">
+            <a>
+              <span class="icon">
+                <svg viewBox="0 -53 384 384" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="m368 154.667969h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                  <path
+                    d="m368 32h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                  <path
+                    d="m368 277.332031h-352c-8.832031 0-16-7.167969-16-16s7.167969-16 16-16h352c8.832031 0 16 7.167969 16 16s-7.167969 16-16 16zm0 0" />
+                </svg>
+              </span>
+              <span class="menuItem">{{'Settings'|translate}}</span>
+            </a>
+          </li> -->
+          <li class="menu-link" [matTooltip]="'Report'|translate" matTooltipPosition="right" routerLinkActive="active"
+            [routerLink]="['/db/sensor-reports']">
+            <a>
+              <span class="icon">
+                <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
+                  style="enable-background:new 0 0 24 24;" xml:space="preserve">
+                  <g id="report_1_" transform="translate(-5.625 -2.25)">
+                    <path id="Path_359_1_" class="st0" d="M12.9,15.8h6.3v1.6h-6.3V15.8z" />
+                    <path id="Path_360_1_" class="st0" d="M12.9,11.9h9.4v1.6h-9.4V11.9z" />
+                    <path id="Path_361_1_" class="st0" d="M12.9,19.8h3.9v1.6h-3.9V19.8z" />
+                    <path id="Path_362_1_" class="st0"
+                      d="M24.7,5.6h-2.4V4.8c0-0.9-0.7-1.6-1.6-1.6c0,0,0,0,0,0h-6.3c-0.9,0-1.6,0.7-1.6,1.6
+                      c0,0,0,0,0,0v0.8h-2.4C9.7,5.6,9,6.3,9,7.2c0,0,0,0,0,0v16.5c0,0.9,0.7,1.6,1.6,1.6l0,0h14.1c0.9,0,1.6-0.7,1.6-1.6l0,0V7.2
+                      C26.3,6.3,25.6,5.6,24.7,5.6L24.7,5.6z M14.5,4.8h6.3V8h-6.3V4.8z M24.7,23.7H10.6V7.2h2.4v2.4h9.4V7.2h2.4L24.7,23.7z" />
+                  </g>
+                </svg>
+              </span>
+              <span class="menuItem"><strong>{{'Report'|translate}}</strong></span>
+            </a>
+          </li>
+          <!-- SAMPLE CODE ENDS -->
+        </ul>
+      </div>
+    </div>
+  </div>

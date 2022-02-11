@@ -5,66 +5,60 @@
   <div class="trendFlow">
     <div class="rangeFilter mb-4" *ngIf="sensorId">
 
-        <form class="form-filter-date alarmSummary_Form d-flex">
-          <div class="dropdwnInput mr-2">
-            <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate" class="selectedDate"
-              [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
-              (ngModelChange)="filterDataByDate(selectedDate)" placeholder="{{'pointCompare.chooseADate' | translate}}"
-              readonly>
-            <owl-date-time #fromDatTime></owl-date-time>
-          </div>
+      <form class="form-filter-date alarmSummary_Form d-flex">
+        <div class="dropdwnInput mr-2">
+          <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate" class="selectedDate"
+            [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+            (ngModelChange)="filterDataByDate(selectedDate)" placeholder="{{'pointCompare.chooseADate' | translate}}"
+            readonly>
+          <owl-date-time #fromDatTime></owl-date-time>
+        </div>
 
-          <!-- <mat-form-field appearance="fill"> -->
-          <!-- <mat-label>{{'pointCompare.chooseADate'|translate}}</mat-label> -->
-          <!-- <input id="selectedDateInput" 
+        <!-- <mat-form-field appearance="fill"> -->
+        <!-- <mat-label>{{'pointCompare.chooseADate'|translate}}</mat-label> -->
+        <!-- <input id="selectedDateInput" 
                 [(ngModel)]="selectedDate" matInput #selectedDateInput [matDatepicker]="myDatepicker"
                 (dateChange)="onChange(selectedDateInput.value)">
               <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
               <mat-datepicker #myDatepicker></mat-datepicker>  -->
-          <!-- </mat-form-field> -->
+        <!-- </mat-form-field> -->
 
-          <mat-form-field appearance="fill">
-            <mat-label>{{'pointCompare.selectProperty'| translate}}</mat-label>
-            <mat-select name="sensorProperty" [ngModel]="selectedPropertyValue">
-              <mat-option *ngFor='let property of propertyValuesData' (click)="onSelectingProperty(property)"
-                [value]="property">
-                {{property | translate}}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>{{'pointCompare.selectProperty'| translate}}</mat-label>
+          <mat-select name="sensorProperty" [ngModel]="selectedPropertyValue">
+            <mat-option *ngFor='let property of propertyValuesData' (click)="onSelectingProperty(property)"
+              [value]="property">
+              {{property | translate}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
 
-          <button class="btn commonBtn" (click)="getGraphData()">
-            {{'common.submit' | translate}}</button>
-        </form>
+        <button class="btn commonBtn" (click)="getGraphData()">
+          {{'common.submit' | translate}}</button>
+      </form>
     </div>
 
 
-    <div class="flowChart">
+    <!-- <div class="flowChart">
       <div class="table-responsive">
         <div>
-
           <div style="display: block;">
-            <!-- <canvas baseChart width="400" height="400"
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [colors]="lineChartColors"
-              [legend]="lineChartLegend"
-              [chartType]="lineChartType"
-              [plugins]="lineChartPlugins">
-            </canvas> -->
+            <canvas baseChart width="400" height="400" [datasets]="lineChartData" [labels]="lineChartLabels"
+              [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend"
+              [chartType]="lineChartType" [plugins]="lineChartPlugins">
+            </canvas>
           </div>
-          
-          <!-- <div *ngIf="chartData.length>0" class="chart" style="display: block">
-                <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [colors]="barChartColors"
-                  [legend]="barChartLegend" [options]="chartOptions" chartType='line'>
-                </canvas>
-              </div> -->
-          <!-- <div *ngIf="chartData.length==0 && " class="chart noData">
-                <p>{{'common.dataNotAvailable' | translate}}</p>
-              </div> -->
+
+          <div *ngIf="chartData.length>0" class="chart" style="display: block">
+            <canvas baseChart [datasets]="chartData" [labels]="chartLabels" [colors]="barChartColors"
+              [legend]="barChartLegend" [options]="chartOptions" chartType='line'>
+            </canvas>
+          </div>
+          <div *ngIf="chartData.length==0 && " class="chart noData">
+            <p>{{'common.dataNotAvailable' | translate}}</p>
+          </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </section>

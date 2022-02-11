@@ -8,10 +8,10 @@ import { TodoModule } from './features/todo/todo.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './features/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
-import { LayoutComponent } from './features/layout/layout.component';
-import { ChartsModule } from 'ng2-charts';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CoreModule } from './core/core.module';
+import { LayoutComponent } from './features/layout/layout.component';
+import { DatePipe } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/json/', '.json');
@@ -20,24 +20,19 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent,
+    LayoutComponent
   ],
   imports: [
-
-    ChartsModule,
-    BrowserModule,
     HttpClientModule,
-    AppRoutingModule,
-    SharedModule,
     SocketIoModule,
-    TodoModule,
-    BrowserAnimationsModule,
     DashboardModule,
 
     // newly added
     CoreModule,
-    ChartsModule
+    SharedModule,
+    AppRoutingModule,
   ],
+  providers: [ DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

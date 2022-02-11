@@ -1,0 +1,1 @@
+export * from './main-sidebar/main-sidebar.component';

@@ -8,7 +8,8 @@ import {
 } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { AuthService } from '../auth/services/auth.service';
+import { AuthService } from '../services';
+
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {

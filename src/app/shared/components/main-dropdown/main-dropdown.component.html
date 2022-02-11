@@ -40,15 +40,29 @@
                 </mat-select>
               </mat-form-field>
 
-              <!-- <mat-chip-list #chipList>
-                <mat-chip *ngFor="let point of sensorListData; let i = index" [selectable]="selectable"
-                  [removable]="removable" (removed)="removeSensor(point)" [value]="point.mainSensorid"
-                  (click)="onSelection(point,'Point')" multiple>
-                  {{point.sensorname | translate}}
-                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-                </mat-chip>
-              </mat-chip-list> -->
+              <!-- sensor names with chips -->
+              <!-- <mat-form-field appearance="fill">
+                <mat-label>{{'common.pointName'|translate}}</mat-label>
+                <mat-chip-list #chipList>
+                  <mat-chip *ngFor="let fruit of fruits;let indx=index;" [selectable]="selectable"
+                    [removable]="removable" (removed)="remove(fruit,indx)">
+                    {{fruit.employeeName}}
+                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                  </mat-chip>
 
+                  <input  #employees formControlName="employees" 
+                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                    (matChipInputTokenEnd)="add($event)" (keyup)="searchEmployee($event.target.value)" multiple>
+                </mat-chip-list>
+
+                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                  <mat-option *ngFor="let item of filterList(allFruits)" [value]="item">
+                    {{item.employeeName}}
+                  </mat-option>
+                </mat-autocomplete>
+              </mat-form-field> -->
+ 
             </div>
           </div>
           <div class="dbRightCol" [hidden] ="!showExcelIcon">

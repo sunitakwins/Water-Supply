@@ -856,7 +856,7 @@ export class SensorReportsComponent implements OnInit {
 
   // check function working
   onSubmit(): void {
-    debugger
+    
     this.dropDownValue = [];
     this.currentDataForm = this.dataFormGroup.value.rawConverted;
     this.showRawConvertedData(this.dataFormGroup.value.fromdatetime, this.dataFormGroup.value.todatetime, this.dataFormGroup.value.rawConverted);

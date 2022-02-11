@@ -31,7 +31,7 @@ export class SocketService {
   }
 
   getAllData(data: any) {
-    debugger
+    
     return this.http.post(`https://iothubadmin-iothubapis.azurewebsites.net/api/Light/GetLightDataByPage`, data);
   }
 }

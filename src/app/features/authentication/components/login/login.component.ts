@@ -20,62 +20,59 @@ export class LoginComponent implements OnInit {
   loading = false;
   selectedLangugae = '';
   private index = 0;
-  // token = localStorage.getItem("token")
-  token =  sessionStorage.getItem("token");
+
+  token = sessionStorage.getItem("token");
   constructor(public authService: AuthService, private router: Router,
     private cookieService: CookieService, private toastr: ToastrService,
     private spinner: NgxSpinnerService, private snotifyService: SnotifyService,
     private translate: TranslateService) {
 
-    let lang: any = cookieService.get('language')
-    this.selectedLangugae = lang;
-    if (cookieService.get('language')) {
-      translate.setDefaultLang(lang);
-      translate.use(lang);
-    } else {
-      translate.setDefaultLang('en');
-      translate.use('en');
-      cookieService.set('language', 'en');
-    }
+    // let lang: any = cookieService.get('language')
+    // this.selectedLangugae = lang;
+    // if (cookieService.get('language')) {
+    //   translate.setDefaultLang(lang);
+    //   translate.use(lang);
+    // } else {
+    //   translate.setDefaultLang('en');
+    //   translate.use('en');
+    //   cookieService.set('language', 'en');
+    // }
   }
 
   ngOnInit(): void {
-    if(this.token){
-      this.router.navigateByUrl('/db')
+    if (this.token) {
+      // this.router.navigateByUrl('/db')
     }
 
   }
 
-  signIn($event: any, email: string, pass: string): void {
-  
-    this.loading = true;
+  signIn(email: string, pass: string): void {
+    
+    // this.loading = true;
     const data = {
       userName: email,
       password: pass
     };
 
     if (data.userName === '' || data.password === '') {
- 
-      this.loading = false;
-      this.snotifyService.warning(this.translate.instant('Username & Password cannot be empty'), '', { /* Please enter your username and password */
-        timeout: 2000,
-        showProgressBar: false,
-    
-        closeOnClick: true,
-        pauseOnHover: true
-      }
-      
-      );
-
-      $event.preventDefault();
-    } else {  
+        return;
+      // this.loading = false;
+      // this.snotifyService.warning(this.translate.instant('Username & Password cannot be empty'), '', { /* Please enter your username and password */
+      //   timeout: 2000,
+      //   showProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true
+      // }
+      // );
+    } else {
       this.authService.logIn(data).subscribe(response => {
+        
         if (response.isValid === true) {
           sessionStorage.setItem('token', response.token);
           this.cookieService.set('userId', response.id);
-          this.router.navigateByUrl('/db');
-        } else {  
-        this.loading = false;
+          this.router.navigateByUrl('/');
+        } else {
+          // this.loading = false;
           this.snotifyService.error(this.translate.instant('Invaild Usename or Password'), '', {
             timeout: 2000,
             showProgressBar: false,
@@ -84,9 +81,9 @@ export class LoginComponent implements OnInit {
           });
         }
       }, error => {
-     
+
       });
-      $event.preventDefault();
+    
     }
   }
 }

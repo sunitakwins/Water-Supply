@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(
     private router: Router,
-    private httpService: HttpService,
+    // private httpService: HttpService,
     // private appConfigService: AppConfigService,
     // private localStorageService: LocalStorageService
   ) { }
@@ -23,20 +23,23 @@ export class AuthService {
   //   }));
   // }
 
-  // logout() {
-  //   return this.httpService.post(ApiEndpoints.Token.Revoke, null).pipe(
-  //     tap(() => {
-  //       this.clearStorage();
-  //       this.router.navigate(['']);
-  //     })
-  //   );
-  // }
+  logout() {
+    this.clearStorage(); 
+    this.router.navigateByUrl(''); 
+    // return this.httpService.post(ApiEndpoints.Token.Revoke, null).pipe(
+    //   tap(() => {
+    //     this.clearStorage();
+    //     this.router.navigate(['']);
+    //   })
+    // );
+  }
 
-  // isAuthenticated(): boolean {
-  //   const token = this.getAuthToken();
-  //   if (token) return true;
-  //   return false;
-  // }
+  isAuthenticated(): boolean {
+    
+    const token = this.getAuthToken();
+    if (token) return true;
+    return false;
+  }
 
   // getAllRoles(): Role[] {
   //   return this.appConfigService.getAllRolesPermissions();
@@ -68,15 +71,15 @@ export class AuthService {
   // }
 
 
-
   // isLocalStorageSessionExist() {
   //   const authToken = this.localStorageService.get(StorageKeys.AuthToken);
   //   return !!authToken;
   // }
 
-  // getAuthToken() {
-  //   return this.localStorageService.get(StorageKeys.AuthToken);
-  // }
+  getAuthToken() {
+    // return this.localStorageService.get(StorageKeys.AuthToken);
+    return sessionStorage.getItem("token");
+  }
 
   // getRefreshToken() {
   //   return this.localStorageService.get(StorageKeys.RefreshToken);
@@ -111,12 +114,14 @@ export class AuthService {
   //   return roles.findIndex(r => r.roleName == currentRole) > -1;
   // }
 
-  // getLandingPageRoute() {
-  //   const userPermissions = this.getUserPermissions();
-  //   // TODO: Need to change after proforma management module
-  //   const index = userPermissions.findIndex(up => up.permissionName == Permission.UserManagement);
-  //   return index > -1 ? "admin" : "home";
-  // }
+  getLandingPageRoute() {
+     return "point-compare";
+
+    // const userPermissions = this.getUserPermissions();
+    // TODO: Need to change after proforma management module
+    // const index = userPermissions.findIndex(up => up.permissionName == Permission.UserManagement);
+    // return index > -1 ? "admin" : "home";
+  }
 
 
   // getAdditionalVisibleColumns(grid: Grid): string[] {
@@ -157,14 +162,16 @@ export class AuthService {
   //   else this.localStorageService.set(grid, JSON.stringify(columns));
   // }
 
-  // clearStorage() {
-  //   this.localStorageService.remove(StorageKeys.AuthToken);
-  //   this.localStorageService.remove(StorageKeys.RefreshToken);
-  //   this.localStorageService.remove(StorageKeys.UserCurrentRole);
+  clearStorage() {
 
-  //   this.localStorageService.clear();
-  //   this.sessionStorageService.clear();
-  // }
+    sessionStorage.removeItem("token");
+    // this.localStorageService.remove(StorageKeys.AuthToken);
+    // this.localStorageService.remove(StorageKeys.RefreshToken);
+    // this.localStorageService.remove(StorageKeys.UserCurrentRole);
+
+    // this.localStorageService.clear();
+    // this.sessionStorageService.clear();
+  }
 
   // staticPermissionArr = [
   // "AllAccess", "UserManagement", "RoleManagement", "ProformaManagement",

@@ -79,7 +79,7 @@ export class MainDropdownComponent implements OnInit {
 
     let fileName = this.alertSummary ? (this.translate.instant(`common.alertSummary`) + this.sensorName) : '';
 
-    debugger
+    
     const options = {
       filename: this.cookieService.get('language') === 'en' ? 'Alert History_' + this.sensorName : 'アラート履歴_' + this.sensorName,
       fieldSeparator: ',', quoteStrings: '"', decimalSeparator: '.', showLabels: true, showTitle: true,
@@ -105,8 +105,4 @@ export class MainDropdownComponent implements OnInit {
 
   }
 
-  // sensor points
-  // removeSensor(){
-  //   debugger
-  // }  
 }
