@@ -3,6 +3,7 @@ import {Router} from '@angular/router';
 import {TranslateService} from '@ngx-translate/core';
 import {SnotifyService, SnotifyToast} from 'ng-snotify';
 import {CookieService} from 'ngx-cookie-service';
+import { EventService } from 'src/app/core/services';
 import {TodoService} from 'src/app/services/todo.service';
 import {MessageService} from '../../EventBroadcast';
 
@@ -22,7 +23,7 @@ export class HeaderComponent implements OnInit {
   selectedCityId: any = 0;
 
   constructor(private router: Router, private cookieService: CookieService,
-              private messageService: MessageService,
+              private messageService: MessageService, private eventService : EventService,
               private translate: TranslateService, private renderer: Renderer2,
               private todoService: TodoService, private snotifyService: SnotifyService) {
     // translate.setDefaultLang('en');
@@ -207,6 +208,9 @@ export class HeaderComponent implements OnInit {
 
   changeLanguage(selectedLanguage: string): void {    
     this.todoService.languageData.next(selectedLanguage);
+
+    this.eventService.currentLanguage.next(selectedLanguage);
+
     sessionStorage.setItem('lang', selectedLanguage);
     this.currentLanguage = selectedLanguage === 'en' ? 'English' : '日本語';
     this.messageService.sendMessage(selectedLanguage);

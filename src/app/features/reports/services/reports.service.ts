@@ -10,7 +10,7 @@ import { HttpService } from 'src/app/core/services';
 })
 export class ReportsService {
 
-  public readonly reportsApiEndPoints = ApiEndpoints.Reports; 
+  public readonly reportsApiEndPoints = ApiEndpoints.WaterFlow; 
 
   formValueArray : string[] = ['Converted Value','Raw Value']
 

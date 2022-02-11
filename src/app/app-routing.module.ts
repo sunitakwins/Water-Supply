@@ -5,6 +5,7 @@ import { AuthGuard } from './core/helpers/auth.guard';
 
 const routes: Routes = [
 
+  // need to remove below line
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
  
   // ========= new added route ======================================
@@ -48,6 +49,15 @@ const routes: Routes = [
       ),
       canActivate: [AuthGuard]
   },
+//   { 
+//     path: 'other', 
+//     loadChildren: () => import(`./features/miscellaneous/miscellaneous.module`).then(m => m.MiscellaneousModule),
+//     canActivate: [AuthGuard]
+// },
+// {
+//     path: '**',  
+//     redirectTo: 'other/404'
+// },
 
    // ===============================================
    {
@@ -58,14 +68,14 @@ const routes: Routes = [
       ),
       // canActivate: [AuthGuard]
   },
-  {
-    path: 'dashboard',
-    loadChildren: () =>
-      import('./features/dashboard/dashboard.module').then(
-        (m) => m.DashboardModule
-      ),
-      canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'dashboard',
+  //   loadChildren: () =>
+  //     import('./features/dashboard/dashboard.module').then(
+  //       (m) => m.DashboardModule
+  //     ),
+  //     canActivate: [AuthGuard]
+  // },
   {
     path: 'db',
     loadChildren: () =>

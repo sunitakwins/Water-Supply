@@ -13,7 +13,7 @@ import { PointCompareComponent } from './components/point-compare/point-compare.
   imports: [
     CommonModule,
     PointCompareRoutingModule,
-    SharedModule
+    SharedModule,
   ]
 })
 export class PointCompareModule { }

@@ -7,6 +7,7 @@ import { io } from 'socket.io-client/build/index';
   providedIn: 'root'
 })
 export class SocketService {
+
   socket: any = '';
   readonly uri: string = 'https://iothubadmin-iothubapis.azurewebsites.net/api/Light/GetLightDataByPage';
   constructor(private http: HttpClient) {
@@ -30,6 +31,7 @@ export class SocketService {
   }
 
   getAllData(data: any) {
+    debugger
     return this.http.post(`https://iothubadmin-iothubapis.azurewebsites.net/api/Light/GetLightDataByPage`, data);
   }
 }

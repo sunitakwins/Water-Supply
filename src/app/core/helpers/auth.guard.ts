@@ -20,10 +20,7 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
  
      const token = sessionStorage.getItem("token")
-      if (token=='') {
-
-    return this.router.navigateByUrl('/auth')
-      } else if(token == null){
+      if (token=='') {  return this.router.navigateByUrl('/auth') } else if(token == null){
 
         return this.router.navigateByUrl('/auth')
         

@@ -28,9 +28,9 @@
 
 
   },
-  "point-compare" : {
-
-    
+  "pointCompare" : {
+    "chooseADate": "Choose a date",
+    "selectProperty": "Select property"
   },
 
   

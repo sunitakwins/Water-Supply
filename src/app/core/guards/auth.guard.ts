@@ -24,16 +24,26 @@ export class AuthGuard implements CanActivate {
     //   !this.authService.checkCurrentRoleExistInUserRoles() ||
     //   !this.authService.isLocalStorageSessionExist()
     // ) {
-      const queryParams: any = {
-        redirectUrl: state.url
-      };
+      // const queryParams: any = {
+      //   redirectUrl: state.url
+      // };
 
       // this.authService.clearStorage();
-      this.router.navigate(['login'], { queryParams: queryParams });
-      return false;
-    }
+      // this.router.navigate(['login'], { queryParams: queryParams });
+      // return false;
+    // }
 
     // return true;
-  // }
+
+    // ===================================
+
+    const token = sessionStorage.getItem("token")
+    if (token=='') {  return this.router.navigateByUrl('/auth') } else if(token == null){
+       return this.router.navigateByUrl('/auth')
+    }
+    else{
+    return true;
+    }
+  }
 
 }

@@ -21,9 +21,11 @@ export const ApiEndpoints = {
     Alerts : {
         alertListByMainSensorId : 'Alerts/getAlertsByMainSensorId',
     },
-    Reports : {
-        waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates'
-    }
+    WaterFlow : {
+        waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates',
+        
+    },
+    
 
 
     

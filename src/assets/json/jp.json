@@ -28,9 +28,9 @@
   "reports": {
 
   },
-  "point-compare" : {
-
-    
+  "pointCompare" : {
+    "chooseADate": "日付を選択してください",
+    "selectProperty": "プロパティを選択"
   },
 
 
