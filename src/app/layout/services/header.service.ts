@@ -8,17 +8,21 @@ import { HttpParams } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HeaderService {
- public readonly  alertsApiEndPoints = ApiEndpoints.Alerts; 
+  public readonly alertsApiEndPoints = ApiEndpoints.Alerts;
 
- constructor( private httpService : HttpService) { }
+  constructor(private httpService: HttpService) { }
 
-  getUnreadAlerts(status: boolean) : Observable <any>{
+  getUnreadAlerts(status: boolean): Observable<any> {
     const params = new HttpParams()
-    .set('isRead',`${status}`)
-    return this.httpService.get<any>(this.alertsApiEndPoints.allReadUnreadAlerts, {params});
+      .set('isRead', `${status}`)
+    return this.httpService.get<any>(this.alertsApiEndPoints.allReadUnreadAlerts, { params });
   }
+
 
   logout(userName: string): Observable<any> {
     return this.logout(userName);
   }
+
+
+
 }

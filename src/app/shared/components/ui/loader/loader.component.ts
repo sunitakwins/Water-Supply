@@ -1,21 +1,25 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-loader',
+  selector: 'modal-loader',
   templateUrl: './loader.component.html',
-  styleUrls: ['./loader.component.scss']
+  styleUrls: ['./loader.component.scss'],
 })
 export class LoaderComponent implements OnInit {
-
   @Input() showSpinner: boolean = false;
-  constructor() {}
+  
+  constructor() {
+  }
 
-  // fullScreen = false;
+  fullScreen = false;
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    debugger
+    this.showSpinner;
+  }
 
   ngOnDestroy() {
 
   }
-
+  
 }

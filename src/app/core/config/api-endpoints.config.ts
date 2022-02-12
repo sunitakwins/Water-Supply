@@ -1,10 +1,10 @@
 export const ApiEndpoints = {
-    // Auth: {
-    //     Login: 'Auth/Login',
-    //     SetPassword: 'Auth/SetPassword',
-    //     ValidateToken: 'Auth/ValidateToken',
-    //     ForgotPassword: 'Auth/ForgotPassword'
-    // },
+    Auth: {
+        Login: 'User/LoginUser',
+        // SetPassword: 'Auth/SetPassword',
+        // ValidateToken: 'Auth/ValidateToken',
+        // ForgotPassword: 'Auth/ForgotPassword'
+    },
     Common: {
         //  GetCities : 'City/getAllCities',
         //  UserCities : 'UserCity/getUserCitiesByUserId'
@@ -23,8 +23,7 @@ export const ApiEndpoints = {
         allReadUnreadAlerts : 'Alerts/getAllReadUnreadAlerts'
     },
     WaterFlow : {
-        waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates',
-        
+        waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates', 
     },
     
 

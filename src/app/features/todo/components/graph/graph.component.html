@@ -57,12 +57,7 @@
                           placeholder="{{'To Date & Time'| translate}}" readonly>
 
                         <owl-date-time [disabled]="isSensor" #toDateTime></owl-date-time>
-
-
                       </div>
-
-
-
                       <button class="btn commonBtn" type="submit" [disabled]="isSensor">{{'Submit' |
                         translate}}</button>
                     </form>
@@ -95,7 +90,6 @@
   </div>
 </div>
 <mat-tab-group (selectedTabChange)="tabChanged($event)" class="tab-group">
-
   <mat-tab [label]="'Graphical View'|translate">
     <mat-card>
       <div class="table-responsive">

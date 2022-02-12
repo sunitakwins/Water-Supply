@@ -18,16 +18,16 @@ export class ForwardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
+    
     const authenticated = this.authService.isAuthenticated();
     if (authenticated) {
 
-      const route = this.authService.getLandingPageRoute();
-      this.router.navigate([route]);
+      // const route = this.authService.getLandingPageRoute();
+      this.router.navigate(["point-compare"]);
       return false;
     }
 
-    // this.authService.clearStorage();
+    this.authService.clearStorage();
     return true;
   }
   

@@ -2,10 +2,11 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ExportToCsv } from 'export-to-csv-file';
-import { SnotifyService } from 'ng-snotify';
+
 import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
-import { EventService } from 'src/app/core/services';
+import { Messages } from 'src/app/core/config';
+import { EventService, ToasterService } from 'src/app/core/services';
 import { ComponentService } from '../../services/component.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class MainDropdownComponent implements OnInit {
   @Input() alertSummary: boolean = false;
   @Input() showExcelIcon: boolean = false;
 
-
+  public readonly Message = Messages;
+  
   userCities: any = [];
   cityAreas: any = [];
   sensorListData: any = [];
@@ -30,6 +32,7 @@ export class MainDropdownComponent implements OnInit {
     private eventService: EventService,
     private cookieService: CookieService,
     private datePipe: DatePipe,
+    private toaster : ToasterService,
     private translate: TranslateService) { }
 
   ngOnInit() {
@@ -76,10 +79,13 @@ export class MainDropdownComponent implements OnInit {
 
   // Excel import code
   importAsXlsx() {
-
+    
+    if(this.dataList.length == 0) {
+      this.toaster.successToast(this.Message.Error.NoDataFoundError); return;
+    } 
+    
     let fileName = this.alertSummary ? (this.translate.instant(`common.alertSummary`) + this.sensorName) : '';
 
-    
     const options = {
       filename: this.cookieService.get('language') === 'en' ? 'Alert History_' + this.sensorName : 'アラート履歴_' + this.sensorName,
       fieldSeparator: ',', quoteStrings: '"', decimalSeparator: '.', showLabels: true, showTitle: true,
@@ -97,7 +103,8 @@ export class MainDropdownComponent implements OnInit {
         });
       }
       const csvExporter = new ExportToCsv(options); csvExporter.generateCsv(this.filteredCSVData);
-      // this.snotifyService.success(this.translate.instant('Data exported successfully'), ''); 
+      this.toaster.successToast(this.Message.Success.ExcelExported);
+      // this.snotifyService.success(this.translate.instant(this.Message.ExcelExported), ''); 
     }
     else {
       // Report excel 

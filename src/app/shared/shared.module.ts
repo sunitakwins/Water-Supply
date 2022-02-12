@@ -45,12 +45,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     CommonModule,
     MaterialModule,
     AngularDropdownModule,
-    ToastrModule.forRoot({
-      timeOut: 5000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    }),
-    // NgxSpinnerModule,
     RouterModule,
     TranslateModule.forRoot({
       loader: {
@@ -82,7 +76,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HeaderComponent,
     SidebarComponent,
     RouterModule,
-    // NgxSpinnerModule,
     AngularDropdownModule,
     TranslateModule,
     NgMultiSelectDropDownModule,

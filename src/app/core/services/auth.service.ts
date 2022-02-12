@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService } from '.';
+import { HttpService, LocalStorageService } from '.';
+import { StorageKeys } from '../config';
+import { LoginResponseModel } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class AuthService {
     private router: Router,
     // private httpService: HttpService,
     // private appConfigService: AppConfigService,
-    // private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService
   ) { }
 
   // refreshToken() {
@@ -35,11 +37,32 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
-    
     const token = this.getAuthToken();
     if (token) return true;
     return false;
   }
+
+  getAuthToken() {
+    return this.localStorageService.get(StorageKeys.AuthToken);
+    // return sessionStorage.getItem("token");
+  }
+
+ storeAuthToken(token: string) {
+  this.localStorageService.set(StorageKeys.AuthToken, token);
+}
+
+setUserDetails(userData: LoginResponseModel) {
+  this.localStorageService.set(StorageKeys.UserDetails, JSON.stringify(userData));
+}
+
+clearStorage() {
+  this.localStorageService.remove(StorageKeys.AuthToken);
+  this.localStorageService.clear();
+
+  // this.localStorageService.remove(StorageKeys.RefreshToken);
+  // this.localStorageService.remove(StorageKeys.UserCurrentRole);
+  // this.sessionStorageService.clear();
+}
 
   // getAllRoles(): Role[] {
   //   return this.appConfigService.getAllRolesPermissions();
@@ -76,10 +99,14 @@ export class AuthService {
   //   return !!authToken;
   // }
 
-  getAuthToken() {
-    // return this.localStorageService.get(StorageKeys.AuthToken);
-    return sessionStorage.getItem("token");
-  }
+  // getLandingPageRoute() {
+    // return "point-compare";
+
+   // const userPermissions = this.getUserPermissions();
+   // TODO: Need to change after proforma management module
+   // const index = userPermissions.findIndex(up => up.permissionName == Permission.UserManagement);
+   // return index > -1 ? "admin" : "home";
+//  }
 
   // getRefreshToken() {
   //   return this.localStorageService.get(StorageKeys.RefreshToken);
@@ -114,14 +141,7 @@ export class AuthService {
   //   return roles.findIndex(r => r.roleName == currentRole) > -1;
   // }
 
-  getLandingPageRoute() {
-     return "point-compare";
 
-    // const userPermissions = this.getUserPermissions();
-    // TODO: Need to change after proforma management module
-    // const index = userPermissions.findIndex(up => up.permissionName == Permission.UserManagement);
-    // return index > -1 ? "admin" : "home";
-  }
 
 
   // getAdditionalVisibleColumns(grid: Grid): string[] {
@@ -137,10 +157,7 @@ export class AuthService {
   //   this.storeRefreshToken(refreshToken, isMimicUserSession);
   // }
 
-  // storeAuthToken(token: string, isMimicUserSession: boolean = false) {
-  //   if (isMimicUserSession) this.sessionStorageService.set(StorageKeys.AuthToken, token);
-  //   else this.localStorageService.set(StorageKeys.AuthToken, token);
-  // }
+
 
   // storeRefreshToken(token: string, isMimicUserSession: boolean = false) {
   //   if (isMimicUserSession) this.sessionStorageService.set(StorageKeys.RefreshToken, token);
@@ -152,26 +169,21 @@ export class AuthService {
   //   else this.localStorageService.set(StorageKeys.UserCurrentRole, role);
   // }
 
-  // setUserDetails(user: UserDetails, isMimicUserSession: boolean = false) {
-  //   if (isMimicUserSession) this.sessionStorageService.set(StorageKeys.UserDetails, JSON.stringify(user));
-  //   else this.localStorageService.set(StorageKeys.UserDetails, JSON.stringify(user));
-  // }
+
 
   // storeAdditionalVisibleColumns(grid: Grid, columns: string[], isMimicUserSession: boolean = false) {
   //   if (isMimicUserSession) this.sessionStorageService.set(grid, JSON.stringify(columns));
   //   else this.localStorageService.set(grid, JSON.stringify(columns));
   // }
 
-  clearStorage() {
+  // clearStorage() {
+  //   this.localStorageService.remove(StorageKeys.AuthToken);
+  //   this.localStorageService.clear();
 
-    sessionStorage.removeItem("token");
-    // this.localStorageService.remove(StorageKeys.AuthToken);
-    // this.localStorageService.remove(StorageKeys.RefreshToken);
-    // this.localStorageService.remove(StorageKeys.UserCurrentRole);
-
-    // this.localStorageService.clear();
-    // this.sessionStorageService.clear();
-  }
+  //   // this.localStorageService.remove(StorageKeys.RefreshToken);
+  //   // this.localStorageService.remove(StorageKeys.UserCurrentRole);
+  //   // this.sessionStorageService.clear();
+  // }
 
   // staticPermissionArr = [
   // "AllAccess", "UserManagement", "RoleManagement", "ProformaManagement",
@@ -179,4 +191,6 @@ export class AuthService {
   // "AbilityToProxy",    "AllAvailbleProformas", "EditAdjustments", "ABRFileUploads", "SaveUpdates", 
   // "SaveABR", "SubmitABR", "PendingByGOT", "ProcessedByGOT", "RejectedByGOT", "RowFilters", "ColumnFilters",
   // ]
+
+  
 }

@@ -1,26 +1,48 @@
 import { Injectable } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
+import { TranslateService } from '@ngx-translate/core';
+import { ToastConfig, Toaster, ToastType } from 'ngx-toast-notifications';
+
+enum ToasterType {
+  Success = 'success',
+  Error = 'danger',
+  Warning = 'warning'
+};
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToasterService {
+    constructor(
+        public translate: TranslateService,
+        private toaster: Toaster
+    ) { }
 
-  constructor(private toastr: ToastrService) { }
+    successToast(text: string, translate: boolean = true, closeable: boolean = true, duration: number = 3000) {
+        this.showToast(text, translate, closeable, ToasterType.Success, duration);
+    }
 
-  success(message: string, title: string = "") {
-    this.toastr.success(message, title)
-  }
+    warningToast(text: string, translate: boolean = true, closeable: boolean = true, duration: number = 3000) {
+        this.showToast(text, translate, closeable, ToasterType.Warning, duration);
+    }
 
-  error(message: string, title: string = "") {
-    this.toastr.error(message, title)
-  }
+    errorToast(text: string, translate: boolean = true, closeable: boolean = true, duration: number = 3000) {
+        this.showToast(text, translate, closeable, ToasterType.Error, duration);
+    }
 
-  info(message: string, title: string) {
-    this.toastr.info(message, title)
-  }
+    private showToast(text: string, translate: boolean = true, closeable: boolean, type: ToasterType, duration: number) {
+        const message = translate ? this.translate.instant(text) : text;
 
-  warning(message: string, title: string = "") {
-    this.toastr.warning(message, title)
-  }
+
+        let toasterProperties: ToastConfig = {
+            text: message,
+            duration: duration,
+            type: type,
+        };
+
+        this.toaster.open(toasterProperties);
+        // this.toastCtrl.create(toasterProperties).then(t => { t.present(); });
+        // const toast = await this.toastCtrl.create(toasterProperties);
+        // toast.present();
+    }
 }

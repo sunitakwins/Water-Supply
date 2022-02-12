@@ -1,11 +1,8 @@
 import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
-import { appInitConfig } from './config';
-import { AppConfigService } from './services';
+import { ToastNotificationsModule } from 'ngx-toast-notifications';
 
 
 
@@ -17,16 +14,16 @@ import { AppConfigService } from './services';
     BrowserAnimationsModule,
     HttpClientModule,
 
-    ToastrModule.forRoot({
-      timeOut: 3000,
-      positionClass: 'toast-bottom-right',
-      preventDuplicates: true,
-    })
+    // Toaster
+    ToastNotificationsModule.forRoot({
+      preventDuplicates: true
+    }),
   ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    ToastNotificationsModule
   ],
   providers: [
     // {

@@ -68,7 +68,8 @@
           <div class="dbRightCol" [hidden] ="!showExcelIcon">
             <div class="iconsList">
               <button class="btn" [matTooltip]="'Export as CSV'|translate" (click)="importAsXlsx()"
-                [disabled]="dataList.length==0" ng-class="{not-allowed: tableData.length==0}">
+                 ng-class="{not-allowed: tableData.length==0}">
+                 <!-- [disabled]="dataList.length==0" -->
                 <img src="assets/Icons/csv.svg" alt="image">
               </button>
               <span>{{'common.CSVOutput'| translate}}</span>

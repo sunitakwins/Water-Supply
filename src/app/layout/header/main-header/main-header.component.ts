@@ -203,8 +203,7 @@ export class MainHeaderComponent implements OnInit {
 
   logOut() {
      
-    // this.authService.logout();
-    sessionStorage.clear();
+    this.authService.logout();
     this.router.navigateByUrl('');
     // sessionStorage.removeItem("token");
     // this.todoService.setSelectedCity('', 0);
