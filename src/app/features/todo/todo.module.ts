@@ -13,17 +13,20 @@ import { SensorReportsComponent } from './components/sensor-reports/sensor-repor
 import { DatePipe } from '@angular/common';
 import {NgxSpinnerModule} from 'ngx-spinner';
 import { AreaComponent } from './components/area/area.component';
+import { LayoutModule } from './../../layout/layout.module';
+
 
 @NgModule({
   declarations: [ GraphComponent, TrendComponent, AlarmComponent, SensorReportsComponent, AreaComponent],
   imports: [
-    NgxPaginationModule,
+NgxPaginationModule,
     CommonModule,
     ReactiveFormsModule,
     TodoRoutingModule,
     SharedModule,
     ChartsModule,
-    NgxSpinnerModule
+    NgxSpinnerModule,
+    LayoutModule
   ],
   exports: [ AlarmComponent, GraphComponent, TrendComponent, SensorReportsComponent],
   providers: [DatePipe]

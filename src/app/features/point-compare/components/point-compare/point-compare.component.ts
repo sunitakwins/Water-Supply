@@ -29,7 +29,7 @@ export class PointCompareComponent implements OnInit {
       this.sensorName = res.sensorname; this.sensorId = res.mainSensorid;
     });
   
-    console.log('SSSS', this.currentLanguage);
+    // console.log('SSSS', this.currentLanguage);
   }
 
   onChange(date: Date) { }

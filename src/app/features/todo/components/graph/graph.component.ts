@@ -475,6 +475,7 @@ export class GraphComponent implements OnInit {
     this.turbidityArray = this.turbidityArray.map((i: any) => Number(i));
     this.turbidityAverage = (this.turbidityArray.reduce((acc: any, cur: any) => acc + cur, 0)) / this.turbidityArray.length;
     // this.turbidityAverage  = this.turbidityAverage.toFixed(1)
+    
     /*TESTING SAMPLE CODE STARTS*/
     this.seaWaterElectricalConductivityArray = this.sensorsFilteredData.map((x: any) => x.saltwaterConductivity);
     this.seaWaterElectricalConductivityAverage = (this.seaWaterElectricalConductivityArray.reduce((acc: any, cur: any) => acc + cur, 0)) / this.seaWaterElectricalConductivityArray.length;
@@ -485,14 +486,11 @@ export class GraphComponent implements OnInit {
     this.widgetsData = [
       { name: 'Water Quantity', value: this.waterQuantityAverage.toFixed(3), unit: 'gpm' },
       { name: 'Water Level', value: this.waterLevelAverage.toFixed(3), unit: 'm' },
-
       { name: 'Freshwater Electrical Conductivity', value: this.freshwaterConductivityAverage.toFixed(3), unit: 'μS/cm' },
       { name: 'Seawater Electrical Conductivity', value: this.seaWaterElectricalConductivityAverage.toFixed(3), unit: 'ms/cm' },
       { name: 'Water Temperature', value: this.waterTemperatureAvearage.toFixed(3), unit: '°C' },
       { name: 'Turbidity', value: this.turbidityAverage.toFixed(1), unit: 'degree' },
       { name: 'Battery Voltage',value: this.batteryVoltageAverage.toFixed(3),unit: 'V'},
-
-
     ];
   }
 

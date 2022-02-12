@@ -2,13 +2,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
-import { HeaderComponent } from './components/header/header.component';
 import { RouterModule } from '@angular/router';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { ToastrModule } from 'ngx-toastr';
 import { AngularDropdownModule } from 'angular-dropdown';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -31,7 +28,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [HeaderComponent, SidebarComponent, MainDropdownComponent],
+  declarations: [ MainDropdownComponent],
   imports: [
     /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -73,8 +70,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
     MaterialModule,
-    HeaderComponent,
-    SidebarComponent,
     RouterModule,
     AngularDropdownModule,
     TranslateModule,

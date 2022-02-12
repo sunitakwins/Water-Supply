@@ -12,10 +12,9 @@ const routes: Routes = [
   },
   {
     path: 'point-selection',
-    loadChildren: () =>import('./features/alarm-summary/alarm-summary.module').then((m) => m.AlarmSummaryModule),
+    loadChildren: () =>import('./features/point-selection/point-selection.module').then((m) => m.PointSelectionModule),
     canActivate: [AuthGuard]
   },
-
   {
     path: 'point-compare',
     loadChildren: () =>import('./features/point-compare/point-compare.module').then((m) => m.PointCompareModule),
@@ -42,14 +41,6 @@ const routes: Routes = [
   },
 
   // ===============================================
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () =>
-  //     import('./features/dashboard/dashboard.module').then(
-  //       (m) => m.DashboardModule
-  //     ),
-  //     canActivate: [AuthGuard]
-  // },
   {
     path: 'db',
     loadChildren: () =>

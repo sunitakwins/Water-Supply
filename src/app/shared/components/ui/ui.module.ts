@@ -14,7 +14,8 @@ import { PageLoaderComponent } from './page-loader/page-loader.component';
   ],
   exports :[
     LoaderComponent,
-    PageLoaderComponent
+    PageLoaderComponent,
+    NgxSpinnerModule
   ]
 })
 export class UiModule { }

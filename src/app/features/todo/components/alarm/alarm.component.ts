@@ -441,7 +441,7 @@ newDAta :any
     this.todoService.getAlertsByFilterDate(this.currentSensorId , selectedDate).subscribe((response: any) => {
       
       this.tableData = [];     
-  this.tableData = response.alertResponses
+      this.tableData = response.alertResponses
       this.spinner.hide();
     });
   }

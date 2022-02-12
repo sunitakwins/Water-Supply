@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpService, LocalStorageService } from '.';
+import { EventService, HttpService, LocalStorageService } from '.';
 import { StorageKeys } from '../config';
 import { LoginResponseModel } from '../models';
 
@@ -11,6 +11,7 @@ export class AuthService {
 
   constructor(
     private router: Router,
+    private eventService :EventService,
     // private httpService: HttpService,
     // private appConfigService: AppConfigService,
     private localStorageService: LocalStorageService
@@ -192,5 +193,23 @@ clearStorage() {
   // "SaveABR", "SubmitABR", "PendingByGOT", "ProcessedByGOT", "RejectedByGOT", "RowFilters", "ColumnFilters",
   // ]
 
-  
+  getselectedDatelang(){
+    const lang = sessionStorage.getItem("lang")
+    let selectedLanguage
+    this.eventService.currentLanguage.subscribe((data: any) => {
+        if(data == 'jp'){
+          return selectedLanguage = data
+        }else if(data == 'en'){
+          return selectedLanguage = data
+        }else{
+          if(lang){
+            if( lang == 'en'){
+              return selectedLanguage = lang;
+            }if( lang == 'jp'){
+              return selectedLanguage = lang;
+            }
+          }
+        }
+      });
+   }
 }

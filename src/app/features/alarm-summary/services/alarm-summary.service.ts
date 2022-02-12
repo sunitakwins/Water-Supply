@@ -19,5 +19,12 @@ export class AlarmSummaryService {
     .set('mainSensorId',`${id}`)
       return this.httpService.get<AlarmSummaryResponseModel>(this.alertApiEndPoints.alertListByMainSensorId, {params});
   }
+
+  getAlertByMainSensorIdDate(data : any): Observable<any>{
+    const params = new HttpParams()
+    .set('mainSensorId',`${data.mainSensorId}`)
+    .set('date',`${data.selectedDate}`)
+    return this.httpService.get<AlarmSummaryResponseModel>(this.alertApiEndPoints.alertListByMainSensorIdDate, {params});
+  }
   
 }

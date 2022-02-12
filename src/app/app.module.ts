@@ -10,7 +10,6 @@ import { DashboardModule } from './features/dashboard/dashboard.module';
 import { SharedModule } from './shared/shared.module';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { CoreModule } from './core/core.module';
-import { LayoutComponent } from './features/layout/layout.component';
 import { DatePipe } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -20,7 +19,6 @@ export function createTranslateLoader(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutComponent
   ],
   imports: [
     HttpClientModule,
