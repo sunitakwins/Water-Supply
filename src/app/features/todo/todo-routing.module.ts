@@ -21,7 +21,7 @@ const routes: Routes = [
         component: AlarmComponent
       },
       {
-        path: 'point-selectionn',
+        path: 'point-detailn',
         component: GraphComponent
       },
       {

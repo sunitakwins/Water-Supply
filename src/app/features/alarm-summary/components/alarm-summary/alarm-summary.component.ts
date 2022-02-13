@@ -43,11 +43,11 @@ export class AlarmSummaryComponent implements OnInit {
   }
 
   getAlertListData(id: string) {
-    this.loaderService.showSpinner();
+    // this.loaderService.showSpinner();
     this.alarmSummary.getAlertByMainSensorId(id).subscribe((res :any) => {
       this.alertDataList = res.alertResponses;
       this.sendFilterData(this.alertDataList);
-      this.loaderService.hideSpinner();
+      // this.loaderService.hideSpinner();
     })
   }
 

@@ -11,8 +11,8 @@ const routes: Routes = [
     canActivate: [ForwardGuard]
   },
   {
-    path: 'point-selection',
-    loadChildren: () =>import('./features/point-selection/point-selection.module').then((m) => m.PointSelectionModule),
+    path: 'point-detail',
+    loadChildren: () =>import('./features/point-detail/point-detail.module').then((m) => m.PointDetailModule),
     canActivate: [AuthGuard]
   },
   {
@@ -26,7 +26,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'sensor-reports', 
+    path: 'reports', 
     loadChildren: () => import('./features/reports/reports.module').then((m) => m.ReportsModule),
     canActivate: [AuthGuard]
   },

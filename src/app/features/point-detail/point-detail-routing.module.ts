@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from 'src/app/layout/layouts';
-import { PointSelectionComponent } from './components/point-selection/point-selection.component';
+import { PointDetailComponent } from './components/point-detail/point-detail.component';
+
 
 const routes: Routes = [
   {
@@ -10,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: PointSelectionComponent
+        component: PointDetailComponent
       }
     ]
   }
@@ -20,4 +21,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
 exports: [RouterModule]
 })
-export class PointSelectionRoutingModule { }
+export class PointDetailRoutingModule { }

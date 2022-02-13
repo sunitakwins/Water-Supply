@@ -22,8 +22,10 @@ export const ApiEndpoints = {
     },
     WaterFlow : {
         waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates',
-         
     },
+    Maintenance : {
+        MaintenanceDeatilsByMainSensorId : 'Maintenance/getMaintenanceByMainSensorId'
+    }
     
 
 

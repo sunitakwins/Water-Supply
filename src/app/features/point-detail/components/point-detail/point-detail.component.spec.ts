@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PointSelectionComponent } from './point-selection.component';
+import { PointSelectionComponent } from './point-detail.component';
 
 describe('PointSelectionComponent', () => {
   let component: PointSelectionComponent;
