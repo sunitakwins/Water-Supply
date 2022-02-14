@@ -29,11 +29,7 @@
     font-size: 12px;
   }
 }
-.commonBtn {
-  background-color: #00aadd;
-  color: #fff;
-  padding: 0px 25px;
-}
+
 
 .example-chip-list {
   width: 100%;
@@ -77,4 +73,38 @@
       display: none;
     }
   }
+}
+.showDateDiv{
+    // border: 1px solid #eee;
+    padding: 15px 12px;
+    // border-radius: 4px;
+    // box-shadow: 0 0px 2px rgb(0 0 0 / 10%);
+    position: relative;
+    .icon {
+      position: absolute;
+      right: 0;
+      // top: 50%;
+      // transform: translateY(-50%);
+      span {
+        color: #777;
+      }
+    }
+    form {
+      display: flex;
+      align-items: center;
+      .dropdwnInput {
+        margin: 0 12px 0 0;
+        input {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.42);
+          border-top: 0;
+          border-left: 0;
+          border-right: 0;
+          border-radius: 0;
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+    }
 }

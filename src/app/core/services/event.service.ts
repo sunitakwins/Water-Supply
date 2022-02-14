@@ -14,5 +14,5 @@ constructor() { }
 
  currentLanguage = new BehaviorSubject<any>({});
 
- 
+ selectedDateDetails = new Subject<any>();
 }

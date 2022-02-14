@@ -1,13 +1,5 @@
 {
   "common": {
-    "district": "District",
-    "municipality ": "Municipality",
-    "pointName": "Point name",
-    "CSVOutput": "CSV Output",
-    "dataNotAvailable": "Data is not available",
-    "fromDateTime": "From Date & Time",
-    "toDateTime": "To Date & Time",
-    "submit": "Submit",
     "Urayasu": "Urayasu",
     "Koto Ward": "Koto Ward",
     "Shibuya Ward": "Shibuya Ward",
@@ -18,7 +10,21 @@
     "Eastern": "Eastern",
     "1-chome": "1-chome",
     "2-chome": "2-chome",
-    "3-chome": "3-chome"
+    "3-chome": "3-chome",
+
+    "district": "District",
+    "municipality ": "Municipality",
+    "pointName": "Point name",
+    "CSVOutput": "CSV Output",
+    "dataNotAvailable": "Data is not available",
+    "fromDateTime": "From Date & Time",
+    "toDateTime": "To Date & Time",
+    "submit": "Submit",
+    "exportAsCSV": "Export as CSV",
+    "notifications": "Notifications",
+    "markAllAsRead": "Mark all as read",
+    "admin": "Admin",
+    "logout": "Logout"
   },
   "authentication": {
      "Welcome": "Welcome"

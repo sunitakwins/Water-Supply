@@ -1,5 +1,11 @@
 <section>
-  <app-main-dropdown [alertSummary]="false" [showExcelIcon]="false"></app-main-dropdown>
+  <app-main-dropdown [alertSummary]="false" [showExcelIcon]="false" [showDateInputs] ="true">
+
+  
+
+  </app-main-dropdown>
+  
+
 
   <div class="widgets">
     <!-- [hidden]="currentView!=='graph'" -->
@@ -14,22 +20,22 @@
         </div> -->
   </div>
 
-  <mat-tab-group (selectedTabChange)="tabChanged($event)" class="tab-group">
+  <mat-tab-group (selectedTabChange)="tabChanged($event)" class="tab-group" *ngIf ="sensorId">
 
     <mat-tab [label]="'Graphical View'|translate">
-      <app-graphical-view> </app-graphical-view>
+      <app-graphical-view [sensorId] ="sensorId"> </app-graphical-view>
     </mat-tab>
 
     <mat-tab [label]="'List View'|translate">
-      <app-list-view></app-list-view>
+      <app-list-view [sensorId] ="sensorId"></app-list-view>
     </mat-tab>
 
     <mat-tab [label]="'Alarm Setting'|translate">
-      <app-alarm-settings></app-alarm-settings>
+      <app-alarm-settings [sensorId] ="sensorId"></app-alarm-settings> 
     </mat-tab>
 
     <mat-tab [label]="'Maintenance Settings'|translate">
-      <app-maintenance-settings></app-maintenance-settings>
+      <app-maintenance-settings [sensorId] ="sensorId" [sensorName] ="sensorName"></app-maintenance-settings>
     </mat-tab>
 
   </mat-tab-group>
@@ -242,79 +248,5 @@
         </div>
       </mat-tab> -->
 
-  <!--SAMPLE CODE STARTS-->
-  <!-- <mat-tab [label]="'Maintenance Settings'|translate">
-        <div>
-          <div class="sensorSettings">
-            <div class="row">
-              <div class="col-sm-12 col-sm-12">
-                <h2>{{ currentPointName }}</h2>
-              </div>
-            </div>
-          </div>
-    
-          <div class="row">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="settings">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>{{'Recording cycle(initial value) in min'|translate}}</label>
-                          <input [value]="recordingCycleInitial" class="form-control"
-                            placeholder="Recording cycle (initial value)" type="number" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>{{'Transmission cycle (initial value) in min'|translate}}</label>
-                          <input [value]="transmissionCycleInitial" class="form-control"
-                            placeholder="Transmission cycle (initial value)" type="number" readonly>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>{{'Recording cycle in min'|translate}}</label>
-                          <input [value]="recordingCycle" class="form-control" placeholder="Recording cycle" type="number"
-                            min="1" max="1440" #recording_cycle>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>{{'Transmission cycle in min'|translate}}</label>
-                          <input [value]="transmissionCycle" class="form-control" placeholder="Transmission cycle"
-                            type="number" min="1" max="1440" #transmission_cycle>
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <label>{{'Alert level'|translate}}</label>
-                          <input [value]="alertLevel" class="form-control" placeholder="Alert Level" type="number" min="1"
-                            max="10" #alert_level>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-    
-                <div class="col-sm-12 text-right">
-    
-                  <button (click)="returnInitial(recording_cycle.value,transmission_cycle.value,alert_level.value)"
-                    [disabled]="pointName == ''" class="btn commonBtn mr-2" type="text">{{'Return to previous
-                    value'|translate}}
-                  </button>
-    
-                  <button class="btn commonBtn" type="text" [disabled]="pointName == ''"
-                    (click)="updateMaintenance(recording_cycle.value,transmission_cycle.value,alert_level.value)">{{'Save'|translate}}
-                  </button>
-                </div>
-                <div class="col-sm-12 text-right">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </mat-tab> -->
-  <!-- </mat-tab-group> -->
+     
 </section>

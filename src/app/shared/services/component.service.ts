@@ -16,19 +16,19 @@ export class ComponentService {
 
 constructor(private httpService: HttpService) { }
 
-getCitiesByUserId(id : number): Observable<any>{
+getCitiesByUserId(id : string): Observable<any>{
   const params = new HttpParams()
   .set('userId',`${id}`)
     return this.httpService.get(this.cityApiEndPoints.UserCitiesList, {params});
 }
 
-getAreasByCity(id : number): Observable<any>{
+getAreasByCity(id : string): Observable<any>{
   const params = new HttpParams()
   .set('cityId',`${id}`)
     return this.httpService.get(this.areaApiEndPoints.CityAreasList, {params});
 }
 
-getAreaSensorByArea(id : number) : Observable<any>{
+getAreaSensorByArea(id : string) : Observable<any>{
   const params = new HttpParams()
   .set('areaId',`${id}`)
     return this.httpService.get(this.sensorApiEndPoints.AreaSensorsList, {params});

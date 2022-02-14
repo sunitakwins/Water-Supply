@@ -1,13 +1,5 @@
 {
   "common": {
-    "district": "都市",
-    "municipality ": "自治体 ",
-    "pointName": "地点",
-    "CSVOutput": "CSV出力 ",
-    "dataNotAvailable": "データーはありません",
-    "fromDateTime": "日付と時刻から",
-    "toDateTime": "日付と時刻",
-    "submit": "絞り込み",
     "Urayasu": "浦安",
     "Koto Ward": "江東区",
     "Shibuya Ward": "渋谷区",
@@ -18,7 +10,21 @@
     "Eastern": "東部",
     "1-chome": "1丁目",
     "2-chome": "二丁目",
-    "3-chome": "3丁目"
+    "3-chome": "3丁目",
+
+    "district": "都市",
+    "municipality ": "自治体 ",
+    "pointName": "地点",
+    "CSVOutput": "CSV出力 ",
+    "dataNotAvailable": "データーはありません",
+    "fromDateTime": "日付と時刻から",
+    "toDateTime": "日付と時刻",
+    "submit": "絞り込み",
+    "exportAsCSV": "CSVとしてエクスポート",
+    "notifications": "通知",
+    "markAllAsRead": "すべて既読にする",
+    "admin": "管理者",
+    "logout" : "ログアウト"
   },
   "authentication": {
     "Welcome": "ようこそ"

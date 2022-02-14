@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PointDetailService } from './../../../services/point-detail.service';
 
 @Component({
   selector: 'app-list-view',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-view.component.scss']
 })
 export class ListViewComponent implements OnInit {
+  @Input() sensorId: string = '';
+  @Input() listData: any = [];
 
-  constructor() { }
+
+  constructor( 
+    private pointDetailService : PointDetailService) { }
 
   ngOnInit(): void {
+    debugger
+  this.listData;
   }
+
+
 
 }

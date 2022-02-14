@@ -104,3 +104,11 @@
       }
     }
   }  
+
+  ::ng-deep .mat-tab-group {
+    .mat-tab-body-wrapper {
+      .mat-tab-body-content {
+        padding: 15px;
+      }
+    }
+  }

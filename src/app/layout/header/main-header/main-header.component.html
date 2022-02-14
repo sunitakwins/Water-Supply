@@ -21,12 +21,12 @@
                   [matMenuTriggerFor]="menu5"><i class="fa fa-bell" aria-hidden="true"></i></button>
                 <perfect-scrollbar>
                   <mat-menu #menu5="matMenu" class="shownotifications">
-                    <h6>{{'Notifications'|translate}}
-                      <p (click)="markAllRead()">{{'Mark all as read'|translate}}</p>
+                    <h6>{{'common.notifications'|translate}}
+                      <p (click)="markAllRead()">{{'common.markAllAsRead'|translate}}</p>
                     </h6>
                     <ul>
                       <li [class.noData]="alertsArray.length==0" *ngIf="alertsArray.length==0">
-                        <p>{{'Data is not available'|translate}}</p>
+                        <p>{{'common.dataNotAvailable'|translate}}</p>
                       </li>
                       <div *ngIf="alertsArray.length>0">
                         <li *ngFor="let data of alertsArray">
@@ -49,12 +49,12 @@
                   <label mat-menu-item class="profile-item">
                     <div>
                       <i class="fa fa-user-circle-o adminIcon" aria-hidden="true"></i>
-                      <div class="adminName">{{'admin'|translate}}</div>
+                      <div class="adminName">{{'common.admin'|translate}}</div>
                     </div>
                   </label>
                   <!-- <button mat-menu-item><i class="fa fa-user" aria-hidden="true"></i>{{'My profile'|translate}}</button> -->
                   <button mat-menu-item (click)="logOut()"><i class="fa fa-sign-out"
-                      aria-hidden="true"></i>{{'Logout'|translate}}</button>
+                      aria-hidden="true"></i>{{'common.logout'|translate}}</button>
                 </mat-menu>
               </div>
             </div>

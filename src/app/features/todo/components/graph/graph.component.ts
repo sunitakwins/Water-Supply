@@ -1727,7 +1727,6 @@ export class GraphComponent implements OnInit {
             });
 
     }
-
   }
 
   callThresholdFunc(): void {

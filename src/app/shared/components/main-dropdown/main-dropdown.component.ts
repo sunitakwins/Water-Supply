@@ -4,9 +4,9 @@ import { TranslateService } from '@ngx-translate/core';
 import { ExportToCsv } from 'export-to-csv-file';
 
 import { CookieService } from 'ngx-cookie-service';
-import { Observable } from 'rxjs';
 import { Messages } from 'src/app/core/config';
-import { EventService, ToasterService } from 'src/app/core/services';
+import { WaterFlowRequestModel } from 'src/app/core/models';
+import { EventService, ToasterService, AuthService } from 'src/app/core/services';
 import { ComponentService } from '../../services/component.service';
 
 @Component({
@@ -17,6 +17,7 @@ import { ComponentService } from '../../services/component.service';
 export class MainDropdownComponent implements OnInit {
   @Input() alertSummary: boolean = false;
   @Input() showExcelIcon: boolean = false;
+  @Input() showDateInputs: boolean = false;
 
   public readonly Message = Messages;
   
@@ -26,6 +27,11 @@ export class MainDropdownComponent implements OnInit {
   dataList: any = [];
   filteredCSVData: any = [];
   sensorName: string = '';
+  areaId : string = '';
+  sensorId : string = '';
+
+  selectedFromDate: Date = new Date();
+  selectedToDate: Date = new Date();
 
   constructor(
     private commonService: ComponentService,
@@ -33,19 +39,21 @@ export class MainDropdownComponent implements OnInit {
     private cookieService: CookieService,
     private datePipe: DatePipe,
     private toaster : ToasterService,
+    private authService : AuthService,
     private translate: TranslateService) { }
 
   ngOnInit() {
-    this.getCities();
-
+    let userData = this.authService.getUserDetails();
     this.eventService.alertSummaryData.subscribe(data => {
       this.dataList = data;
     });
+   
+    this.getCities(userData.id);
   }
 
-  getCities() {
-    let id = +1;
-    this.commonService.getCitiesByUserId(id).subscribe(cityData => {
+  // need to change this code
+  getCities(userId : string) {
+    this.commonService.getCitiesByUserId(userId).subscribe(cityData => {
       this.userCities = cityData;
     })
   }
@@ -55,26 +63,35 @@ export class MainDropdownComponent implements OnInit {
     if (dropdownName == 'city') {
       let cityId = object.cityid; this.getAreas(cityId); return;
     } else if (dropdownName == 'area') {
-      let areaId = object.areaid; this.getSensorPoints(areaId); return;
+      this.areaId = object.areaid; this.getSensorPoints(this.areaId); return;
     } else {
-      this.sensorName = object.sensorname;
+      this.sensorName = object.sensorname; this.sensorId = object.mainsensorId;
       this.eventService.sensorIdDetails.next(object);
       return;
-    }
+    } 
   }
 
 
-  getAreas(id: number) {
+  getAreas(id: string) {
     this.commonService.getAreasByCity(id).subscribe(areaData => {
       this.cityAreas = areaData;
     })
   }
 
 
-  getSensorPoints(id: number) {
+  getSensorPoints(id: string) {
     this.commonService.getAreaSensorByArea(id).subscribe(sensorData => {
       this.sensorListData = sensorData;
     })
+  }
+
+  onSubmit(){
+    const dateTimeData: WaterFlowRequestModel = {
+      mainSensorId: this.sensorId,
+      fromDate : this.datePipe.transform(this.selectedFromDate,'yyyy-MM-dd HH:mm') || '',
+      toDate : this.datePipe.transform(this.selectedToDate,'yyyy-MM-dd HH:mm') || '',
+    };
+     this.eventService.selectedDateDetails.next(dateTimeData);
   }
 
   // Excel import code
@@ -111,5 +128,8 @@ export class MainDropdownComponent implements OnInit {
     }
 
   }
+
+
+
 
 }

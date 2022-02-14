@@ -29,12 +29,6 @@ export class AuthService {
   logout() {
     this.clearStorage(); 
     this.router.navigateByUrl(''); 
-    // return this.httpService.post(ApiEndpoints.Token.Revoke, null).pipe(
-    //   tap(() => {
-    //     this.clearStorage();
-    //     this.router.navigate(['']);
-    //   })
-    // );
   }
 
   isAuthenticated(): boolean {
@@ -58,11 +52,8 @@ setUserDetails(userData: LoginResponseModel) {
 
 clearStorage() {
   this.localStorageService.remove(StorageKeys.AuthToken);
+  this.localStorageService.remove(StorageKeys.UserDetails);
   this.localStorageService.clear();
-
-  // this.localStorageService.remove(StorageKeys.RefreshToken);
-  // this.localStorageService.remove(StorageKeys.UserCurrentRole);
-  // this.sessionStorageService.clear();
 }
 
   // getAllRoles(): Role[] {
@@ -113,14 +104,11 @@ clearStorage() {
   //   return this.localStorageService.get(StorageKeys.RefreshToken);
   // }
 
-  // getUserDetails() {
-  //   const user = this.isMimicUserSessionExist() ?
-  //     this.sessionStorageService.get(StorageKeys.UserDetails) :
-  //     this.localStorageService.get(StorageKeys.UserDetails);
-
-  //   if (user) return JSON.parse(user);
-  //   return null;
-  // }
+  getUserDetails() {
+    const user = this.localStorageService.get(StorageKeys.UserDetails);
+    if (user) return JSON.parse(user);
+    return null;
+  }
 
   // getUserCurrentRole() {
   //   if (this.isMimicUserSessionExist()) return this.sessionStorageService.get(StorageKeys.UserCurrentRole);

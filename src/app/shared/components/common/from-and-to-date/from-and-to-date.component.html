@@ -1,0 +1,31 @@
+<div class="row" *ngIf="this.sensorId">
+    <div class="col-sm-12">
+      <div class="sensorData d-flex" >
+        <form>
+          <div class="form-group dropdwnInput">
+            <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedFromDate"
+              [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
+              placeholder="{{'common.fromDateTime' | translate}}" readonly>
+            <owl-date-time #fromDatTime></owl-date-time>
+          </div>
+          <div class="form-group dropdwnInput">
+            <input #todatetime id="todatetime" name="todatetime" [(ngModel)]="selectedToDate"
+              [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime"
+              placeholder="{{'common.toDateTime'| translate}}" readonly>
+            <owl-date-time #toDateTime></owl-date-time>
+          </div>
+          <div class="form-group dropdwnFld" *ngIf ="showPropertyDropDown">
+            <mat-form-field appearance="fill">
+              <!-- <mat-label>Value</mat-label> -->
+              <mat-select [(ngModel)]="selectedValue" name="food" required>
+                <mat-option *ngFor="let value of FormValueArray" [value]="value">
+                  {{value | translate }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <button class="btn commonBtn" type="submit" (click)="onSubmit()">{{'common.submit' | translate}}</button>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -1,10 +1,13 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactory, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthenticationService } from '../../services/authentication.service';
 import { LoginRequest } from 'src/app/core/models';
+import { AuthService } from 'src/app/core/services';
+import { ComponentService } from 'src/app/shared/services/component.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -18,10 +21,12 @@ export class LoginComponent implements OnInit {
 
   selectedLangugae: string = '';
 
+  userCityListData = new Subject<any>();
 
   constructor(
     public authenticationService: AuthenticationService, 
     private router: Router,
+    private authService :AuthService,
     private cookieService: CookieService,
     private translate: TranslateService) {
   }
@@ -43,7 +48,7 @@ export class LoginComponent implements OnInit {
     //   // );
     // } else {
       this.authenticationService.authenticate(this.loginRequest).subscribe(response => {
-        
+        //  this.getCityListData();
         // if (response.isValid === true) {
           // sessionStorage.setItem('token', response.token);
           // this.cookieService.set('userId', response.id);
@@ -62,6 +67,15 @@ export class LoginComponent implements OnInit {
       });
     // }
   }
+
+
+  // getCityListData(){
+  //   let userData = this.authService.getUserDetails();
+  //   this.commonService.getCitiesByUserId(userData.id).subscribe(cityData => {
+  //     this.userCities = cityData;
+  //     this.userCityListData.next(cityData);
+  //   })
+  // }
 
 
   // to get default language

@@ -1,0 +1,42 @@
+.settings {
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 0 0 20px 0;
+  
+    h6 {
+      position: relative;
+      margin: 0 0 0 0;
+      top: -25px;
+      background: #fff;
+      padding: 0 7px;
+      font-size: 16px;
+      color: #00aadd;
+      display: inline-block;
+    }
+  
+    input {
+      &::placeholder {
+        font-size: 12px;
+      }
+    }
+  }
+  
+  .settings-full-width {
+    width: 100%;
+  }
+  
+  
+  .sensorSettings {
+    h2 {
+      color: #00aadd;
+      margin: 0 0 24px 0;
+    }
+  
+    .form-group {
+      label {
+        margin: 0;
+        font-size: 13px;
+      }
+    }
+  }

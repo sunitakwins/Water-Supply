@@ -41,14 +41,14 @@ const routes: Routes = [
   },
 
   // ===============================================
-  {
-    path: 'db',
-    loadChildren: () =>
-      import('./features/todo/todo.module').then(
-        (m) => m.TodoModule
-      ),
-    canActivate: [AuthGuard]
-  },
+  // {
+  //   path: 'db',
+  //   loadChildren: () =>
+  //     import('./features/todo/todo.module').then(
+  //       (m) => m.TodoModule
+  //     ),
+  //   canActivate: [AuthGuard]
+  // },
 ];
 
 @NgModule({

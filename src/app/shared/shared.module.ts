@@ -20,6 +20,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
 
 import { UiModule } from './components/ui/ui.module';
 import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
+import { FromAndToDateComponent } from './components/common/from-and-to-date/from-and-to-date.component';
 
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
@@ -28,7 +29,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [ MainDropdownComponent],
+  declarations: [ MainDropdownComponent, FromAndToDateComponent],
   imports: [
     /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -77,7 +78,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     PerfectScrollbarModule,
 
     UiModule,
-    MainDropdownComponent
+    MainDropdownComponent,
+    FromAndToDateComponent
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
