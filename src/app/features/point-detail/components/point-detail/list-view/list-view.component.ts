@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PointDetailService } from './../../../services/point-detail.service';
+import { EventService } from './../../../../../core/services/event.service';
+import { WaterFlowRequestModel } from 'src/app/core/models';
 
 @Component({
   selector: 'app-list-view',
@@ -9,16 +11,19 @@ import { PointDetailService } from './../../../services/point-detail.service';
 export class ListViewComponent implements OnInit {
   @Input() sensorId: string = '';
   @Input() listData: any = [];
+  @Input() graphListData : any = [];
+   
+  selectedDates : any = [];
 
+  constructor() { }
 
-  constructor( 
-    private pointDetailService : PointDetailService) { }
-
-  ngOnInit(): void {
-    debugger
-  this.listData;
+  ngOnInit() {
+     
   }
 
+  ngOnChanges(){
+    this.graphListData;
+  }
 
 
 }

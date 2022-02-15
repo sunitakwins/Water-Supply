@@ -1,0 +1,79 @@
+.sensorSettings {
+    h2 {
+      color: #00aadd;
+      margin: 0 0 24px 0;
+    }
+  
+    .form-group {
+      label {
+        margin: 0;
+        font-size: 13px;
+      }
+    }
+}
+
+.settings {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 0 0 20px 0;
+
+  h6 {
+    position: relative;
+    margin: 0 0 0 0;
+    top: -25px;
+    background: #fff;
+    padding: 0 7px;
+    font-size: 16px;
+    color: #00aadd;
+    display: inline-block;
+  }
+
+  input {
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+}
+
+.settings-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+  
+.settings-full-width {
+    width: 100%;
+}
+
+
+.table {
+  thead {
+    th {
+      border-bottom: 1px solid #dee2e6;
+      font-size: 13px;
+      color: #777;
+      line-height: 17px;
+      border-top: 0;
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        font-size: 13px;
+        color: #818181;
+      }
+    }
+  }
+}
+
+.custom-thead {
+  background-color: #00AADD;
+  text-align: center;
+
+}
+
+.custom-thead tr th {
+  color: white;
+}

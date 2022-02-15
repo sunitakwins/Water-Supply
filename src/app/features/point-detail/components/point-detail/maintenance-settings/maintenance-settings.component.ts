@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PointDetailService } from './../../../services/point-detail.service';
-import { MaintanenceRequestModel, MaintanenceResponseModel } from './../../../../../core/models/point-detail/point-detail.model';
+import { MaintanenceResponseModel } from '../../../../../core/models/point-detail/maintanence.model';
 
 @Component({
   selector: 'app-maintenance-settings',
@@ -11,80 +11,83 @@ export class MaintenanceSettingsComponent implements OnInit {
   @Input() sensorId: string = '';
   @Input() sensorName: string = '';
 
-  @Input() maintanenceRequest : MaintanenceRequestModel = {}; 
-  maintanenceData : MaintanenceResponseModel[] = [];
+  maintanenceData : MaintanenceResponseModel = {}; 
+
+  // maintanenceData : MaintanenceResponseModel[] = [];
   
 
   constructor(private pointDetailService : PointDetailService) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this.getMaintanenceData();
   }
 
   getMaintanenceData(){
     this.pointDetailService.getMaintanenceDetails(this.sensorId).subscribe(res =>{
-         this.maintanenceData = res;
+         this.maintanenceData = res[0];
     });
   }
 
   onSubmit(){
-    this.maintanenceRequest;
+    
+  }
+
+  returnToInitial(){
+   
   }
 
 
-  // returnInitial(recordingCycle: string, transmissionCycle: string, alertLevel: string): void {
-  //   if ((Number(this.recordingCycleInitial) === Number(recordingCycle)) && (Number(this.transmissionCycleInitial) === Number(transmissionCycle))) {
+  returnInitial(recordingCycle: string, transmissionCycle: string, alertLevel: string): void {
+    // if ((Number(this.recordingCycleInitial) === Number(recordingCycle)) && (Number(this.transmissionCycleInitial) === Number(transmissionCycle))) {
 
-  //   } else {
-  //     const data: any = sessionStorage.getItem('initialValues');
-  //     const initialValues = JSON.parse(data);
-  //     this.recordingCycle = initialValues.initialRecording;
-  //     this.transmissionCycle = initialValues.initialTransmission;
+    // } else {
+    //   const data: any = sessionStorage.getItem('initialValues');
+    //   const initialValues = JSON.parse(data);
+    //   this.recordingCycle = initialValues.initialRecording;
+    //   this.transmissionCycle = initialValues.initialTransmission;
 
-  //     const maintenanceData = {
-  //       id: this.sensorPrimaryId,
-  //       mainSensorId: this.currentSensorId.toString(),
-  //       number: 0,
-  //       name: this.pointName,
-  //       recordingCycle: this.recordingCycleInitial,
-  //       transmissionCycle: this.transmissionCycleInitial,
-  //       recordingCycleInitial: this.recordingCycleInitial,
-  //       transmissionCycleInitial: this.transmissionCycleInitial,
-  //       mode: 'auto',
-  //       updatedDate: moment(new Date()).format('dd-mm-YYYY'),
-  //       alertLevel
-  //     };
+    //   const maintenanceData = {
+    //     id: this.sensorPrimaryId,
+    //     mainSensorId: this.currentSensorId.toString(),
+    //     number: 0,
+    //     name: this.pointName,
+    //     recordingCycle: this.recordingCycleInitial,
+    //     transmissionCycle: this.transmissionCycleInitial,
+    //     recordingCycleInitial: this.recordingCycleInitial,
+    //     transmissionCycleInitial: this.transmissionCycleInitial,
+    //     mode: 'auto',
+    //     updatedDate: moment(new Date()).format('dd-mm-YYYY'),
+    //     alertLevel
+    //   };
 
-  //     this.todoService.getMaintenanceByMainSensorId(this.currentSensorId.toString()).subscribe((response: any) => {
+    //   this.todoService.getMaintenanceByMainSensorId(this.currentSensorId.toString()).subscribe((response: any) => {
 
-  //       this.recordingCycle = Number(response[0].recordingCycleInitial);
-  //       this.transmissionCycle = Number(response[0].transmissionCycleInitial);
-  //       this.currentMaintenaceid = response[0].id;
-  //            const maintenanceData = {
-  //         id: this.currentMaintenaceid,
-  //         mainSensorId: this.currentSensorId.toString(),
-  //         number: 0,
-  //         name: this.pointName,
-  //         recordingCycle: this.recordingCycleInitial,
-  //         transmissionCycle: this.transmissionCycleInitial,
-  //         recordingCycleInitial: this.recordingCycleInitial,
-  //         transmissionCycleInitial: this.transmissionCycleInitial,
-  //         mode: 'auto',
-  //         updatedDate: moment(new Date()).format('dd-mm-YYYY'),
-  //         alertLevel
-  //       };  
-  //       this.todoService.updateMaintenance(this.currentMaintenaceid, maintenanceData).subscribe((response: any) => {
-  //         this.snotifyService.success(this.translate.instant('Values set to initial successfully'), '', {
-  //           timeout: 7000,
-  //           showProgressBar: false,
-  //           closeOnClick: true,
-  //           pauseOnHover: true
-  //         });
-  //       });
-  //           });
-
-  //   }
-  // }
+    //     this.recordingCycle = Number(response[0].recordingCycleInitial);
+    //     this.transmissionCycle = Number(response[0].transmissionCycleInitial);
+    //     this.currentMaintenaceid = response[0].id;
+    //          const maintenanceData = {
+    //       id: this.currentMaintenaceid,
+    //       mainSensorId: this.currentSensorId.toString(),
+    //       number: 0,
+    //       name: this.pointName,
+    //       recordingCycle: this.recordingCycleInitial,
+    //       transmissionCycle: this.transmissionCycleInitial,
+    //       recordingCycleInitial: this.recordingCycleInitial,
+    //       transmissionCycleInitial: this.transmissionCycleInitial,
+    //       mode: 'auto',
+    //       updatedDate: moment(new Date()).format('dd-mm-YYYY'),
+    //       alertLevel
+    //     };  
+    //     this.todoService.updateMaintenance(this.currentMaintenaceid, maintenanceData).subscribe((response: any) => {
+    //       this.snotifyService.success(this.translate.instant('Values set to initial successfully'), '', {
+    //         timeout: 7000,
+    //         showProgressBar: false,
+    //         closeOnClick: true,
+    //         pauseOnHover: true
+    //       });
+    //     });
+    //  });
+  }
 
 
   // updateMaintenance(recordingCycle: string, transmissionCycle: string, alertLevel: string): void {

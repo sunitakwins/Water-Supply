@@ -9,7 +9,7 @@
 
   <div class="row mt-3">
     <div class="col-md-12">
-      <form #maintanenceForm="ngForm">
+      <form #maintanenceForm="ngForm" (ngSubmit)="maintanenceForm.valid ">
         <div class="row">
           <div class="col-sm-12">
             <div class="settings">
@@ -18,7 +18,7 @@
                   <div class="form-group">
                     <label>{{'Recording cycle(initial value) in min'|translate}}</label>
                     <input class="form-control" placeholder="Recording cycle (initial value)"
-                      #recordingCycleInitial="ngModel" [(ngModel)]="maintanenceRequest.recordingCycleInitial"
+                      #recordingCycleInitial="ngModel" [(ngModel)]="maintanenceData.recordingCycleInitial"
                       name="recordingCycleInitial" type="number" readonly>
                   </div>
                 </div>
@@ -26,7 +26,7 @@
                   <div class="form-group">
                     <label>{{'Transmission cycle (initial value) in min'|translate}}</label>
                     <input class="form-control" #transmissionCycleInitial="ngModel" name="transmissionCycleInitial"
-                      [(ngModel)]="maintanenceRequest.transmissionCycleInitial"
+                      [(ngModel)]="maintanenceData.transmissionCycleInitial"
                       placeholder="Transmission cycle (initial value)" type="number" readonly>
                   </div>
                 </div>
@@ -34,7 +34,7 @@
                   <div class="form-group">
                     <label>{{'Recording cycle in min'|translate}}</label>
                     <input class="form-control" placeholder="Recording cycle" type="number" min="1" max="1440"
-                      #recordingCycle="ngModel" name="recordingCycle" [(ngModel)]="maintanenceRequest.recordingCycle">
+                      #recordingCycle="ngModel" name="recordingCycle" [(ngModel)]="maintanenceData.recordingCycle">
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -42,14 +42,14 @@
                     <label>{{'Transmission cycle in min'|translate}}</label>
                     <input class="form-control" placeholder="Transmission cycle" type="number" min="1" max="1440"
                       #transmissionCycle="ngModel" name="transmissionCycle"
-                      [(ngModel)]="maintanenceRequest.transmissionCycle">
+                      [(ngModel)]="maintanenceData.transmissionCycle">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <label>{{'Alert level'|translate}}</label>
                     <input class="form-control" #alertLevel="ngModel" name="alertLevel"
-                      [(ngModel)]="maintanenceRequest.alertLevel" placeholder="Alert Level" type="number" min="1"
+                      [(ngModel)]="maintanenceData.alertLevel" placeholder="Alert Level" type="number" min="1"
                       max="10">
                   </div>
                 </div>
@@ -58,7 +58,7 @@
           </div>
 
           <div class="col-sm-12 text-right">
-            <button type ="submit" class="btn commonBtn mr-2" >
+            <button type ="button" class="btn commonBtn mr-2" (click) ="returnToInitial()" >
               {{'Return to previous value'|translate}}
             </button>
             <!-- (click)="returnInitial(recording_cycle.value,transmission_cycle.value,alert_level.value)" -->

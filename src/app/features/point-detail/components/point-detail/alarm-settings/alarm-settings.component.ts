@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { AlarmSettingResponseModel } from 'src/app/core/models/point-detail';
+import { PointDetailService } from '../../../services/point-detail.service';
 
 @Component({
   selector: 'app-alarm-settings',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alarm-settings.component.scss']
 })
 export class AlarmSettingsComponent implements OnInit {
-
-  constructor() { }
+  @Input() sensorId: string = '';
+  @Input() sensorName: string = '';
+  
+  alarmSettingData : AlarmSettingResponseModel = {}; 
+  
+  constructor(private pointDetailService : PointDetailService) { }
 
   ngOnInit(): void {
+     this.getAlarmSettingData(); 
   }
 
+  getAlarmSettingData(){
+    this.pointDetailService.getAlamSettingDetails(this.sensorId).subscribe(res =>{
+      // res.forEach(ele => {
+      //   this.
+      // });
+      this.alarmSettingData = res;
+    })
+  }
 }

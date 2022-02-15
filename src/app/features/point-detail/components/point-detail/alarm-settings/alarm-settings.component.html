@@ -1,1 +1,142 @@
-<p>alarm-settings works!</p>
+<div>
+    <div class="sensorSettings">
+      <div class="row">
+        <div class="col-sm-3 col-sm-3">
+          <h2>{{'Setting Of Rate'| translate}}</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <form #alarmSettingForm="ngForm" (ngSubmit)="alarmSettingForm.valid ">
+        <div class="row">
+            <div class="col-sm-12">
+              <div class="settings">
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Rate Of Change'|translate}} (%)</mat-label>
+                  </div>
+                  <div class="col-md-8">
+                      <input type ="number" class="form-control data-property-header" id="rateofchange" name ="rateOfChange" 
+                      #rateOfChange="ngModel" [(ngModel)]="alarmSettingData.rateOfChange" >
+                    <!-- <input type="number" class="form-control data-property-header" id="rateofchange"
+                      (keypress)="onSettingRateChange($event,'rateOfChange')" value="{{thresholdRateOfChange}}"
+                      [disabled]="currentSensorId===0" #rateofchange> -->
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Alarm Dead Zone'|translate}} (%)</mat-label>
+                  </div>
+                  <div class="col-md-8">
+                      <input type ="number" class="form-control data-property-header" id="rateofchange" name ="deadZone"
+                      #deadZone="ngModel" [(ngModel)]="alarmSettingData.deadZone">
+                    <!-- <input type="number" class="form-control data-property-header" id="thresholddeadzone"
+                      (keypress)="onSettingRateChange($event,'alarmDeadZone')" value="{{thresholdDeadZone}}"
+                      [disabled]="currentSensorId===0"> -->
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <div class="col-md-4">
+                    <mat-label class="data-property-header data-label">{{'Upper And Lower Limit Correction
+                      Width'|translate}} (%)
+                    </mat-label>
+                  </div>
+                  <div class="col-md-8">
+                      <input type ="number" class="form-control data-property-header" id="rateofchange" name ="upperAndLowerLimitCorrectionWidth"
+                      #upperAndLowerLimitCorrectionWidth="ngModel" [(ngModel)]="alarmSettingData.upperAndLowerLimitCorrectionWidth">
+                    <!-- <input type="number" class="form-control data-property-header" id="upperlowercorrectionwidth"
+                      (keypress)="onSettingRateChange($event,'correctionWidth')" value="{{thresholdCorrectionWidth}}"
+                      [disabled]="currentSensorId===0"> -->
+                  </div>
+                </div>
+  
+              </div>
+            </div>
+            <div class="col-sm-12">
+              <div class="settings">
+                <h6>{{'Value Setting'| translate}}</h6>
+                <div class="row">
+                  <table class="table">
+                    <thead class="custom-thead">
+                      <tr>
+                        <th scope="col">{{'Sensor Name'|translate}}</th>
+                        <th scope="col">{{'Current Figure'|translate}}</th>
+                        <th scope="col">{{'Upper Upper Limit'|translate}}</th>
+                        <th scope="col">{{'Upper Limit'|translate}}</th>
+                        <th scope="col">{{'Lower Limit'|translate}}</th>
+                        <th scope="col">{{'Lower Lower Limit'|translate}}</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr></tr>
+                      <!-- <tr *ngFor="let prop of thresholdAPIResponse; let i = index">
+  
+                         <td name="dataPointName">{{prop.dataPointNameToDisplay |translate}}</td>
+                        <td name="currentFigure"><input type="number" class="form-control currentFigure-{{i}}"
+                            id="currentFigure" name="currentFigure" value="{{prop.presentValue}}" data-toggle="tooltip"
+                            data-placement="top" title="{{prop.dataPointNameToDisplay|translate}}" readonly></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" name="upperUpperLimit"><input
+                            type="number" id="upperUpperLimit-{{i}}" name="upperUpperLimit"
+                            class="form-control upperUpperLimit-{{i}}" id="upperUpperLimit-{{i}}"
+                            value="{{prop.upperUpperLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" name="upperLimit"><input
+                            type="number" id="upperLimit-{{i}}" name="upperLimit" class="form-control upperLimit-{{i}}"
+                            value="{{prop.upperLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" id="lowerLimit" name="lowerLimit">
+                          <input type="number" class="form-control" id="lowerLimit-{{i}}"
+                            value="{{prop.lowerLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}">
+                        </td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() =='Turbidity'" id="lowerLowerLimit"
+                          name="lowerLowerLimit"><input type="number" class="form-control" id="lowerLowerLimit-{{i}}"
+                            value="{{prop.lowerLowerLimit.toFixed(1)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" name="upperUpperLimit"><input
+                            type="number" id="upperUpperLimit-{{i}}" name="upperUpperLimit"
+                            class="form-control upperUpperLimit-{{i}}" id="upperUpperLimit-{{i}}"
+                            value="{{prop.upperUpperLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" name="upperLimit"><input
+                            type="number" id="upperLimit-{{i}}" name="upperLimit" class="form-control upperLimit-{{i}}"
+                            value="{{prop.upperLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" id="lowerLimit" name="lowerLimit">
+                          <input type="number" class="form-control" id="lowerLimit-{{i}}"
+                            value="{{prop.lowerLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}">
+                        </td>
+  
+                        <td *ngIf="prop.dataPointNameToDisplay.trim() !='Turbidity'" id="lowerLowerLimit"
+                          name="lowerLowerLimit"><input type="number" class="form-control" id="lowerLowerLimit-{{i}}"
+                            value="{{prop.lowerLowerLimit.toFixed(3)}}" data-toggle="tooltip" data-placement="top"
+                            title="{{prop.dataPointNameToDisplay|translate}}"></td>
+  
+                      </tr> -->
+                    </tbody>
+                  </table>
+                  <br>
+                  <br>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-12 text-right">
+              <button class="btn commonBtn updateButton" type="text">{{'Save'|translate}}</button>
+              <!--  (click)="onSubmit()" [disabled]="currentSensorId===0" -->
+            </div>
+          <div class="col-sm-12 text-right">
+          </div>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>

@@ -25,9 +25,9 @@ export const ApiEndpoints = {
     },
     Maintenance : {
         MaintenanceDeatilsByMainSensorId : 'Maintenance/getMaintenanceByMainSensorId'
+    },
+    ThresholdValues : {
+        ThresholdValuesByMainSensorId : 'ThresholdValues/getThresholdValuesByMainSensorId'
     }
-    
-
-
-    
+     
 };

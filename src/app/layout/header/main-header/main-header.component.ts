@@ -16,15 +16,15 @@ import { MessageService } from 'src/app/shared/EventBroadcast';
 export class MainHeaderComponent implements OnInit {
 
   /*Array type properties*/
-  cityArray: any = [];
+  // cityArray: any = [];
   alertsArray: any = [];
 
   /*Properties and methods declarations*/
   currentLanguage = 'English';
-  selectedCity = 'Name';
-  selectedCityId: any = 0;
+  // selectedCity = 'Name';
+  // selectedCityId: any = 0;
 
-  constructor(private router: Router, private cookieService: CookieService, private authService: AuthService,
+  constructor(private cookieService: CookieService, private authService: AuthService,
     private messageService: MessageService, private eventService: EventService,
     private translate: TranslateService, private renderer: Renderer2,
     private todoService: TodoService, private snotifyService: SnotifyService) {
@@ -43,27 +43,26 @@ export class MainHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     const userId = this.cookieService.get('userId');
-    this.getAllUserCities(userId);
-    this.getAllAreas();
+    // this.getAllUserCities(userId);
+    // this.getAllAreas();
     this.getAlertsHistory();
     this.translate.setDefaultLang('en');
   }
 
-  getAllUserCities(userId: any): void {
-    this.todoService.getCityByUserId(userId).subscribe((response: any) => {
-      this.cityArray = response;
-      sessionStorage.setItem('userCities', JSON.stringify(this.cityArray));
-    },
-      // tslint:disable-next-line:no-shadowed-variable
-      error => {
+  // getAllUserCities(userId: any): void {
+  //   this.todoService.getCityByUserId(userId).subscribe((response: any) => {
+  //     this.cityArray = response;
+  //     sessionStorage.setItem('userCities', JSON.stringify(this.cityArray));
+  //   },
+  //     // tslint:disable-next-line:no-shadowed-variable
+  //     error => {
+  //     });
+  // }
 
-      });
-  }
-
-  async getAllAreas(): Promise<void> {
-    const areasArray = await this.todoService.getAllCityAreas().toPromise();
-    sessionStorage.setItem('allAreas', JSON.stringify(areasArray));
-  }
+  // async getAllAreas(): Promise<void> {
+  //   const areasArray = await this.todoService.getAllCityAreas().toPromise();
+  //   sessionStorage.setItem('allAreas', JSON.stringify(areasArray));
+  // }
 
   getAlertsHistory(): void {
     this.todoService.getUnreadAlerts(false).subscribe((response: any) => {
@@ -193,7 +192,6 @@ export class MainHeaderComponent implements OnInit {
         this.alertsArray.splice(alertIndex, 1);
         this.snotifyService.remove(toast.id);
       },
-        // tslint:disable-next-line:no-shadowed-variable
         (error: any) => {
         });
     });
@@ -202,23 +200,14 @@ export class MainHeaderComponent implements OnInit {
 
 
   logOut() {
-     
     this.authService.logout();
-    this.router.navigateByUrl('');
-    // sessionStorage.removeItem("token");
-    // this.todoService.setSelectedCity('', 0);
-    // this.cookieService.delete('userId');
-    // localStorage.removeItem("selectedPointName")
   }
 
-
-
   changeLanguage(selectedLanguage: string): void {
-    this.todoService.languageData.next(selectedLanguage);
-
+   
     this.eventService.currentLanguage.next(selectedLanguage);
 
-    sessionStorage.setItem('lang', selectedLanguage);
+    // sessionStorage.setItem('lang', selectedLanguage);
     this.currentLanguage = selectedLanguage === 'en' ? 'English' : '日本語';
     this.messageService.sendMessage(selectedLanguage);
     // this.translate.use(selectedLanguage);
@@ -241,13 +230,13 @@ export class MainHeaderComponent implements OnInit {
     }
   }
 
-  handleCitySelection(cityData: any): any {
-    this.todoService.setCurrentCity(cityData);
-    this.selectedCity = cityData.cityname;
-    this.selectedCityId = cityData.cityid;
-    this.todoService.setSelectedCity(cityData.cityname, cityData.cityid);
-    this.todoService.sendClickEvent();
-  }
+  // handleCitySelection(cityData: any): any {
+  //   this.todoService.setCurrentCity(cityData);
+  //   this.selectedCity = cityData.cityname;
+  //   this.selectedCityId = cityData.cityid;
+  //   this.todoService.setSelectedCity(cityData.cityname, cityData.cityid);
+  //   this.todoService.sendClickEvent();
+  // }
 
   locMenu(): void {
     if (document.body.classList.contains('aside')) {

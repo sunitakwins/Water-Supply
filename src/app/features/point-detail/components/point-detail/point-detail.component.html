@@ -1,12 +1,6 @@
 <section>
-  <app-main-dropdown [alertSummary]="false" [showExcelIcon]="false" [showDateInputs] ="true">
-
+  <app-main-dropdown [alertSummary]="false" [showExcelIcon]="false" [showDateInputs] ="true"> </app-main-dropdown>
   
-
-  </app-main-dropdown>
-  
-
-
   <div class="widgets">
     <!-- [hidden]="currentView!=='graph'" -->
     <!-- <div *ngFor="let widgets of widgetsData" class="card">
@@ -23,11 +17,11 @@
   <mat-tab-group (selectedTabChange)="tabChanged($event)" class="tab-group" *ngIf ="sensorId">
 
     <mat-tab [label]="'Graphical View'|translate">
-      <app-graphical-view [sensorId] ="sensorId"> </app-graphical-view>
+      <app-graphical-view [sensorId] ="sensorId" [graphListData] = "graphListData"> </app-graphical-view>
     </mat-tab>
 
     <mat-tab [label]="'List View'|translate">
-      <app-list-view [sensorId] ="sensorId"></app-list-view>
+      <app-list-view [sensorId] ="sensorId" [graphListData] = "graphListData"></app-list-view>
     </mat-tab>
 
     <mat-tab [label]="'Alarm Setting'|translate">

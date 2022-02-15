@@ -2,10 +2,10 @@ import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ExportToCsv } from 'export-to-csv-file';
-
+import { Subscription } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { Messages } from 'src/app/core/config';
-import { WaterFlowRequestModel } from 'src/app/core/models';
+import { AlarmSummaryResponseModel, WaterFlowRequestModel } from 'src/app/core/models';
 import { EventService, ToasterService, AuthService } from 'src/app/core/services';
 import { ComponentService } from '../../services/component.service';
 
@@ -19,19 +19,23 @@ export class MainDropdownComponent implements OnInit {
   @Input() showExcelIcon: boolean = false;
   @Input() showDateInputs: boolean = false;
 
+  sendData : boolean = true;
+
   public readonly Message = Messages;
   
   userCities: any = [];
   cityAreas: any = [];
   sensorListData: any = [];
-  dataList: any = [];
-  filteredCSVData: any = [];
+  dataList: AlarmSummaryResponseModel[] = [];
+  filteredCSVData: any= [];
   sensorName: string = '';
   areaId : string = '';
   sensorId : string = '';
 
   selectedFromDate: Date = new Date();
   selectedToDate: Date = new Date();
+
+  alertDataSub!: Subscription;
 
   constructor(
     private commonService: ComponentService,
@@ -44,12 +48,13 @@ export class MainDropdownComponent implements OnInit {
 
   ngOnInit() {
     let userData = this.authService.getUserDetails();
-    this.eventService.alertSummaryData.subscribe(data => {
+    this.alertDataSub = this.eventService.alertSummaryData.subscribe(data => {
       this.dataList = data;
     });
    
     this.getCities(userData.id);
   }
+
 
   // need to change this code
   getCities(userId : string) {
@@ -59,14 +64,16 @@ export class MainDropdownComponent implements OnInit {
   }
 
 
+  // need to change
   onSelection(object: any, dropdownName: string) {
     if (dropdownName == 'city') {
       let cityId = object.cityid; this.getAreas(cityId); return;
     } else if (dropdownName == 'area') {
       this.areaId = object.areaid; this.getSensorPoints(this.areaId); return;
     } else {
-      this.sensorName = object.sensorname; this.sensorId = object.mainsensorId;
-      this.eventService.sensorIdDetails.next(object);
+      this.sensorName = object.sensorname; this.sensorId = object.mainSensorid;
+      // this.sendData ? this.eventService.sensorIdDetails.next(object) : null;
+      this.eventService.sensorIdDetails.next(object) 
       return;
     } 
   }
@@ -96,7 +103,7 @@ export class MainDropdownComponent implements OnInit {
 
   // Excel import code
   importAsXlsx() {
-    
+
     if(this.dataList.length == 0) {
       this.toaster.successToast(this.Message.Error.NoDataFoundError); return;
     } 
@@ -130,6 +137,10 @@ export class MainDropdownComponent implements OnInit {
   }
 
 
+
+  ngOnDestroy() {
+    this.alertDataSub.unsubscribe();
+  }
 
 
 }
