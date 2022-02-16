@@ -1,0 +1,17 @@
+<div id="lineChart" >
+    <!-- *ngIf="!hasChartData" -->
+    <!-- <canvas #lineChart></canvas> -->
+    <div style="display: block;">
+        <canvas #lineChart baseChart width="500" height="200"
+          [datasets]="lineChartData"
+          [labels]="lineChartLabels"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend"
+          [chartType]="lineChartType"
+          [plugins]="lineChartPlugins">
+        </canvas>
+      </div>
+</div>
+<!-- <div *ngIf="hasChartData" class="noDataFound">
+    {{'common.noDataFound'| translate}} 
+</div> -->

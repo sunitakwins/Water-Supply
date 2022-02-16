@@ -11,7 +11,6 @@
     "1-chome": "1-chome",
     "2-chome": "2-chome",
     "3-chome": "3-chome",
-
     "district": "District",
     "municipality ": "Municipality",
     "pointName": "Point name",
@@ -24,23 +23,54 @@
     "notifications": "Notifications",
     "markAllAsRead": "Mark all as read",
     "admin": "Admin",
-    "logout": "Logout"
+    "logout": "Logout",
+    "save" : "Save"
   },
   "authentication": {
-     "Welcome": "Welcome"
+    "Welcome": "Welcome"
   },
   "alarmSummary": {
     "reset": "Reset",
     "alertSummary": "Alert Summary"
   },
-  "reports": {
-
-  },
-  "pointCompare" : {
+  "reports": {},
+  "pointCompare": {
     "chooseADate": "Choose a date",
     "selectProperty": "Select property"
   },
-  
+  "pointDetail": {
+    "graphicalView": "Graphical View",
+    "listView": "List View",
+    "alarmSetting": " Alarm Setting",
+    "maintenanceSettings": "Maintenance Settings",
+
+    "timeStamp": "Time Stamp",
+    "waterLevel": "Water Level",
+    "freshwaterElectricalConductivity": "Freshwater Electrical Conductivity",
+    "waterQuantity": "Water Quantity",
+    "turbidity": "Turbidity",
+    "batteryVoltage": "Battery Voltage",
+    "seawaterElectricalConductivity" : "Seawater Electrical Conductivity",
+    "waterTemperature": "Water Temperature",
+
+    "sensorName": "Sensor Name",
+    "currentFigure": "Current Figure",
+    "upperUpperLimit": "Upper Upper Limit",
+    "upperLimit": "Upper Limit",
+    "lowerLimit": "Lower Limit",
+    "lowerLowerLimit": "Lower Lower Limit",
+
+    "settingOfRate": "Setting Of Rate",
+    "recordingCycleInitialValueMin": "Recording cycle(initial value) in min",
+    "transmissionCycleInitialValueMin": "Transmission cycle(initial value) in min",
+    "recordingCycleMin": "Recording cycle in min",
+    "transmissionCycleMin": "Transmission cycle in min",
+    "alertLevel" : "Alert Level",
+    "returnToPreviousValue": "Return to previous value"
+  },
+
+
+
   
   "Upper value  exceeded": "Upper value exceeded",
   "Nihon Suido Consultants": "Nihon Suido Consultants",
@@ -84,9 +114,9 @@
   "Menu": "Menu",
   "Locations": "Locations",
   "Sensor": "Sensor",
-  "Time Stamp": "Time Stamp",
   "Value": "Value",
   "Sensor Id": "Sensor Id",
+  "Time Stamp": "Time Stamp",
   "Water Level": "Water Level",
   "Freshwater Electrical Conductivity": "Freshwater Electrical Conductivity",
   "Water Quantity": "Water Quantity",

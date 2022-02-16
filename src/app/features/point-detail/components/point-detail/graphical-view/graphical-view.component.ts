@@ -7,6 +7,9 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class GraphicalViewComponent implements OnInit {
   @Input() sensorId: string = '';
+  @Input() graphListData : any = [];
+
+  
   constructor() { }
 
   ngOnInit(): void {

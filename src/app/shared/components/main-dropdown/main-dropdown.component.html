@@ -9,7 +9,7 @@
                 <mat-label>{{'common.district'| translate}}</mat-label>
                 <mat-select>
                   <!-- [value]=" .showLogin$ | async" -->
-                  <mat-option *ngFor='let city of userCities' (click)="onSelection(city, 'city')" [value]="city.id">
+                  <mat-option *ngFor='let city of userCities' (click)="onCitySelection(city)" [value]="city.id">
                     {{city.cityname|translate}}
                   </mat-option>
                 </mat-select>
@@ -21,7 +21,7 @@
                 <mat-select name="cityArea">
                   <!-- [(ngModel)]="pointDetail.cityArea"  #cityArea="ngModel" [disable] ="cityAreas.length == 0" -->
                   <mat-option *ngIf="cityAreas.length==0">{{'common.dataNotAvailable'|translate}}</mat-option>
-                  <mat-option *ngFor='let area of cityAreas' [value]="area.areaid" (click)="onSelection(area, 'area')">
+                  <mat-option *ngFor='let area of cityAreas' [value]="area.areaid" (click)="onAreaSelection(area)">
                     {{area.areaname|translate}}
                   </mat-option>
                 </mat-select>
@@ -33,7 +33,7 @@
                   <!-- #areaSensor="ngModel" [(ngModel)]="pointDetail.areaSensor" -->
                   <mat-option *ngIf="sensorListData.length==0">{{'common.dataNotAvailable'|translate}}</mat-option>
                   <mat-option *ngFor='let point of sensorListData' [value]="point.mainSensorid"
-                    (click)="onSelection(point,'Point')">
+                    (click)="onPointSelection(point)">
                     {{point.sensorname}}
                   </mat-option>
                 </mat-select>

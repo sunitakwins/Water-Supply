@@ -24,7 +24,8 @@
     "notifications": "通知",
     "markAllAsRead": "すべて既読にする",
     "admin": "管理者",
-    "logout" : "ログアウト"
+    "logout" : "ログアウト",
+    "save" : "保存"
   },
   "authentication": {
     "Welcome": "ようこそ"
@@ -40,6 +41,35 @@
   "pointCompare" : {
     "chooseADate": "日付を選択してください",
     "selectProperty": "プロパティを選択"
+  },
+  "pointDetail" : {
+    "graphicalView": "グラフ表示",
+    "listView": "データ一覧",
+    "alarmSetting": "警報設定",
+    "maintenanceSettings": "周期設定",
+    "timeStamp": "日時 ",
+    "batteryVoltage": "バッテリー電圧",
+    "freshwaterElectricalConductivity": "淡水電気伝導度",
+    "waterQuantity": "流量",
+    "waterLevel" : "水深 ",
+    "turbidity": "濁度 ",
+    "seawaterElectricalConductivity": "海水電気伝導度  ",
+    "waterTemperature": "温度",
+
+    "sensorName": "センサー名",
+    "currentFigure": "現在値   ",
+    "upperUpperLimit": "上上限",
+    "upperLimit": "上限",
+    "lowerLimit": "下限",
+    "lowerLowerLimit": "下下限",
+
+    "settingOfRate": "レートの設定",
+    "recordingCycleInitialValueMin": "記録周期・基準値（分） ",
+    "transmissionCycleInitialValueMin": "通信周期・基準値（分）",
+    "recordingCycleMin": "記録周期・手動設定(分）",
+    "transmissionCycleMin": "通信周期・手動設定(分）",
+    "alertLevel": "警戒レベル",
+    "returnToPreviousValue": "基準値に戻す"
   },
 
 

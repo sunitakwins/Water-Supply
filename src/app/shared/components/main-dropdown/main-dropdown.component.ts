@@ -32,7 +32,8 @@ export class MainDropdownComponent implements OnInit {
   areaId : string = '';
   sensorId : string = '';
 
-  selectedFromDate: Date = new Date();
+  
+  selectedFromDate: any = new Date(Date.now() - 86400 * 1000).toISOString();
   selectedToDate: Date = new Date();
 
   alertDataSub!: Subscription;
@@ -64,18 +65,18 @@ export class MainDropdownComponent implements OnInit {
   }
 
 
-  // need to change
-  onSelection(object: any, dropdownName: string) {
-    if (dropdownName == 'city') {
-      let cityId = object.cityid; this.getAreas(cityId); return;
-    } else if (dropdownName == 'area') {
-      this.areaId = object.areaid; this.getSensorPoints(this.areaId); return;
-    } else {
-      this.sensorName = object.sensorname; this.sensorId = object.mainSensorid;
-      // this.sendData ? this.eventService.sensorIdDetails.next(object) : null;
-      this.eventService.sensorIdDetails.next(object) 
-      return;
-    } 
+  onCitySelection(object: any) {
+    let cityId = object.cityid; this.getAreas(cityId); return;
+  }
+
+  onAreaSelection(obj : any){
+    this.areaId = obj.areaid; this.getSensorPoints(this.areaId); return;
+  }
+
+
+  onPointSelection(obj : any){
+    this.sensorName = obj.sensorname; this.sensorId = obj.mainSensorid;
+    this.eventService.sensorIdDetails.next(obj); return;
   }
 
 

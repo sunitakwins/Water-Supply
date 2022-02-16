@@ -2,7 +2,7 @@
   <div class="sensorSettings">
     <div class="row">
       <div class="col-sm-12 col-sm-12">
-        <h2>{{sensorName}}</h2>
+        <h2>{{sensorName }}</h2>
       </div>
     </div>
   </div>
@@ -16,7 +16,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{'Recording cycle(initial value) in min'|translate}}</label>
+                    <label>{{'pointDetail.recordingCycleInitialValueMin'|translate}}</label>
                     <input class="form-control" placeholder="Recording cycle (initial value)"
                       #recordingCycleInitial="ngModel" [(ngModel)]="maintanenceData.recordingCycleInitial"
                       name="recordingCycleInitial" type="number" readonly>
@@ -24,7 +24,7 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{'Transmission cycle (initial value) in min'|translate}}</label>
+                    <label>{{'pointDetail.transmissionCycleInitialValueMin'|translate}}</label>
                     <input class="form-control" #transmissionCycleInitial="ngModel" name="transmissionCycleInitial"
                       [(ngModel)]="maintanenceData.transmissionCycleInitial"
                       placeholder="Transmission cycle (initial value)" type="number" readonly>
@@ -32,24 +32,24 @@
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{'Recording cycle in min'|translate}}</label>
-                    <input class="form-control" placeholder="Recording cycle" type="number" min="1" max="1440"
+                    <label>{{'pointDetail.recordingCycleMin'|translate}}</label>
+                    <input class="form-control" placeholder="Recording cycle" type="number" minlength="1" max="1440"
                       #recordingCycle="ngModel" name="recordingCycle" [(ngModel)]="maintanenceData.recordingCycle">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{'Transmission cycle in min'|translate}}</label>
-                    <input class="form-control" placeholder="Transmission cycle" type="number" min="1" max="1440"
+                    <label>{{'pointDetail.transmissionCycleMin'|translate}}</label>
+                    <input class="form-control" placeholder="Transmission cycle" type="number" minlength="1" max="1440"
                       #transmissionCycle="ngModel" name="transmissionCycle"
                       [(ngModel)]="maintanenceData.transmissionCycle">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
-                    <label>{{'Alert level'|translate}}</label>
+                    <label>{{'pointDetail.alertLevel'|translate}}</label>
                     <input class="form-control" #alertLevel="ngModel" name="alertLevel"
-                      [(ngModel)]="maintanenceData.alertLevel" placeholder="Alert Level" type="number" min="1"
+                      [(ngModel)]="maintanenceData.alertLevel" placeholder="Alert Level" type="number" minlength="1"
                       max="10">
                   </div>
                 </div>
@@ -59,12 +59,12 @@
 
           <div class="col-sm-12 text-right">
             <button type ="button" class="btn commonBtn mr-2" (click) ="returnToInitial()" >
-              {{'Return to previous value'|translate}}
+              {{'pointDetail.returnToPreviousValue'|translate}}
             </button>
             <!-- (click)="returnInitial(recording_cycle.value,transmission_cycle.value,alert_level.value)" -->
 
             <button class="btn commonBtn" type="text" type ="submit" (click) ="onSubmit()" >
-              {{'Save'|translate}}
+              {{'common.save'|translate}}
             </button>
             <!-- (click)="updateMaintenance(recording_cycle.value,transmission_cycle.value,alert_level.value)" -->
           </div>

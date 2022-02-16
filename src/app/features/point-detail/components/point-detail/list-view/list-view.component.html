@@ -1,1 +1,95 @@
-<p>list-view works!</p>
+<mat-card>
+    <div class="tableData1" *ngIf="graphListData.length>0">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">{{'pointDetail.timeStamp' |translate }}</th>
+                    <th scope="col">{{'pointDetail.batteryVoltage'|translate}} (V)</th>
+                    <th scope="col">{{'pointDetail.freshwaterElectricalConductivity' |translate}} (μS/cm)</th>
+                    <th scope="col">{{'pointDetail.waterQuantity' |translate}} (m3/sec)</th>
+                    <th scope="col">{{'pointDetail.waterLevel' |translate}} (m)</th>
+                    <th scope="col">{{'pointDetail.turbidity' |translate}} (°C)</th>
+                    <th scope="col">{{'pointDetail.seawaterElectricalConductivity' |translate}} (ms/cm)</th>
+                    <th scope="col">{{'pointDetail.waterTemperature' |translate}} (°C)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of graphListData">
+                  <!-- [ngClass] ="float-right" -->
+
+                    <td>{{data.dateTime}}</td>
+                    <td>{{data.batteryVoltage | number :'1.3-3'}}</td>
+                    <td>{{data.freshwaterConductivity}}</td>
+                    <td>{{data.waterQuantity | number : '1.3-3'}}</td>
+                    <td>{{data.waterLevel | number : '1.3-3'}}</td>
+                    <td>{{data.turbidity | number : '1.1-1'}}</td>
+                    <td>{{data.saltwaterConductivity}}</td>
+                    <td>{{data.waterTemprature}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="graphListData.length==0" class="noData">
+        <span>{{'common.dataNotAvailable'|translate}}</span>
+    </div>
+</mat-card>
+
+
+<!-- <div class="example-container mat-elevation-z8">
+    <mat-table #table matSort matSortStart="desc" (scroll)="onTableScroll($event)" [dataSource]="dataSource"
+      *ngIf="isPointSelected === true">
+      <ng-container matColumnDef="Time Stamp">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sorting('Time Stamp')">{{'Time
+          Stamp'|translate}}</mat-header-cell>
+        <mat-cell data-label="Time Stamp" *matCellDef="let element"> {{element.dateTime}} </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="Battery Voltage">
+        <mat-header-cell *matHeaderCellDef mat-sort-header (click)="sorting('Battery Voltage')"> {{'Battery
+          Voltage'|translate}}(V)
+        </mat-header-cell>
+        <mat-cell data-label="Battery Voltage" *matCellDef="let element"> {{element.batteryVoltage | number :
+          '1.3-3'}} V
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Freshwater Electrical Conductivity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Freshwater Electrical Conductivity'|translate}}
+          (μS/cm)
+        </mat-header-cell>
+        <mat-cell data-label="Freshwater Electrical Conductivity" *matCellDef="let element">
+          {{element.freshwaterConductivity}} μS/cm
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Water Quantity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Water Quantity'|translate}}(m3/sec)</mat-header-cell>
+        <mat-cell data-label="Water Quantity" *matCellDef="let element"> {{element.waterQuantity | number :
+          '1.3-3'}} m3/sec
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Water Level">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{'Water Level'|translate}}(m)</mat-header-cell>
+        <mat-cell data-label="Water Level" *matCellDef="let element"> {{element.waterLevel | number : '1.3-3'}}m
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Turbidity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Turbidity'|translate}}(度)</mat-header-cell>
+        <mat-cell data-label="Turbidity" *matCellDef="let element"> {{element.turbidity | number : '1.1-1'}}度
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Seawater Electrical Conductivity">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Seawater Electrical Conductivity'|translate}}(ms/cm)
+        </mat-header-cell>
+        <mat-cell data-label="Seawater Electrical Conductivity" *matCellDef="let element">
+          {{element.saltwaterConductivity}}ms/cm
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="Water Temperature">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>{{'Water Temperature'|translate}}(°C)</mat-header-cell>
+        <mat-cell data-label="Water Temperature" *matCellDef="let element"> {{element.waterTemprature}}°C
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="displayedColumns sticky:true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </div> -->

@@ -1,18 +1,15 @@
-<p>graphical-view works!</p>
+<!-- <p>graphical-view works!</p> -->
 
-<!-- <mat-card>
-          <div class="table-responsive">
-            <div>
-              <div *ngIf="sensorsFilteredData.length!=0" style="display: block" class="wrapperCanvas">
-                <canvas [colors]="lineChartColors"
+<mat-card>
+  <div class="table-responsive">
+    <!-- *ngIf="sensorsFilteredData.length!=0" style="display: block" -->
+    <div class="wrapperCanvas">
+      <!-- <canvas [colors]="lineChartColors"
                   [datasets]="cookieService.get('language')=='en'?lineChartData:lineChartDataJP" [labels]="lineChartLabels"
                 [options]="lineChartOptions" [plugins]="lineChartPlugins" baseChart
                   chartType="line">
-                </canvas>
-              </div>
-              <div *ngIf="sensorsFilteredData.length==0" class="noData">
-                <span>{{'Data is not available'|translate}}</span>
-              </div>
-            </div>
-          </div>
-    </mat-card> -->
+                </canvas> -->
+      <app-chart></app-chart>
+    </div>
+  </div>
+</mat-card>

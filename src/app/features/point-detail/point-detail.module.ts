@@ -20,7 +20,7 @@ import { PointDetailComponent } from './components/point-detail/point-detail.com
     MaintenanceSettingsComponent
   ],
   imports: [
-  CommonModule,
+    CommonModule,
     SharedModule,
     PointDetailRoutingModule,
     LayoutModule 

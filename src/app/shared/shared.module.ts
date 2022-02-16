@@ -1,4 +1,4 @@
-// @ts-ignore
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from './material/material.module';
@@ -21,6 +21,8 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
 import { UiModule } from './components/ui/ui.module';
 import { MainDropdownComponent } from './components/main-dropdown/main-dropdown.component';
 import { GlobalCategoryDropdownComponent } from './components/global-category-dropdown/global-category-dropdown.component';
+import { ChartComponent } from './components/chart/chart.component';
+import { ChartsModule } from 'ng2-charts';
 
 
 
@@ -30,7 +32,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 
 @NgModule({
-  declarations: [ MainDropdownComponent, GlobalCategoryDropdownComponent],
+  declarations: [ MainDropdownComponent, GlobalCategoryDropdownComponent, ChartComponent],
   imports: [
   /*BrowserAnimationsModule,*/
     NgxMatDatetimePickerModule,
@@ -59,6 +61,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     UiModule,
     FormsModule,
     ReactiveFormsModule,
+    ChartsModule
   ],
   exports: [
     /*BrowserAnimationsModule,*/
@@ -80,7 +83,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
     UiModule,
     MainDropdownComponent,
-    GlobalCategoryDropdownComponent
+    GlobalCategoryDropdownComponent,
+    ChartComponent,
+    ChartsModule
   ],
   providers: [
     { provide: 'SnotifyToastConfig', useValue: ToastDefaults },
