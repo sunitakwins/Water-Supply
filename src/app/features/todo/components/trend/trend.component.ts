@@ -437,10 +437,10 @@ sensorNameData : any;
     this.spinner.show();
     this.chartData = [];
     this.chartLabels = [];
-if(this.selectedDateData == '' && this.propertyNameData == ''){
+    if(this.selectedDateData == '' && this.propertyNameData == ''){
 
-}else{
-  this.todoService.getAllByMainSensorId(this.sensorIdData , this.selectedDateData).subscribe((response: any) => {
+   }else{
+    this.todoService.getAllByMainSensorId(this.sensorIdData , this.selectedDateData).subscribe((response: any) => {
    if(response){
     this.spinner.hide();
    }
@@ -465,8 +465,6 @@ this.sensorMappingData();
 }
 
 sensorMappingData(){
-
-
   if(this.propertyNameData == this.pointConditionArray.adc0MappedTo){
     for (let j = 0; j < this.pointCompareArray.length; j++) {
     this.chartDataArray.push(this.pointCompareArray[j].batteryVoltage);

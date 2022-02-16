@@ -44,6 +44,8 @@
     "alarmSetting": " Alarm Setting",
     "maintenanceSettings": "Maintenance Settings",
 
+    "value": "Value",
+
     "timeStamp": "Time Stamp",
     "waterLevel": "Water Level",
     "freshwaterElectricalConductivity": "Freshwater Electrical Conductivity",
@@ -51,7 +53,7 @@
     "turbidity": "Turbidity",
     "batteryVoltage": "Battery Voltage",
     "seawaterElectricalConductivity" : "Seawater Electrical Conductivity",
-    "waterTemperature": "Water Temperature",
+    "waterTemperature": "Water Temperature", 
 
     "sensorName": "Sensor Name",
     "currentFigure": "Current Figure",

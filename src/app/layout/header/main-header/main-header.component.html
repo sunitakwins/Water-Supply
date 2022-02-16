@@ -39,22 +39,23 @@
                           <div class="timelineBadge"></div>
                         </li>
                       </div>
-      
                     </ul>
                   </mat-menu>
                 </perfect-scrollbar>
                 <button mat-button [matMenuTriggerFor]="menu6">
-                  <mat-icon>settings</mat-icon></button>
+                  <mat-icon>settings</mat-icon>
+                </button>
+
                 <mat-menu #menu6="matMenu" class="dropMenuList">
                   <label mat-menu-item class="profile-item">
-                    <div>
-                      <i class="fa fa-user-circle-o adminIcon" aria-hidden="true"></i>
+                    <div><i class="fa fa-user-circle-o adminIcon" aria-hidden="true"></i>
                       <div class="adminName">{{'common.admin'|translate}}</div>
                     </div>
                   </label>
                   <!-- <button mat-menu-item><i class="fa fa-user" aria-hidden="true"></i>{{'My profile'|translate}}</button> -->
-                  <button mat-menu-item (click)="logOut()"><i class="fa fa-sign-out"
-                      aria-hidden="true"></i>{{'common.logout'|translate}}</button>
+                  <button mat-menu-item (click)="logOut()"> <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    {{'common.logout'|translate}}
+                  </button>
                 </mat-menu>
               </div>
             </div>

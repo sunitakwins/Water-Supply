@@ -26,17 +26,18 @@ export class MainHeaderComponent implements OnInit {
 
   constructor(private cookieService: CookieService, private authService: AuthService,
     private messageService: MessageService, private eventService: EventService,
-    private translate: TranslateService, private renderer: Renderer2,
+    private translateService: TranslateService, private renderer: Renderer2,
     private todoService: TodoService, private snotifyService: SnotifyService) {
-    // translate.setDefaultLang('en');
+    // translateService.setDefaultLang('en');
+    
     const lang: any = cookieService.get('language');
     lang == 'en' ? this.currentLanguage = 'English' : this.currentLanguage = '日本語';
     if (cookieService.get('language')) {
-      translate.setDefaultLang(lang);
-      translate.use(lang);
+      translateService.setDefaultLang(lang);
+      translateService.use(lang);
     } else {
-      translate.setDefaultLang('en');
-      translate.use('en');
+      translateService.setDefaultLang('en');
+      translateService.use('en');
       cookieService.set('language', 'en');
     }
   }
@@ -46,7 +47,7 @@ export class MainHeaderComponent implements OnInit {
     // this.getAllUserCities(userId);
     // this.getAllAreas();
     this.getAlertsHistory();
-    this.translate.setDefaultLang('en');
+    this.translateService.setDefaultLang('en');
   }
 
   // getAllUserCities(userId: any): void {
@@ -73,24 +74,22 @@ export class MainHeaderComponent implements OnInit {
       });
   }
 
-
-
   markRead(object: any) {
-    this.snotifyService.confirm(this.translate.instant('Mark this notification as read?'), this.translate.instant(object.status), {
+    this.snotifyService.confirm(this.translateService.instant('Mark this notification as read?'), this.translateService.instant(object.status), {
       buttons: [
         {
-          text: this.translate.instant('Yes'), action: toast => {
+          text: this.translateService.instant('Yes'), action: toast => {
             this.updateAlert(object, toast);
           },
         },
         {
-          text: this.translate.instant('No'), action: toast => {
+          text: this.translateService.instant('No'), action: toast => {
 
             this.snotifyService.remove(toast.id);
           },
         },
         {
-          text: this.translate.instant('Close'),
+          text: this.translateService.instant('Close'),
           action: toast => {
             this.snotifyService.remove(toast.id);
           },
@@ -137,21 +136,21 @@ export class MainHeaderComponent implements OnInit {
 
   markAllRead(): void {
     if (this.alertsArray.length > 0) {
-      this.snotifyService.confirm(this.translate.instant('Mark all notifications as read?'), {
+      this.snotifyService.confirm(this.translateService.instant('Mark all notifications as read?'), {
         buttons: [
           {
-            text: this.translate.instant('Yes'), action: toast => {
+            text: this.translateService.instant('Yes'), action: toast => {
               this.updateAllAlerts(toast);
             },
           },
           {
-            text: this.translate.instant('No'), action: toast => {
+            text: this.translateService.instant('No'), action: toast => {
 
               this.snotifyService.remove(toast.id);
             },
           },
           {
-            text: this.translate.instant('Close'),
+            text: this.translateService.instant('Close'),
             action: toast => {
 
               this.snotifyService.remove(toast.id);
@@ -210,13 +209,23 @@ export class MainHeaderComponent implements OnInit {
     // sessionStorage.setItem('lang', selectedLanguage);
     this.currentLanguage = selectedLanguage === 'en' ? 'English' : '日本語';
     this.messageService.sendMessage(selectedLanguage);
-    // this.translate.use(selectedLanguage);
-    this.translate.setDefaultLang(selectedLanguage);
-    this.translate.use(selectedLanguage);
+    // this.translateService.use(selectedLanguage);
+    this.translateService.setDefaultLang(selectedLanguage);
+    this.translateService.use(selectedLanguage);
     this.cookieService.set('language', selectedLanguage);
     this.todoService.setSelectedLanguage(selectedLanguage);
     this.todoService.sendLangEvent();
   }
+
+
+  // handleCitySelection(cityData: any): any {
+  //   this.todoService.setCurrentCity(cityData);
+  //   this.selectedCity = cityData.cityname;
+  //   this.selectedCityId = cityData.cityid;
+  //   this.todoService.setSelectedCity(cityData.cityname, cityData.cityid);
+  //   this.todoService.sendClickEvent();
+  // }
+
 
   mobMenu(): void {
     if (this.isMobile) {
@@ -230,14 +239,6 @@ export class MainHeaderComponent implements OnInit {
     }
   }
 
-  // handleCitySelection(cityData: any): any {
-  //   this.todoService.setCurrentCity(cityData);
-  //   this.selectedCity = cityData.cityname;
-  //   this.selectedCityId = cityData.cityid;
-  //   this.todoService.setSelectedCity(cityData.cityname, cityData.cityid);
-  //   this.todoService.sendClickEvent();
-  // }
-
   locMenu(): void {
     if (document.body.classList.contains('aside')) {
       this.renderer.removeClass(document.body, 'aside');
@@ -248,6 +249,10 @@ export class MainHeaderComponent implements OnInit {
 
   get isMobile() {
     return document.body.clientWidth < 991;
+  }
+
+  get isJapaneseLanguage() {
+    return this.translateService.currentLang == 'jp';
   }
 
 }

@@ -47,6 +47,9 @@
     "listView": "データ一覧",
     "alarmSetting": "警報設定",
     "maintenanceSettings": "周期設定",
+
+    "value": "値",
+
     "timeStamp": "日時 ",
     "batteryVoltage": "バッテリー電圧",
     "freshwaterElectricalConductivity": "淡水電気伝導度",

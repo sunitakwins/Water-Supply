@@ -9,26 +9,13 @@ export class MainSidebarComponent implements OnInit {
 
   constructor(private renderer: Renderer2) { }
 
-  ngOnInit(): void {
-    
-  }
+  ngOnInit(): void { }
 
   toggleMenu(): void {
-    if (document.body.classList.contains('show')) {
 
-      this.renderer.removeClass(document.body, 'show');
+    document.body.classList.contains('show')? this.renderer.removeClass(document.body, 'show') :  this.renderer.addClass(document.body, 'show');
 
-    } else {
-      this.renderer.addClass(document.body, 'show');
-    }
-    if (document.body.classList.contains('show')) {
-      this.renderer.removeClass(document.body, 'aside-fixed');
-    }
-    else {
-      return
-    }
-
+    if (document.body.classList.contains('show')) this.renderer.removeClass(document.body, 'aside-fixed'); else  return;
+    
   }
-
-
 }
