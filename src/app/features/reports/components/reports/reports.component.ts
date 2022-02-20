@@ -1,10 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { FormControl, FormGroup, NgForm } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import * as moment from 'moment';
 import { SnotifyService } from 'ng-snotify';
-import { DataTypeValue } from 'src/app/core/enums';
-import { WaterFlowRequestModel } from 'src/app/core/models/reports/reports.model';
+import { DataTypeValue, DropdownCategoryName } from 'src/app/core/enums';
+import { WaterFlowRequestModel, WaterFlowResponseModel } from 'src/app/core/models/reports/reports.model';
 import { EventService } from 'src/app/core/services';
 import { ReportsService } from '../../services/reports.service';
 import { DatePipe } from '@angular/common';
@@ -15,18 +15,23 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
+  @ViewChild('form') form !: NgForm;
+  DataFormatLayoutRequest: DropdownCategoryName = DropdownCategoryName.DataFormatValue;
 
-  selectedFromDate: Date = new Date('');
-  selectedToDate: Date = new Date('');
+  selectedFromDate: string = new Date(Date.now() - 86400 * 1000).toISOString();
+  selectedToDate: Date = new Date();
+
   selectedValue: string = '';
   sensorName: string = '';
   sensorId: string = '';
   FormValueArray: string[] = [];
   sensorIdArray: string[] = [];
-
+  reportData : WaterFlowResponseModel[] =[];
 
   constructor( 
     private reportService: ReportsService, private eventService: EventService, 
+    private snotifyService : SnotifyService,
+    private translateService : TranslateService,
     private datePipe : DatePipe) { }
 
   ngOnInit() {
@@ -38,23 +43,31 @@ export class ReportsComponent implements OnInit {
     })
   }
 
+
+  selectedLayout(dataFormatName: string){
+     this.selectedValue = dataFormatName;
+  }
+
   onSubmit() {
-
-    if (!(this.selectedFromDate && this.selectedToDate)) return;
-
-    const dateTimeData: WaterFlowRequestModel = {
+    
+    if(this.form.invalid) return;
+    
+    const requestParam: WaterFlowRequestModel = {
       mainSensorId: this.sensorId,
       fromDate : this.datePipe.transform(this.selectedFromDate,'yyyy-MM-dd h:mm:ss a') || '',
       toDate : this.datePipe.transform(this.selectedToDate,'yyyy-MM-dd h:mm:ss a') || '',
+      type : this.selectedValue
     };
   
-    this.reportService.waterFlowDataBySensorIdDates(dateTimeData).subscribe(res => {
-      let data = res.waterFlowResponse;
-      this.eventService.alertSummaryData.next(data);
-      // To DO ========
-      if (this.selectedValue = DataTypeValue.ConvertedValue) {
-        // 
-      }
+    debugger
+    this.reportService.waterFlowDataBySensorIdDates(requestParam).subscribe(res => {
+      this.reportData = res.waterFlowResponse;
+
+      // if(this.reportData.length == 0){
+      //   // this.snotifyService.error(this.translateService.instant('common.dataNotAvailable'));
+      // }else {
+
+      // }
     });
 
   }

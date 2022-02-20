@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from 'src/app/core/services';
 import { PointDetailService } from './../../services/point-detail.service';
 import { Subscription } from 'rxjs';
-import { WaterFlowRequestModel } from 'src/app/core/models';
+import { WaterFlowRequestModel, WaterFlowResponseModel } from 'src/app/core/models';
 
 @Component({
   selector: 'app-point-detail',
@@ -26,6 +26,7 @@ export class PointDetailComponent implements OnInit{
 
   datesData : any = [];
   graphListData : any = []; 
+  listViewData : WaterFlowResponseModel[] = [];
 
   sensorDataSub!: Subscription;
   datesSub!: Subscription;
@@ -49,7 +50,8 @@ export class PointDetailComponent implements OnInit{
 
   getGraphAndListData() {
     this.pointDetailService.waterFlowDataBySensorIdDates(this.datesData).subscribe((res: any) => {
-        this.graphListData  = res.waterFlowResponse;
+        this.graphListData  = res;
+        listViewData : res.waterFlowResponse;
     });
   }
  

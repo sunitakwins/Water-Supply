@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { WaterFlowResponseModel } from 'src/app/core/models';
 
 
 @Component({
@@ -8,13 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListViewComponent implements OnInit {
   @Input() sensorId: string = '';
-  @Input() graphListData : any = [];
-   
+  @Input() listViewData : any = [];
+  
  
   constructor() { }
 
   ngOnInit() {
-    this.graphListData;
+    this.listViewData ;
    }
 
 

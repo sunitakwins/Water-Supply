@@ -23,7 +23,7 @@ export class ForwardGuard implements CanActivate {
     if (authenticated) {
 
       // const route = this.authService.getLandingPageRoute();
-      this.router.navigate(["point-compare"]);
+      this.router.navigate(["point-detail"]);
       return false;
     }
 

@@ -21,7 +21,8 @@ export class ReportsService {
     .set('mainSensorId',`${data.mainSensorId}`)
     .set('fromDate', `${data.fromDate}`)
     .set('toDate',`${data.toDate}`)
-    return this.httpService.get<WaterFlowResponseModel>(this.reportsApiEndPoints.waterFlowListByDatesSensorId, {params});
+    .set('type',`${data.type}`)
+    return this.httpService.get<WaterFlowResponseModel>(this.reportsApiEndPoints.waterFlowListByDatesAndValue, {params});
   }
 
 }

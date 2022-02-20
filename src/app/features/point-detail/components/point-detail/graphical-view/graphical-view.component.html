@@ -8,7 +8,10 @@
                 [options]="lineChartOptions" [plugins]="lineChartPlugins" baseChart
                   chartType="line">
           </canvas> -->
-      <app-chart></app-chart>
+      <app-chart 
+       [lineChartColors] ="lineChartColors" 
+       [lineChartData] ="lineChartData">
+      </app-chart>
     </div>
   </div>
 </mat-card>

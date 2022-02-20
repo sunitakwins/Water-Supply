@@ -59,7 +59,8 @@ export class PointDetailService {
     .set('mainSensorId',`${data.mainSensorId}`)
     .set('fromDate', `${data.fromDate}`)
     .set('toDate',`${data.toDate}`)
-    return this.httpService.get<WaterFlowResponseModel>(this.reportsApiEndPoints.waterFlowListByDatesSensorId, {params});
+    .set('type',`Converted Value`)
+    return this.httpService.get<WaterFlowResponseModel>(this.reportsApiEndPoints.waterFlowListByDatesAndValue, {params});
   }
 
 // Maintanence Tab

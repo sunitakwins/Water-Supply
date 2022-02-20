@@ -5,7 +5,7 @@
   <div class="trendFlow">
     <div class="rangeFilter mb-4" *ngIf="sensorId">
 
-      <form class="form-filter-date alarmSummary_Form d-flex">
+      <form class="form-filter-date alarmSummary_Form d-flex" #form ="ngForm">
         <div class="dropdwnInput mr-2">
           <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedDate" class="selectedDate"
             [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
@@ -14,26 +14,14 @@
           <owl-date-time #fromDatTime></owl-date-time>
         </div>
 
-        <!-- <mat-form-field appearance="fill"> -->
-        <!-- <mat-label>{{'pointCompare.chooseADate'|translate}}</mat-label> -->
-        <!-- <input id="selectedDateInput" 
-                [(ngModel)]="selectedDate" matInput #selectedDateInput [matDatepicker]="myDatepicker"
-                (dateChange)="onChange(selectedDateInput.value)">
-              <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
-              <mat-datepicker #myDatepicker></mat-datepicker>  -->
-        <!-- </mat-form-field> -->
+        <global-category-dropdown  [requestBody]="PropertyLayoutRequest" [val]="selectedPropertyValue"
+        [globalCodeId]="selectedValue"
+          placeholderText="Select Value" [disabled]="isStatusSubmitted"
+          (dropdownSelectedValue)="selectedLayout($event)" requiredMessage="Value is required."
+          placeholderText="Select Value" [hasRequired]="true" [submitted]="form.submitted">
+        </global-category-dropdown>
 
-        <mat-form-field appearance="fill">
-          <mat-label>{{'pointCompare.selectProperty'| translate}}</mat-label>
-          <mat-select name="sensorProperty" [ngModel]="selectedPropertyValue">
-            <mat-option *ngFor='let property of propertyValuesData' (click)="onSelectingProperty(property)"
-              [value]="property">
-              {{property | translate}}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-
-        <button class="btn commonBtn" (click)="getGraphData()">
+        <button class="btn commonBtn" (click)="getGraphData()" type ="button">
           {{'common.submit' | translate}}</button>
       </form>
     </div>

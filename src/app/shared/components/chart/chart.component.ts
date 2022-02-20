@@ -63,6 +63,7 @@ export class ChartComponent implements OnInit {
   ngOnInit() { }
 
   ngAfterViewInit() {
+      debugger
     // this.lineChartData = [{
     //   data: this.chartData.data,
     //   pointBackgroundColor: this.colorCode,

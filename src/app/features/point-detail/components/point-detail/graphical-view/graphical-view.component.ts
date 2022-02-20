@@ -9,25 +9,47 @@ import { PointDetailService } from './../../../services/point-detail.service';
 })
 export class GraphicalViewComponent implements OnInit {
   @Input() sensorId: string = '';
-  @Input() graphListData : any = [];
+  @Input() graphListData: any = [];
 
-  // lineChartData: any[] = [
-  //   { data: this.waterQuantityDataArray, label: 'Water Quantity(m3/sec)' },
-  //   { data: this.waterLevelDataArray, label: 'Water Level(m)' },
+  batteryVoltageDataArray : any = [] ;
+  freshwaterConductivityDataArray : any = [];
+  waterQuantityDataArray : any = [];
+  waterLevelDataArray : any = [];
+  turbidityDataArray : any = [];
+  seaWaterElectricalConductivityArray : any = [];
+  waterTemperatureArray : any =[];
 
-  //   { data: this.freshwaterConductivityDataArray, label: 'Freshwater Electrical Conductivity(μS/cm)' },
-  //   { data: this.seaWaterElectricalConductivityArray, label: 'Seawater Electrical Conductivity(ms/cm)' },
-  //   { data: this.waterTemperatureArray, label: 'Water Temperature(°C)' },
-  //   { data: this.turbidityDataArray, label: 'Turbidity(度)' },
-  //   { data: this.batteryVoltageDataArray, label: `Battery Voltage(V)` },
-  // ];
+  lineChartColors : any =[];
+  lineChartData : any = [];
 
 
-  constructor( private pointDetailService : PointDetailService) { }
+  constructor(
+    private  translateService : TranslateService,
+    private pointDetailService: PointDetailService) { }
 
   ngOnInit(): void {
-     let lineChartColors = this.pointDetailService.lineChartColors;
-     
+     let data = this.graphListData.waterFlowResponse;
+    this.lineChartColors = this.pointDetailService.lineChartColors;
+
+    this.batteryVoltageDataArray = data.map((x:any) => x.batteryVoltage);
+    this.freshwaterConductivityDataArray = data.map((x:any) => x.freshwaterConductivity);
+    this.waterQuantityDataArray = data.map((x:any) => x.waterQuantity);
+    this.waterLevelDataArray = data.map((x:any) => x.waterLevel);
+    this.turbidityDataArray = data.map((x:any) => x.turbidity);
+    this.seaWaterElectricalConductivityArray = data.map((x:any) => x.saltwaterConductivity); /*testing*/
+    this.waterTemperatureArray = data.map((x:any) => x.waterTemprature);
+
+
+    this.lineChartData = [
+      { data: this.waterQuantityDataArray, label: this.translateService.instant('Water Quantity(m3/sec)')},
+      { data: this.waterLevelDataArray, label: this.translateService.instant('Water Level(m)') },
+      { data: this.freshwaterConductivityDataArray, label: this.translateService.instant('Freshwater Electrical Conductivity(μS/cm)') },
+      { data: this.seaWaterElectricalConductivityArray, label:this.translateService.instant('Seawater Electrical Conductivity(ms/cm)') },
+      { data: this.waterTemperatureArray, label: this.translateService.instant('Water Temperature(°C)') },
+      { data: this.turbidityDataArray, label: this.translateService.instant('Turbidity(度)') },
+      { data: this.batteryVoltageDataArray, label: this.translateService.instant(`Battery Voltage(V)`)},
+    ];
+
   }
 
 

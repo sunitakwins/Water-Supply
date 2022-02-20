@@ -2,6 +2,9 @@ export const ApiEndpoints = {
     Auth: {
         Login: 'User/LoginUser',
     },
+    GlobalCodeCategory : {
+         GlobalCodeName : 'GlobalCode/getglobalcodes'
+    },
     // Common: {
     //     //  GetCities : 'City/getAllCities',
     //     //  UserCities : 'UserCity/getUserCitiesByUserId'
@@ -22,6 +25,7 @@ export const ApiEndpoints = {
     },
     WaterFlow : {
         waterFlowListByDatesSensorId : 'WaterFlow/getAllByMainSensorIdAndMultipleDates',
+        waterFlowListByDatesAndValue : 'WaterFlow/getAllByMainSensorIdAndMultipleDatesByValue'
     },
     Maintenance : {
         MaintenanceDeatilsByMainSensorId : 'Maintenance/getMaintenanceByMainSensorId'

@@ -1,39 +1,44 @@
 <section>
 
-  <app-main-dropdown [alertSummary] ="false" [showExcelIcon] ="true" [showDateInputs] ="false"></app-main-dropdown>
+  <app-main-dropdown [alertSummary]="false" [showExcelIcon]="true" [showDateInputs]="false"></app-main-dropdown>
 
   <div class="row" *ngIf="this.sensorId">
     <div class="col-sm-12">
       <div class="sensorData">
-        <form>
+        <form #form = "ngForm"  >
           <div class="form-group dropdwnInput">
             <input #fromdatetime id="fromdatetime" name="fromdatetime" [(ngModel)]="selectedFromDate"
               [owlDateTimeTrigger]="fromDatTime" [owlDateTime]="fromDatTime"
-              placeholder="{{'common.fromDateTime' | translate}}" readonly>
+              placeholder="{{'common.fromDateTime' | translate}}" readonly
+              [ngClass]="{ 'is-invalid': (submitted || selectedFromDate.touched) && selectedFromDate.invalid }">
             <owl-date-time #fromDatTime></owl-date-time>
           </div>
           <div class="form-group dropdwnInput">
             <input #todatetime id="todatetime" name="todatetime" [(ngModel)]="selectedToDate"
               [owlDateTimeTrigger]="toDateTime" [owlDateTime]="toDateTime"
-              placeholder="{{'common.toDateTime'| translate}}" readonly>
+              placeholder="{{'common.toDateTime'| translate}}"
+              [ngClass]="{ 'is-invalid': (submitted || selectedToDate.touched) && selectedToDate.invalid }" readonly>
             <owl-date-time #toDateTime></owl-date-time>
           </div>
           <div class="form-group dropdwnFld">
-            <mat-form-field appearance="fill">
-              <!-- <mat-label>Value</mat-label> -->
-              <mat-select [(ngModel)]="selectedValue" name="food" required>
-                <mat-option *ngFor="let value of FormValueArray" [value]="value">
-                  {{value | translate }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+            <!-- *ngIf="loader" -->
+            <global-category-dropdown  [requestBody]="DataFormatLayoutRequest" [val]="dataFormatValue"
+            [globalCodeId]="selectedValue"
+              placeholderText="Select Value" [disabled]="isStatusSubmitted"
+              (dropdownSelectedValue)="selectedLayout($event)" requiredMessage="Format Value is required."
+              placeholderText="Select Value" [hasRequired]="true" [submitted]="form.submitted">
+            </global-category-dropdown>
           </div>
-          <button class="btn commonBtn" type="submit" (click)="onSubmit()">{{'common.submit' | translate}}</button>
+          <button class="btn commonBtn" type="submit"  (click)="onSubmit()">{{'common.submit' | translate}}</button>
         </form>
       </div>
     </div>
   </div>
 
+  <div *ngIf="reportData.length==0" class="noData">
+    <span>{{'Data is not available'|translate}}</span>
+  </div>
+  
   <!-- <div #table class="example-container mat-elevation-z8" style="box-shadow:none;"
     *ngIf="isPointSelected === true && sensornames.length>0">
     <div [class]="sensornames.length===1 ? 'blockcontainer':'flexcontainer'">
@@ -93,7 +98,5 @@
     </div>
   </div> -->
 
-  <!-- <div *ngIf="sensornames.length==0" class="noData">
-    <span>{{'Data is not available'|translate}}</span>
-  </div> -->
+
 </section>

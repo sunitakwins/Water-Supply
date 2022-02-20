@@ -1,55 +1,52 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-// import { DropdownCategoryId } from '@app/core/enums';
-// import { GlobalCode, ListRequestModel } from '@app/core/models';
-// import { CommonComponentService } from '@shared/services';
-// 
+import { DropdownCategoryName } from 'src/app/core/enums';
+import { GlobalCodeResponseModel } from 'src/app/core/models';
+import { ComponentService } from '../../services/component.service';
+
+ 
 @Component({
   selector: 'global-category-dropdown',
   templateUrl: './global-category-dropdown.component.html',
   styleUrls: ['./global-category-dropdown.component.scss']
 })
 export class GlobalCategoryDropdownComponent implements OnInit {
-  // @Input() requestBody!: DropdownCategoryId;  
-  @Input() globalCodeId: number = 0; 
-  // @Input() val: number;
+  @Input() requestBody!: DropdownCategoryName;  
+  @Input() globalCodeName: string = ''; 
+  @Input() val: string = '';
   @Input() placeholderText: string = '';
   @Input() disabled: boolean = false;
   @Input() submitted: boolean = false;
   @Input() hasRequired: boolean = false;
   @Input() requiredMessage: string = '';
 
-  @Output() dropdownSelectedValue : EventEmitter<number> = new EventEmitter();
+  @Output() dropdownSelectedValue : EventEmitter<string> = new EventEmitter();
   
-  // globalCodes: GlobalCode[] = [];
+  globalCodesData: GlobalCodeResponseModel[] = [];
 
   constructor(
-    // private commonComponentService: CommonComponentService
+    private commonService: ComponentService
   ) { }
 
   ngOnInit(): void {
-    // this.getGlobalCodes();
+    this.getGlobalCodes();
   }
 
-  // public getGlobalCodes(){
-  //   const payload : ListRequestModel = {
-  //     selectGlobalCodeId: this.globalCodeId ? this.globalCodeId : 0,
-  //     id :this.requestBody,
-  //     pageNumber: 1,
-  //     pageSize: 100
-  //   }
-  //   this.commonComponentService.getGlobalCodes(payload).subscribe(res => {
-  //     this.globalCodes = res.globalCodesList;
-  //   })
-  // }
+  public getGlobalCodes(){
+    let categoryName = this.requestBody; 
 
-  // get value() {
-  //   return this.val;
-  // }
+    this.commonService.getGlobalCodeData(categoryName).subscribe(res => {
+      this.globalCodesData = res;
+    })
+  }
 
-  // set value(val) {
-  //   this.val = val;
-  //   this.dropdownSelectedValue.emit(val);
-  // }
+  get value() {
+    return this.val;
+  }
+
+  set value(val) {
+    this.val = val;
+    this.dropdownSelectedValue.emit(val);
+  }
 
 
 }

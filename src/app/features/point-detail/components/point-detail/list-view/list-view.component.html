@@ -1,5 +1,5 @@
 <mat-card>
-    <div class="tableData1" *ngIf="graphListData.length>0">
+    <div class="tableData1" *ngIf="listViewData.length>0">
         <table class="table">
             <thead>
                 <tr>
@@ -14,9 +14,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let data of graphListData">
+                <tr *ngFor="let data of listViewData">
                   <!-- [ngClass] ="float-right" -->
-
                     <td>{{data.dateTime}}</td>
                     <td>{{data.batteryVoltage | number :'1.3-3'}}</td>
                     <td>{{data.freshwaterConductivity}}</td>
@@ -30,7 +29,7 @@
         </table>
     </div>
 
-    <div *ngIf="graphListData.length==0" class="noData">
+    <div *ngIf="listViewData.length==0" class="noData">
         <span>{{'common.dataNotAvailable'|translate}}</span>
     </div>
 </mat-card>

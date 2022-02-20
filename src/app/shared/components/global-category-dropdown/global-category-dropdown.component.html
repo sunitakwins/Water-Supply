@@ -1,16 +1,15 @@
-<!-- <select 
-  [disabled]="disabled" class="custom-select form__dropdown mt-0" 
-  name="dropdown" 
-  [(ngModel)]="value" 
-  #globalDropdownControl="ngModel"
-  [required]="hasRequired"
- 
-  [ngClass]="{ 'is-invalid': (submitted || globalDropdownControl.touched) && (value == 0 || globalDropdownControl.invalid) }" >
-    <option [ngValue]="null">{{placeholderText}}</option>
-    <option *ngFor="let code of globalCodes" [value]="code.globalCodeId" [disabled]="code.isDeleted"> 
-      {{code.globalCodeName}}
-    </option>
-</select>  -->
-<!-- <div class="invalid-feedback">
+
+<mat-form-field appearance="fill">
+  <mat-label>Value</mat-label>
+  <mat-select [disabled]="disabled"  name="dropdown" [(ngModel)]="value"
+    #globalDropdownControl="ngModel" [required]="hasRequired"
+    [ngClass]="{ 'is-invalid': (submitted || globalDropdownControl.touched) &&  globalDropdownControl.invalid }">
+    <mat-option *ngFor="let code of globalCodesData" [value]="code.codeName">
+      {{code.codeName | translate }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<div class="invalid-feedback">
   {{requiredMessage}}
-</div> -->
+</div>
